@@ -21,13 +21,13 @@
     "dotenv": "^8.2.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node index.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "client": "react-scripts start",
     "server": "nodemon --exec babel-node server/index",
-    "dev": "run-p server start",
-    "heroku-start": "node --exec-babel server/index",
+    "dev": "run-p server client",
     "heroku-postbuild": "npm install && npm run build"
   },
   "eslintConfig": {
