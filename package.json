@@ -31,7 +31,7 @@
     "client": "react-scripts start",
     "server": "nodemon --exec babel-node server/index",
     "dev": "run-p server client",
-    "heroku-postbuild": "npm install && npm run build"
+    "heroku-postbuild": "npm install && npm run build -prod"
   },
   "eslintConfig": {
     "extends": "react-app"
