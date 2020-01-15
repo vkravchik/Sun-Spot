@@ -24,7 +24,7 @@
     "dotenv": "^8.2.0"
   },
   "scripts": {
-    "start": "node --exec babel-node server/index",
+    "start": "node server/index",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
