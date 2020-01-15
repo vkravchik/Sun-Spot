@@ -1,4 +1,3 @@
-require('dotenv/config');
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -16,7 +15,7 @@ app.get('/api/ping', (req, res) => {
     res.send('Pong');
 });
 
-const port = process.env.SERVER_PORT || 3001;
+const port = process.env.PORT || 3001;
 
 app.listen(port, () =>{
     console.log('Express server is running on localhost:' + port)
