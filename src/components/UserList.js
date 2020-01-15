@@ -5,7 +5,9 @@ const UserList = (props) => {
 
   return (
     <div>
-      User List
+      <h2>
+        User List
+      </h2>
       <ul>
         {
           data.map(el => (

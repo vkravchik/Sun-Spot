@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
-import './App.css';
+import './App.scss';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import User from "./containers/User";
 
