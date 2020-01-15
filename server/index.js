@@ -1,7 +1,7 @@
-import 'dotenv/config';
-import express from 'express';
-import bodyParser from 'body-parser';
-import path from 'path';
+require('dotenv/config');
+const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
