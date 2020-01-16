@@ -18,13 +18,13 @@ const User = (props) => {
   return (
     <Fragment>
       {
-        isLoading &&
+        isLoading && !data.length &&
         <div>
           Loading...
         </div>
       }
       {
-        data && !error &&
+        !isLoading && data.length && !error &&
         <UserList
           data={data}
           onUserClick={onUserClick}

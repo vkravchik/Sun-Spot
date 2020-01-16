@@ -6,8 +6,8 @@ const path = require('path');
 const fs = require('fs');
 const cors = require('cors');
 
-const csvToJson = require('./utils/parseCsvToJson');
-const highStock = require('./routes/highStock');
+const utilRoutes = require('./routes/utilRoutes');
+const highStockRoutes = require('./routes/highStock');
 
 const app = express();
 app.use(cors());
@@ -19,8 +19,8 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, '../build', 'index.html'));
 });
 
-app.use('/api/utils', csvToJson);
-app.use('/api/charts/highStock', highStock);
+app.use('/api/utils', utilRoutes);
+app.use('/api/charts/highStock', highStockRoutes);
 
 app.get('/api/data', (req, res) => {
     let fileInput = path.join(__dirname, 'dataset', 'sunspot_data.json');

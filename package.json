@@ -27,7 +27,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "client": "react-scripts start",
-    "server": "nodemon --exec babel-node server/index",
+    "server": "nodemon --exec babel-node server/index --ignore 'server/dataset/**'",
     "dev": "run-p server client",
     "heroku-postbuild": "npm install && npm run build"
   },
