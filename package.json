@@ -5,10 +5,12 @@
   "dependencies": {
     "axios": "^0.19.1",
     "bootstrap": "^4.4.1",
+    "convert-csv-to-json": "0.0.15",
     "node-sass": "^4.13.0",
     "react": "^16.12.0",
     "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.12.0",
+    "react-highcharts": "^16.1.0",
     "react-redux": "^7.1.3",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.3.0",
@@ -17,7 +19,7 @@
     "redux-saga": "^1.1.3",
     "express": "^4.17.1",
     "body-parser": "^1.19.0",
-    "express-pino-logger": "^4.0.0"
+    "dotenv": "^8.2.0"
   },
   "scripts": {
     "start": "node server/index",
@@ -51,8 +53,8 @@
     "@babel/core": "^7.8.3",
     "@babel/node": "^7.8.3",
     "@babel/preset-env": "^7.8.3",
-    "dotenv": "^8.2.0"
-
+    "dotenv": "^8.2.0",
+    "cors": "^2.8.5"
   },
   "engines": {
     "npm": "6.10.1",
