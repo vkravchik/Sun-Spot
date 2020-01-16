@@ -1,8 +1,8 @@
 import {
-  GET_USER_LIST_REQUEST,
-  GET_USER_LIST_REQUEST_ERROR,
-  GET_USER_LIST_REQUEST_SUCCESS
-} from "../../constants/demoConstants";
+  GET_HIGH_STOCK_REQUEST,
+  GET_HIGH_STOCK_REQUEST_ERROR,
+  GET_HIGH_STOCK_REQUEST_SUCCESS
+} from "../../constants/chartConstants";
 
 const initialState = {
   isLoading: false,
@@ -10,15 +10,15 @@ const initialState = {
   error: null,
 };
 
-export const demoReducer = (state = initialState, action) => {
+export const chartReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_USER_LIST_REQUEST:
+    case GET_HIGH_STOCK_REQUEST:
       return {
         ...state,
-        isLoading: true,
+        isLoading: true
       };
 
-    case GET_USER_LIST_REQUEST_SUCCESS:
+    case GET_HIGH_STOCK_REQUEST_SUCCESS:
       return {
         ...state,
         isLoading: false,
@@ -26,7 +26,7 @@ export const demoReducer = (state = initialState, action) => {
         error: null
       };
 
-    case GET_USER_LIST_REQUEST_ERROR:
+    case GET_HIGH_STOCK_REQUEST_ERROR:
       return {
         ...state,
         isLoading: false,
@@ -34,6 +34,8 @@ export const demoReducer = (state = initialState, action) => {
       };
 
     default:
-      return state;
+      return {
+        ...state
+      }
   }
 };
