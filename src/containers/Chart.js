@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import ReactHighStock from "react-highcharts/ReactHighstock";
 import { connect } from "react-redux";
 import { getHighStockAction } from "../redux/actions/chartActions";
+import { MyToast } from "../components/myToast";
 
 const Chart = (props) => {
   const {getHighStockAction} = props;
@@ -49,11 +50,7 @@ const Chart = (props) => {
       }
       {
         error &&
-        <div>
-          Something went wrong:
-          <br/>
-          {error.toString()}
-        </div>
+        error.toString()
       }
     </div>
   )
