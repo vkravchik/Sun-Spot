@@ -1,32 +1,27 @@
 import React, { Fragment } from 'react';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Chart from "./containers/Chart";
+import { NavMenu } from "./components/NavMenu";
 import './App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Link, Route } from "react-router-dom";
-import User from "./containers/User";
-import Chart from "./containers/Chart";
+import 'antd/dist/antd.css';
 
 function App() {
   return (
     <Fragment>
       <Router>
-        <ul>
-          <li>
-            <Link to='/'>
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link to='/chart'>
-              HighStock Chart
-            </Link>
-          </li>
-        </ul>
+        <NavMenu/>
+
         <Route exact path='/'>
-          <User/>
+          <Chart/>
         </Route>
 
-        <Route exact path='/chart'>
-          <Chart/>
+        <Route exact path='/second'>
+          Second
+        </Route>
+
+        <Route exact path='/third'>
+          Third
         </Route>
       </Router>
     </Fragment>
