@@ -22,11 +22,13 @@ const Chart = (props) => {
         text: 'AAPL Stock Price'
       },
       series: [{
+        type: 'area',
         name: 'AAPL',
+        fillOpacity: 0.1,
         data: data,
         tooltip: {
           valueDecimals: 2
-        }
+        },
       }]
     };
 

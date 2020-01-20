@@ -2,8 +2,9 @@ const csvToJson = require('convert-csv-to-json');
 const router = require('express').Router();
 const path = require('path');
 const fs = require('fs');
+const moment = require('moment');
 
-const json = require('../dataset/sunspot_dataset_min');
+const json = require('../dataset/convertcsv');
 
 module.exports = {
   parseCsvToJson: () => {
@@ -25,7 +26,7 @@ module.exports = {
       if (!newJson.hasOwnProperty(el.year)) {
         newJson[el.year] = [];
       }
-      newJson[el.year].push({"date": el.year, "value": el.number_of_sunspots});
+      newJson[el.year].push({"date": Date.parse(`${el.month}/${el.day}/${el.year}`), "value": el.number_of_sunspots});
     });
 
     console.log(newJson);
