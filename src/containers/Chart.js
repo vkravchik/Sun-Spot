@@ -3,6 +3,7 @@ import ReactHighCharts from 'react-highcharts/ReactHighstock';
 import { connect } from 'react-redux';
 import { getHighStockAction, toggleChartTypeAction } from '../redux/actions/chartActions';
 import RangeSlider from '../components/RangeSlider';
+import {Switch} from "antd";
 
 const marks = {
   1818: {
@@ -19,7 +20,7 @@ const marks = {
 };
 
 const Chart = (props) => {
-  const { getHighStockAction } = props;
+  const { getHighStockAction, toggleChartTypeAction } = props;
   const { isLoading, data, type, error } = props.chartProps;
 
   const config = {
@@ -51,6 +52,10 @@ const Chart = (props) => {
     }]
   };
 
+  const onChange = (value) => {
+    value ? toggleChartTypeAction('area') : toggleChartTypeAction('column')
+  };
+
   useEffect(() => {
     getHighStockAction();
   }, [getHighStockAction]);
@@ -61,6 +66,7 @@ const Chart = (props) => {
     return (
       <div className='container shadow-sm p-3 mb-5 bg-white rounded chart-container'>
         <RangeSlider marks={marks} />
+        <Switch defaultChecked onChange={onChange}/>
         <ReactHighCharts config={config} />
       </div>
     )
