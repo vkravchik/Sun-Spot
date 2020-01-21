@@ -1,6 +1,6 @@
-import React from "react";
-import { connect } from "react-redux";
-import { Slider } from "antd";
+import React from 'react';
+import { connect } from 'react-redux';
+import { Slider } from 'antd';
 
 const min = 1818,
       max = 2019,
@@ -8,7 +8,7 @@ const min = 1818,
       defaultFinish = 2010;
 
 const RangeSlider = (props) => {
-  const {marks} = props.ownProps;
+  const { marks } = props.ownProps;
 
   const onAfterChange = (value) => {
     // TODO: Request to server with params start_date && finish_date
@@ -21,7 +21,7 @@ const RangeSlider = (props) => {
             min={min}
             max={max}
             defaultValue={[defaultStart, defaultFinish]}
-            onAfterChange={onAfterChange}/>
+            onAfterChange={onAfterChange} />
   )
 };
 

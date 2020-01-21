@@ -3,7 +3,7 @@ import {
   GET_HIGH_STOCK_REQUEST_ERROR,
   GET_HIGH_STOCK_REQUEST_SUCCESS, TOGGLE_CHART,
   TOGGLE_CHART_TYPE
-} from "../../constants/chartConstants";
+} from '../../constants/chartConstants';
 
 const initialState = {
   isLoading: false,
