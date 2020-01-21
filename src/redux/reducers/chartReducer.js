@@ -1,12 +1,14 @@
 import {
   GET_HIGH_STOCK_REQUEST,
   GET_HIGH_STOCK_REQUEST_ERROR,
-  GET_HIGH_STOCK_REQUEST_SUCCESS
+  GET_HIGH_STOCK_REQUEST_SUCCESS, TOGGLE_CHART,
+  TOGGLE_CHART_TYPE
 } from "../../constants/chartConstants";
 
 const initialState = {
   isLoading: false,
   data: [],
+  type: 'area',
   error: null,
 };
 
@@ -31,6 +33,19 @@ export const chartReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         error: action.payload
+      };
+
+    case TOGGLE_CHART_TYPE:
+      return {
+        ...state,
+        isLoading: true,
+      };
+
+    case TOGGLE_CHART:
+      return {
+        ...state,
+        isLoading: false,
+        type: action.payload
       };
 
     default:

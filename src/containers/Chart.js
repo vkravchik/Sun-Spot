@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import ReactHighCharts from "react-highcharts/ReactHighstock";
 import { connect } from "react-redux";
-import { getHighStockAction } from "../redux/actions/chartActions";
+import { getHighStockAction, toggleChartTypeAction } from "../redux/actions/chartActions";
 import RangeSlider from "../components/RangeSlider";
 
 const marks = {
@@ -18,28 +18,38 @@ const marks = {
   },
 };
 
-const config = {
-  rangeSelector: {
-    selected: 1,
-    inputEnabled: false
-  },
-  title: {
-    text: 'AAPL Stock Price'
-  },
-  series: [{
-    type: 'area',
-    name: 'AAPL',
-    fillOpacity: 0.1,
-    data: null,
-    tooltip: {
-      valueDecimals: 2
-    },
-  }]
-};
-
 const Chart = (props) => {
   const {getHighStockAction} = props;
-  const {isLoading, data, error} = props.chartProps;
+  const {isLoading, data, type, error} = props.chartProps;
+
+  const config = {
+    chart: {
+      events: {
+        load: function () {
+          this.showLoading();
+          if (!isLoading) {
+            this.hideLoading();
+          }
+        }
+      }
+    },
+    rangeSelector: {
+      selected: 1,
+      inputEnabled: false
+    },
+    title: {
+      text: 'Sunspot Frequency Chart'
+    },
+    series: [{
+      type: type,
+      name: 'Sunspot amount',
+      fillOpacity: 0.1,
+      data: null,
+      tooltip: {
+        valueDecimals: 2
+      },
+    }]
+  };
 
   useEffect(() => {
     getHighStockAction();
@@ -85,6 +95,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getHighStockAction: () => dispatch(getHighStockAction()),
+    toggleChartTypeAction: (type) => dispatch(toggleChartTypeAction(type)),
   }
 };
 
