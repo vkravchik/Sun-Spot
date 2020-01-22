@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { Component } from 'react';
 import ReactHighCharts from 'react-highcharts/ReactHighstock';
 import { connect } from 'react-redux';
 import { getHighStockAction, toggleChartTypeAction } from '../redux/actions/chartActions';
@@ -19,78 +19,80 @@ const marks = {
   },
 };
 
-const Chart = (props) => {
-  const { getHighStockAction, toggleChartTypeAction } = props;
-  const { isLoading, data, type, error } = props.chartProps;
+class Chart extends Component {
 
-  const config = {
-    chart: {
-      events: {
-        load: function () {
-          this.showLoading();
-          if (!isLoading) {
-            this.hideLoading();
+  componentDidMount() {
+    this.props.getHighStockAction();
+  }
+
+  render() {
+    const { isLoading, data, type, error } = this.props.chartProps;
+
+    const config = {
+      chart: {
+        events: {
+          load: function () {
+            this.showLoading();
+            if (!isLoading) {
+              this.hideLoading();
+            }
           }
         }
-      }
-    },
-    rangeSelector: {
-      selected: 1,
-      inputEnabled: false
-    },
-    title: {
-      text: 'Sunspot Frequency Chart'
-    },
-    series: [{
-      type: type,
-      name: 'Sunspot amount',
-      fillOpacity: 0.1,
-      data: null,
-      tooltip: {
-        valueDecimals: 2
       },
-    }]
-  };
+      rangeSelector: {
+        selected: 1,
+        inputEnabled: false
+      },
+      title: {
+        text: 'Sunspot Frequency Chart'
+      },
+      series: [{
+        type: type,
+        name: 'Sunspot amount',
+        fillOpacity: 0.1,
+        data: null,
+        tooltip: {
+          valueDecimals: 2
+        },
+      }]
+    };
 
-  const onChange = (value) => {
-    value ? toggleChartTypeAction('area') : toggleChartTypeAction('column')
-  };
+    const onChange = (value) => {
+      value ? this.props.toggleChartTypeAction('area') : this.props.toggleChartTypeAction('column')
+    };
 
-  useEffect(() => {
-    getHighStockAction();
-  }, [getHighStockAction]);
+    const renderChart = () => {
+      config.series[0].data = data;
 
-  const renderChart = () => {
-    config.series[0].data = data;
+      return (
+        <div className='container shadow-sm p-3 mb-5 bg-white rounded chart-container'>
+          <RangeSlider marks={marks} />
+          <Switch defaultChecked onChange={onChange} />
+          <ReactHighCharts config={config} />
+        </div>
+      )
+    };
 
     return (
-      <div className='container shadow-sm p-3 mb-5 bg-white rounded chart-container'>
-        <RangeSlider marks={marks} />
-        <Switch defaultChecked onChange={onChange}/>
-        <ReactHighCharts config={config} />
+      <div>
+        {
+          isLoading &&
+          <div>
+            Loading...
+          </div>
+        }
+        {
+          data && !error &&
+          renderChart()
+        }
+        {
+          error &&
+          error.toString()
+        }
       </div>
     )
-  };
-
-  return (
-    <div>
-      {
-        isLoading &&
-        <div>
-          Loading...
-        </div>
-      }
-      {
-        data && !error &&
-        renderChart()
-      }
-      {
-        error &&
-        error.toString()
-      }
-    </div>
-  )
-};
+  }
+}
 
 const mapStateToProps = (state) => {
   return {
