@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
-import ReactHighCharts from 'react-highcharts/ReactHighstock';
-import { connect } from 'react-redux';
-import { getHighStockAction, toggleChartTypeAction } from '../redux/actions/chartActions';
-import RangeSlider from '../components/RangeSlider';
 import {Switch} from "antd";
+import { connect } from 'react-redux';
+import React, { Component } from 'react';
+import RangeSlider from '../components/RangeSlider';
+import ReactHighCharts from 'react-highcharts/ReactHighstock';
+import { getHighStockAction, toggleChartTypeAction } from '../redux/actions/chartActions';
+
+import '../styles/Chart.scss';
 
 const marks = {
   1818: {
@@ -67,8 +69,18 @@ class Chart extends Component {
       return (
         <div className='container shadow-sm p-3 mb-5 bg-white rounded chart-container'>
           <RangeSlider marks={marks} />
-          <Switch defaultChecked onChange={onChange} />
           <ReactHighCharts config={config} />
+          <div className="row">
+            <div className="col-md-6">
+              Switch Chart Type
+              <Switch
+                className='row-switch'
+                checkedChildren="A"
+                unCheckedChildren="C"
+                defaultChecked
+                onChange={onChange} />
+            </div>
+          </div>
         </div>
       )
     };
