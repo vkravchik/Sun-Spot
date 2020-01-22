@@ -1,21 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Slider } from 'antd';
+import { getHighStockAction } from "../redux/actions/chartActions";
 
-const min = 1818,
-  max = 2019,
-  defaultStart = 1999,
-  defaultFinish = 2010;
-
-const onAfterChange = (value) => {
-  // TODO: Request to server with params start_date && finish_date
-  console.log(value);
-};
+// const min = 1818,
+//   max = 2019,
+//   defaultStart = 1999,
+//   defaultFinish = 2010;
 
 class RangeSlider extends Component {
 
   render() {
-    const {marks} = this.props.ownProps;
+    const {marks, initialConfig: {min, max, defaultStart, defaultFinish}} = this.props.ownProps;
+
+    const onAfterChange = (value) => {
+      const dateObj = {
+        start_date: value[0],
+        finish_date: value[1],
+      };
+      this.props.getHighStockAction(dateObj);
+    };
 
     return (
       <Slider range
@@ -30,12 +34,14 @@ class RangeSlider extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    ownProps: ownProps
+    ownProps: ownProps,
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {}
+  return {
+    getHighStockAction: (dateObj) => dispatch(getHighStockAction(dateObj)),
+  }
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(RangeSlider)

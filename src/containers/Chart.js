@@ -1,9 +1,9 @@
-import {Switch} from "antd";
+import { Switch } from "antd";
 import { connect } from 'react-redux';
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import RangeSlider from '../components/RangeSlider';
 import ReactHighCharts from 'react-highcharts/ReactHighstock';
-import { getHighStockAction, toggleChartTypeAction } from '../redux/actions/chartActions';
+import { getHighStockAction, getInitialChartConfigAction, toggleChartTypeAction } from '../redux/actions/chartActions';
 
 import '../styles/Chart.scss';
 
@@ -21,90 +21,89 @@ const marks = {
   },
 };
 
-class Chart extends Component {
+const Chart = (props) => {
 
-  componentDidMount() {
-    this.props.getHighStockAction();
-  }
+  const {isLoading, data, type, error, initialConfig} = props.chartProps;
 
-  render() {
-    const { isLoading, data, type, error } = this.props.chartProps;
+  useEffect(() => {
+    props.getInitialChartConfigAction();
+    props.getHighStockAction();
+  }, [getInitialChartConfigAction, getHighStockAction]);
 
-    const config = {
-      chart: {
-        events: {
-          load: function () {
-            this.showLoading();
-            if (!isLoading) {
-              this.hideLoading();
-            }
+  const config = {
+    chart: {
+      events: {
+        load: function () {
+          this.showLoading();
+          if (!isLoading) {
+            this.hideLoading();
           }
         }
+      }
+    },
+    rangeSelector: {
+      selected: 1,
+      inputEnabled: false
+    },
+    title: {
+      text: 'Sunspot Frequency Chart'
+    },
+    series: [{
+      type: type,
+      name: 'Sunspot amount',
+      fillOpacity: 0.1,
+      data: null,
+      tooltip: {
+        valueDecimals: 2
       },
-      rangeSelector: {
-        selected: 1,
-        inputEnabled: false
-      },
-      title: {
-        text: 'Sunspot Frequency Chart'
-      },
-      series: [{
-        type: type,
-        name: 'Sunspot amount',
-        fillOpacity: 0.1,
-        data: null,
-        tooltip: {
-          valueDecimals: 2
-        },
-      }]
-    };
+    }]
+  };
 
-    const onChange = (value) => {
-      value ? this.props.toggleChartTypeAction('area') : this.props.toggleChartTypeAction('column')
-    };
+  const onChange = (value) => {
+    value ? props.toggleChartTypeAction('area') : props.toggleChartTypeAction('column')
+  };
 
-    const renderChart = () => {
-      config.series[0].data = data;
-
-      return (
-        <div className='container shadow-sm p-3 mb-5 bg-white rounded chart-container'>
-          <RangeSlider marks={marks} />
-          <ReactHighCharts config={config} />
-          <div className="row">
-            <div className="col-md-6">
-              Switch Chart Type
-              <Switch
-                className='row-switch'
-                checkedChildren="A"
-                unCheckedChildren="C"
-                defaultChecked
-                onChange={onChange} />
-            </div>
-          </div>
-        </div>
-      )
-    };
+  const renderChart = () => {
+    config.series[0].data = data;
 
     return (
-      <div>
-        {
-          isLoading &&
-          <div>
-            Loading...
+      <div className='container shadow-sm p-3 mb-5 bg-white rounded chart-container'>
+        <RangeSlider marks={marks} initialConfig={initialConfig}/>
+        <ReactHighCharts config={config}/>
+        <div className="row">
+          <div className="col-md-6">
+            Switch Chart Type
+            <Switch
+              className='row-switch'
+              checkedChildren="A"
+              unCheckedChildren="C"
+              defaultChecked
+              onChange={onChange}/>
           </div>
-        }
-        {
-          data && !error &&
-          renderChart()
-        }
-        {
-          error &&
-          error.toString()
-        }
+        </div>
       </div>
     )
-  }
-}
+  };
+
+  return (
+    <div>
+      {
+        isLoading &&
+        <div>
+          Loading...
+        </div>
+      }
+      {
+        data && !error &&
+        renderChart()
+      }
+      {
+        error &&
+        error.toString()
+      }
+    </div>
+  )
+};
 
 const mapStateToProps = (state) => {
   return {
@@ -115,6 +114,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getHighStockAction: () => dispatch(getHighStockAction()),
+    getInitialChartConfigAction: () => dispatch(getInitialChartConfigAction()),
     toggleChartTypeAction: (type) => dispatch(toggleChartTypeAction(type)),
   }
 };
