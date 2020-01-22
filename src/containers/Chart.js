@@ -1,61 +1,98 @@
-import React, { useEffect } from "react";
-import ReactHighStock from "react-highcharts/ReactHighstock";
-import { connect } from "react-redux";
-import { getHighStockAction } from "../redux/actions/chartActions";
+import React, { Component } from 'react';
+import ReactHighCharts from 'react-highcharts/ReactHighstock';
+import { connect } from 'react-redux';
+import { getHighStockAction, toggleChartTypeAction } from '../redux/actions/chartActions';
+import RangeSlider from '../components/RangeSlider';
+import {Switch} from "antd";
 
-const Chart = (props) => {
-  const {getHighStockAction} = props;
-  const {isLoading, data, error} = props.chartProps;
+const marks = {
+  1818: {
+    label: <strong>1818</strong>
+  },
+  1999: '1999',
+  2010: '2010',
+  2019: {
+    style: {
+      color: '#ff5500',
+    },
+    label: <strong>2019</strong>,
+  },
+};
 
-  let config = {};
+class Chart extends Component {
 
-  useEffect(() => {
-    getHighStockAction();
-  }, [getHighStockAction]);
+  componentDidMount() {
+    this.props.getHighStockAction();
+  }
 
-  const renderChart = () => {
-    config = {
+  render() {
+    const { isLoading, data, type, error } = this.props.chartProps;
+
+    const config = {
+      chart: {
+        events: {
+          load: function () {
+            this.showLoading();
+            if (!isLoading) {
+              this.hideLoading();
+            }
+          }
+        }
+      },
       rangeSelector: {
-        selected: 1
+        selected: 1,
+        inputEnabled: false
       },
       title: {
-        text: 'AAPL Stock Price'
+        text: 'Sunspot Frequency Chart'
       },
       series: [{
-        type: 'area',
-        name: 'AAPL',
+        type: type,
+        name: 'Sunspot amount',
         fillOpacity: 0.1,
-        data: data,
+        data: null,
         tooltip: {
           valueDecimals: 2
         },
       }]
     };
 
-    return (
-      <ReactHighStock config={config}/>
-    )
-  };
+    const onChange = (value) => {
+      value ? this.props.toggleChartTypeAction('area') : this.props.toggleChartTypeAction('column')
+    };
 
-  return (
-    <div>
-      {
-        isLoading &&
-        <div>
-          Loading...
+    const renderChart = () => {
+      config.series[0].data = data;
+
+      return (
+        <div className='container shadow-sm p-3 mb-5 bg-white rounded chart-container'>
+          <RangeSlider marks={marks} />
+          <Switch defaultChecked onChange={onChange} />
+          <ReactHighCharts config={config} />
         </div>
-      }
-      {
-        data && !error &&
-        renderChart()
-      }
-      {
-        error &&
-        error.toString()
-      }
-    </div>
-  )
-};
+      )
+    };
+
+    return (
+      <div>
+        {
+          isLoading &&
+          <div>
+            Loading...
+          </div>
+        }
+        {
+          data && !error &&
+          renderChart()
+        }
+        {
+          error &&
+          error.toString()
+        }
+      </div>
+    )
+  }
+}
 
 const mapStateToProps = (state) => {
   return {
@@ -63,9 +100,10 @@ const mapStateToProps = (state) => {
   }
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     getHighStockAction: () => dispatch(getHighStockAction()),
+    toggleChartTypeAction: (type) => dispatch(toggleChartTypeAction(type)),
   }
 };
 

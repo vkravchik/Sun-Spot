@@ -1,6 +1,9 @@
-import { GET_HIGH_STOCK_REQUEST_ERROR, GET_HIGH_STOCK_REQUEST_SUCCESS } from "../../../constants/chartConstants";
-import { call, put } from "redux-saga/effects";
-import { getHighStockData } from "../../services/chartService";
+import {
+  GET_HIGH_STOCK_REQUEST_ERROR,
+  GET_HIGH_STOCK_REQUEST_SUCCESS, TOGGLE_CHART
+} from '../../../constants/chartConstants';
+import { call, put } from 'redux-saga/effects';
+import { getHighStockData } from '../../services/chartService';
 
 export function* workerChartSaga({payload}) {
   try {
@@ -10,4 +13,8 @@ export function* workerChartSaga({payload}) {
   } catch (e) {
     yield put({type: GET_HIGH_STOCK_REQUEST_ERROR, payload: e})
   }
+}
+
+export function* toggleChartTypeSaga({payload}) {
+  yield put({type: TOGGLE_CHART, payload})
 }
