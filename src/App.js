@@ -1,19 +1,21 @@
 import React, { Fragment } from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import Chart from "./containers/Chart";
-import './App.scss';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'antd/dist/antd.css';
-import { NavMenu } from "./components/NavMenu";
+
+import Chart from './containers/Chart';
+import { NavMenu } from './components/NavMenu';
+
+import './App.scss';
 
 function App() {
   return (
     <Fragment>
       <Router>
-        <NavMenu/>
+        <NavMenu />
 
         <Route exact path='/'>
-          <Chart/>
+          <Chart />
         </Route>
 
         <Route exact path='/second'>
