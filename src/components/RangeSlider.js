@@ -19,17 +19,15 @@ const RangeSlider = (props) => {
   return (
     <>
       <div className="row">
-        <div className="col-md-10">
+        <div className="col-md-11">
           <Slider range
                   marks={prepareSliderMarks(min, max, defaultStart, defaultFinish)}
                   min={min}
                   max={max}
                   onAfterChange={onAfterChange}/>
         </div>
-        <div className="col-md-2">
-          <Button className='align-icon' type="primary" shape="round" icon="filter" size='small'>
-            Filter
-          </Button>
+        <div className="col-md-1 text-center filter-container">
+          <Button className='align-icon' type="primary" shape="round" icon="filter" size='small' />
         </div>
       </div>
     </>
@@ -52,7 +50,7 @@ const prepareSliderMarks = (min, max, defaultStart, defaultFinish) => {
     };
     marks[defaultFinish] = {
       style: {
-        top: (max - defaultFinish < 7 && max - defaultFinish > 0) || (defaultFinish - defaultStart < 7) ? '-40px' : null
+        top: (max - defaultFinish < 7 && max - defaultFinish > 0) ? '-40px' : null
       },
       label: defaultFinish
     };
