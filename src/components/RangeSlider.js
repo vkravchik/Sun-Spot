@@ -44,14 +44,18 @@ const prepareSliderMarks = (min, max, defaultStart, defaultFinish) => {
   };
 
   if (defaultStart && defaultFinish) {
-    marks[defaultStart] = (defaultFinish - defaultStart >= 7) ? defaultStart
-      : {
-        style: {
-          top: '-40px'
-        },
-        label: defaultStart
-      };
-    marks[defaultFinish] = defaultFinish;
+    marks[defaultStart] = {
+      style: {
+        top: (defaultStart - min < 7 && defaultStart - min > 0) || (defaultFinish - defaultStart < 7) ? '-40px' : null
+      },
+      label: defaultStart
+    };
+    marks[defaultFinish] = {
+      style: {
+        top: (max - defaultFinish < 7 && max - defaultFinish > 0) || (defaultFinish - defaultStart < 7) ? '-40px' : null
+      },
+      label: defaultFinish
+    };
   }
 
   marks[max] = {
