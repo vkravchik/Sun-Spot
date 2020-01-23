@@ -7,13 +7,15 @@ const RangeSlider = (props) => {
   const {getHighStockAction} = props;
   const {initialConfig: {min, max, defaultStart, defaultFinish}} = props.ownProps;
 
-  const onAfterChange = (value = []) => {
-    const dateObj = {
-      start_date: value[0] || defaultStart,
-      finish_date: value[1] || defaultFinish,
-    };
+  const dateObj = {};
 
-    getHighStockAction(dateObj);
+  const onAfterChange = (value = []) => {
+    dateObj['start_date'] = value[0] || defaultStart;
+    dateObj['finish_date'] = value[1] || defaultFinish;
+  };
+
+  const onApplyFilter = () => {
+      getHighStockAction(dateObj);
   };
 
   return (
@@ -27,7 +29,7 @@ const RangeSlider = (props) => {
                   onAfterChange={onAfterChange}/>
         </div>
         <div className="col-md-1 text-center filter-container">
-          <Button className='align-icon' type="primary" shape="round" icon="filter" size='small' />
+          <Button className='align-icon' type="primary" shape="round" icon="filter" size='small' onClick={onApplyFilter}/>
         </div>
       </div>
     </>
