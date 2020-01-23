@@ -1,33 +1,20 @@
 import { Switch } from "antd";
 import { connect } from 'react-redux';
-import React, { Component, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import RangeSlider from '../components/RangeSlider';
 import ReactHighCharts from 'react-highcharts/ReactHighstock';
 import { getHighStockAction, getInitialChartConfigAction, toggleChartTypeAction } from '../redux/actions/chartActions';
 
 import '../styles/Chart.scss';
 
-const marks = {
-  1818: {
-    label: <strong>1818</strong>
-  },
-  1999: '1999',
-  2010: '2010',
-  2019: {
-    style: {
-      color: '#ff5500',
-    },
-    label: <strong>2019</strong>,
-  },
-};
-
 const Chart = (props) => {
 
+  const {getInitialChartConfigAction, getHighStockAction, toggleChartTypeAction} = props;
   const {isLoading, data, type, error, initialConfig} = props.chartProps;
 
   useEffect(() => {
-    props.getInitialChartConfigAction();
-    props.getHighStockAction();
+    getInitialChartConfigAction();
+    getHighStockAction();
   }, [getInitialChartConfigAction, getHighStockAction]);
 
   const config = {
@@ -60,7 +47,7 @@ const Chart = (props) => {
   };
 
   const onChange = (value) => {
-    value ? props.toggleChartTypeAction('area') : props.toggleChartTypeAction('column')
+    value ? toggleChartTypeAction('area') : toggleChartTypeAction('column')
   };
 
   const renderChart = () => {
@@ -68,7 +55,7 @@ const Chart = (props) => {
 
     return (
       <div className='container shadow-sm p-3 mb-5 bg-white rounded chart-container'>
-        <RangeSlider marks={marks} initialConfig={initialConfig}/>
+        <RangeSlider initialConfig={initialConfig}/>
         <ReactHighCharts config={config}/>
         <div className="row">
           <div className="col-md-6">
@@ -87,12 +74,6 @@ const Chart = (props) => {
 
   return (
     <div>
-      {
-        isLoading &&
-        <div>
-          Loading...
-        </div>
-      }
       {
         data && !error &&
         renderChart()

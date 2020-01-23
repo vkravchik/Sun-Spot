@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { BASE_URL } from '../../constants/dataConstants';
-import { getInitialChartConfigAction } from "../actions/chartActions";
 
 export function getHighStockData(payload) {
   const start_date = payload?.start_date || null;

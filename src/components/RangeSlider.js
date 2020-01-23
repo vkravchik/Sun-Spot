@@ -1,36 +1,62 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { Slider } from 'antd';
+import { Slider, Button } from 'antd';
 import { getHighStockAction } from "../redux/actions/chartActions";
 
-// const min = 1818,
-//   max = 2019,
-//   defaultStart = 1999,
-//   defaultFinish = 2010;
+const RangeSlider = (props) => {
+  const {getHighStockAction} = props;
+  const {initialConfig: {min, max, defaultStart, defaultFinish}} = props.ownProps;
 
-class RangeSlider extends Component {
-
-  render() {
-    const {marks, initialConfig: {min, max, defaultStart, defaultFinish}} = this.props.ownProps;
-
-    const onAfterChange = (value) => {
-      const dateObj = {
-        start_date: value[0],
-        finish_date: value[1],
-      };
-      this.props.getHighStockAction(dateObj);
+  const onAfterChange = (value = []) => {
+    const dateObj = {
+      start_date: value[0] || defaultStart,
+      finish_date: value[1] || defaultFinish,
     };
 
-    return (
+    getHighStockAction(dateObj);
+  };
+
+  return (
+    <>
       <Slider range
-              marks={marks}
+              marks={prepareSliderMarks(min, max, defaultStart, defaultFinish)}
               min={min}
               max={max}
-              defaultValue={[defaultStart, defaultFinish]}
               onAfterChange={onAfterChange}/>
-    )
+      <Button type="primary" shape="round" icon="filter" size='small'>
+        Filter
+      </Button>
+    </>
+  )
+};
+
+const prepareSliderMarks = (min, max, defaultStart, defaultFinish) => {
+  const marks = {};
+
+  marks[min] = {
+    label: <strong>{min}</strong>
+  };
+
+  if (defaultStart && defaultFinish) {
+    marks[defaultStart] = (defaultFinish - defaultStart >= 7) ? defaultStart
+      : {
+        style: {
+          top: '-40px'
+        },
+        label: defaultStart
+      };
+    marks[defaultFinish] = defaultFinish;
   }
-}
+
+  marks[max] = {
+    style: {
+      color: '#ff5500',
+    },
+    label: <strong>{max}</strong>,
+  };
+
+  return marks;
+};
 
 const mapStateToProps = (state, ownProps) => {
   return {

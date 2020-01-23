@@ -24,7 +24,12 @@ export const chartReducer = (state = initialState, action) => {
     case GET_HIGH_STOCK_REQUEST:
       return {
         ...state,
-        isLoading: true
+        isLoading: true,
+        initialConfig: {
+          ...state.initialConfig,
+          defaultStart: action.payload?.start_date || null,
+          defaultFinish: action.payload?.finish_date || null,
+        }
       };
 
     case GET_HIGH_STOCK_REQUEST_SUCCESS:
