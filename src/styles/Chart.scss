@@ -1,3 +1,10 @@
 .row-switch {
   margin-left: 12px
 }
+
+.align-icon {
+  vertical-align: -webkit-baseline-middle;
+  i {
+    vertical-align: baseline;
+  }
+}

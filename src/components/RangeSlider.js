@@ -18,14 +18,20 @@ const RangeSlider = (props) => {
 
   return (
     <>
-      <Slider range
-              marks={prepareSliderMarks(min, max, defaultStart, defaultFinish)}
-              min={min}
-              max={max}
-              onAfterChange={onAfterChange}/>
-      <Button type="primary" shape="round" icon="filter" size='small'>
-        Filter
-      </Button>
+      <div className="row">
+        <div className="col-md-10">
+          <Slider range
+                  marks={prepareSliderMarks(min, max, defaultStart, defaultFinish)}
+                  min={min}
+                  max={max}
+                  onAfterChange={onAfterChange}/>
+        </div>
+        <div className="col-md-2">
+          <Button className='align-icon' type="primary" shape="round" icon="filter" size='small'>
+            Filter
+          </Button>
+        </div>
+      </div>
     </>
   )
 };
