@@ -8,6 +8,7 @@ const cors = require('cors');
 
 const utilRoutes = require('./routes/utilRoutes');
 const highStockRoutes = require('./routes/highStock');
+const pieRoutes = require('./routes/pieRoutes');
 
 const app = express();
 app.use(cors());
@@ -21,6 +22,7 @@ app.get('/', function (req, res) {
 
 app.use('/api/utils', utilRoutes);
 app.use('/api/charts/highStock', highStockRoutes);
+app.use('/api/charts/pie', pieRoutes);
 
 app.get('/api/data', (req, res) => {
     let fileInput = path.join(__dirname, 'dataset', 'sunspot_data.json');

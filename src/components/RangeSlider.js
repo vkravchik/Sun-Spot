@@ -6,15 +6,14 @@ import { getHighStockAction } from "../redux/actions/highStockActions";
 
 const RangeSlider = (props) => {
   const {getHighStockAction} = props;
-  const {initialConfig: {min, max, defaultStart, defaultFinish}} = props.ownProps;
+  const {initialConfig: {min, max, defaultStart, defaultFinish}, onAfterChange} = props.ownProps;
 
-  const dateObj = {};
-
-  const onAfterChange = (value = []) => {
-    dateObj['start_date'] = value[0] || defaultStart;
-    dateObj['finish_date'] = value[1] || defaultFinish;
-    getHighStockAction(dateObj);
-  };
+  // const onAfterChange = (value = []) => {
+  //   const dateObj = {};
+  //   dateObj['start_date'] = value[0] || defaultStart;
+  //   dateObj['finish_date'] = value[1] || defaultFinish;
+  //   getHighStockAction(dateObj);
+  // };
 
   const onApplyFilter = () => {
   };
