@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Slider, Button } from 'antd';
+
 import { getHighStockAction } from "../redux/actions/chartActions";
 
 const RangeSlider = (props) => {
@@ -12,10 +13,10 @@ const RangeSlider = (props) => {
   const onAfterChange = (value = []) => {
     dateObj['start_date'] = value[0] || defaultStart;
     dateObj['finish_date'] = value[1] || defaultFinish;
+    getHighStockAction(dateObj);
   };
 
   const onApplyFilter = () => {
-      getHighStockAction(dateObj);
   };
 
   return (
