@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { BASE_URL } from '../../constants/dataConstants';
+import { BASE_URL } from '../../common/constants/dataConstants';
 
 export function getHighStockData(payload) {
   const start_date = payload?.start_date || null;
@@ -15,7 +15,7 @@ export function getHighStockData(payload) {
   });
 }
 
-export function getInitialConfigData() {
+export function getHighStockConfig() {
   return axios.get(`${BASE_URL}/api/charts/highStock/config`)
     .then(res => {
       return res.data;

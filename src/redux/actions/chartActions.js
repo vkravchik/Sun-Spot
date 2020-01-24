@@ -1,12 +1,13 @@
-import { GET_CHART_CONFIG_REQUEST, GET_HIGH_STOCK_REQUEST, TOGGLE_CHART_TYPE } from '../../constants/chartConstants';
+import { GET_HIGH_STOCK_CONFIG_REQUEST, GET_HIGH_STOCK_REQUEST } from '../../common/constants/highStockConstants';
+import { TOGGLE_CHART_TYPE } from "../../common/constants/switchTypeConstants";
 
 export const getHighStockAction = (payload) => ({
   type: GET_HIGH_STOCK_REQUEST,
   payload
 });
 
-export const getInitialChartConfigAction = (payload) => ({
-  type: GET_CHART_CONFIG_REQUEST,
+export const getHighStockConfigAction = (payload) => ({
+  type: GET_HIGH_STOCK_CONFIG_REQUEST,
   payload
 });
 

@@ -1,10 +1,10 @@
 import {
-  GET_CHART_CONFIG_REQUEST, GET_CHART_CONFIG_REQUEST_ERROR, GET_CHART_CONFIG_REQUEST_SUCCESS,
+  GET_HIGH_STOCK_CONFIG_REQUEST, GET_HIGH_STOCK_CONFIG_REQUEST_ERROR, GET_HIGH_STOCK_CONFIG_REQUEST_SUCCESS,
   GET_HIGH_STOCK_REQUEST,
   GET_HIGH_STOCK_REQUEST_ERROR,
-  GET_HIGH_STOCK_REQUEST_SUCCESS, TOGGLE_CHART,
-  TOGGLE_CHART_TYPE
-} from '../../constants/chartConstants';
+  GET_HIGH_STOCK_REQUEST_SUCCESS
+} from '../../common/constants/highStockConstants';
+import { TOGGLE_CHART, TOGGLE_CHART_TYPE } from "../../common/constants/switchTypeConstants";
 
 const initialState = {
   isLoading: false,
@@ -47,13 +47,13 @@ export const chartReducer = (state = initialState, action) => {
         error: action.payload
       };
 
-    case GET_CHART_CONFIG_REQUEST:
+    case GET_HIGH_STOCK_CONFIG_REQUEST:
       return {
         ...state,
         isLoading: true
       };
 
-    case GET_CHART_CONFIG_REQUEST_SUCCESS:
+    case GET_HIGH_STOCK_CONFIG_REQUEST_SUCCESS:
       return {
         ...state,
         isLoading: false,
@@ -61,7 +61,7 @@ export const chartReducer = (state = initialState, action) => {
         error: null
       };
 
-    case GET_CHART_CONFIG_REQUEST_ERROR:
+    case GET_HIGH_STOCK_CONFIG_REQUEST_ERROR:
       return {
         ...state,
         isLoading: false,
