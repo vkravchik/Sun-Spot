@@ -2,18 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Slider, Button } from 'antd';
 
-import { getHighStockAction } from "../redux/actions/highStockActions";
-
 const RangeSlider = (props) => {
-  const {getHighStockAction} = props;
   const {initialConfig: {min, max, defaultStart, defaultFinish}, onAfterChange} = props.ownProps;
-
-  // const onAfterChange = (value = []) => {
-  //   const dateObj = {};
-  //   dateObj['start_date'] = value[0] || defaultStart;
-  //   dateObj['finish_date'] = value[1] || defaultFinish;
-  //   getHighStockAction(dateObj);
-  // };
 
   const onApplyFilter = () => {
   };
@@ -29,7 +19,8 @@ const RangeSlider = (props) => {
                   onAfterChange={onAfterChange}/>
         </div>
         <div className="col-md-1 text-center filter-container">
-          <Button className='align-icon' type="primary" shape="round" icon="filter" size='small' onClick={onApplyFilter}/>
+          <Button className='align-icon' type="primary" shape="round" icon="filter" size='small'
+                  onClick={onApplyFilter}/>
         </div>
       </div>
     </>
@@ -68,16 +59,10 @@ const prepareSliderMarks = (min, max, defaultStart, defaultFinish) => {
   return marks;
 };
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    ownProps: ownProps,
-  }
-};
+const mapStateToProps = (state, ownProps) => ({
+    ownProps: ownProps
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getHighStockAction: (dateObj) => dispatch(getHighStockAction(dateObj)),
-  }
-};
+const mapDispatchToProps = (dispatch) => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(RangeSlider)

@@ -2,21 +2,26 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import PieChart from "../components/PieChart";
 import RangeSlider from "../components/RangeSlider";
-import { getHighStockConfigAction } from "../redux/actions/highStockActions";
+
+import { getSliderConfigAction, setSliderConfigAction } from "../redux/actions/sliderActions";
+import { getPieAction } from "../redux/actions/pieActions";
 
 const Pie = (props) => {
-  const {getHighStockConfigAction} = props;
+  const {getSliderConfigAction, getPieAction, setSliderConfigAction} = props;
   const {initialConfig} = props;
 
   useEffect(() => {
-    getHighStockConfigAction();
-  },[getHighStockConfigAction]);
+    getSliderConfigAction();
+  },[getSliderConfigAction]);
 
   const onAfterChange = (value = []) => {
     const dateObj = {};
+
     dateObj['start_date'] = value[0];
     dateObj['finish_date'] = value[1];
-    console.log(dateObj);
+
+    setSliderConfigAction(dateObj);
+    getPieAction(dateObj);
   };
 
   return (
@@ -30,11 +35,13 @@ const Pie = (props) => {
 };
 
 const mapStateToProps = (props) => ({
-  initialConfig: props.highStockReducer.initialConfig
+  initialConfig: props.sliderReducer.initialConfig
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getHighStockConfigAction: () => dispatch(getHighStockConfigAction()),
+  getSliderConfigAction: () => dispatch(getSliderConfigAction()),
+  getPieAction: (dateObj) => dispatch(getPieAction(dateObj)),
+  setSliderConfigAction: (dateObj) => dispatch(setSliderConfigAction(dateObj))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Pie)
