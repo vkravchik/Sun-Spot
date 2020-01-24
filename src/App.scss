@@ -1,23 +1,14 @@
-@import "styles/variable";
+@import "common/styles/variable";
 
 .menu {
   background-color: $base-color-light;
 }
 
-ul {
-  margin: 0;
-  padding: 0;
-  font-size: 22px;
-  list-style-type: none;
-  display: flex;
-  justify-content: center;
-  li {
-    a {
-      text-decoration: none;
-      color: #333333;
-    }
-    margin: 0 12px;
-  }
+.logo {
+  margin: 16px 16px 16px 0;
+  float: left;
+  width: 30px;
+  height: 30px;
 }
 
 .chart-container {

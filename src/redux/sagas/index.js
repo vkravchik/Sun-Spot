@@ -1,9 +1,11 @@
 import { all, fork } from 'redux-saga/effects';
 
-import watchChartSaga from './chartSaga/watchChartSaga';
+import highStockSagaWatcher from './highStockSaga/highStockSagaWatcher';
+import switchTypeSagaWatcher from './switchTypeSaga/switchTypeSagaWatcher';
 
 export default function* rootSaga() {
   yield all([
-    fork(watchChartSaga)
+    fork(highStockSagaWatcher),
+    fork(switchTypeSagaWatcher)
   ])
 }
