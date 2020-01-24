@@ -5,8 +5,9 @@ import ReactHighcharts from "react-highcharts/";
 import { getPieAction } from "../redux/actions/pieActions";
 
 const PieChart = (props) => {
-  const {getPieAction, pieProps} = props;
-  const {isLoading, data, error} = pieProps;
+  const {getPieAction} = props;
+  const {isLoading, data} = props.pieProps;
+  const {initialConfig: {defaultStart, defaultFinish}} = props.sliderProps;
 
 
   useEffect(() => {
@@ -15,13 +16,21 @@ const PieChart = (props) => {
 
   const config = {
     chart: {
+      events: {
+        load: function () {
+          this.showLoading();
+          if (!isLoading) {
+            this.hideLoading();
+          }
+        }
+      },
       plotBackgroundColor: null,
       plotBorderWidth: null,
       plotShadow: false,
       type: 'pie'
     },
     title: {
-      text: 'Observations per all period'
+      text: `Observations since ${defaultStart} to ${defaultFinish}`
     },
     tooltip: {
       pointFormat: `{series.name}:<b>{point.percentage:.1f}%</b>`
@@ -51,7 +60,8 @@ const PieChart = (props) => {
 };
 
 const mapStateToProps = (props) => ({
-  pieProps: props.pieReducer
+  pieProps: props.pieReducer,
+  sliderProps: props.sliderReducer
 });
 
 const mapDispatchToProps = (dispatch) => ({
