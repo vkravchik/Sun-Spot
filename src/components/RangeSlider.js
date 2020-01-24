@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Slider, Button } from 'antd';
 
-import { getHighStockAction } from "../redux/actions/chartActions";
+import { getHighStockAction } from "../redux/actions/highStockActions";
 
 const RangeSlider = (props) => {
   const {getHighStockAction} = props;

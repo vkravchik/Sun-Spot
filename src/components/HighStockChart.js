@@ -2,12 +2,13 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import ReactHighCharts from "react-highcharts/ReactHighstock";
 
-import { getHighStockAction } from "../redux/actions/chartActions";
+import { getHighStockAction } from "../redux/actions/highStockActions";
 import SwitchType from "./SwitchType";
 
 const HighStockChart = (props) => {
   const { getHighStockAction } = props;
-  const { isLoading, data, type } = props.chartProps;
+  const { highStockType, highStockProps } = props;
+  const { isLoading, data } = highStockProps;
 
   const title = 'Switch Chart Type';
 
@@ -34,7 +35,7 @@ const HighStockChart = (props) => {
       text: 'Sunspot Frequency Chart'
     },
     series: [{
-      type: type,
+      type: highStockType,
       name: 'Sunspot amount',
       fillOpacity: 0.1,
       data: data,
@@ -53,7 +54,8 @@ const HighStockChart = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  chartProps: state.chartReducer,
+  highStockProps: state.highStockReducer,
+  highStockType: state.switchTypeReducer.highStockType,
 });
 
 const mapDispatchToProps = (dispatch) => ({

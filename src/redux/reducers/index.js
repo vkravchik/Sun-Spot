@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux';
 
-import { chartReducer } from './chartReducer';
+import { highStockReducer } from './highStockReducer';
+import { switchTypeReducer } from "./switchTypeReducer";
 
 export default combineReducers({
-  chartReducer,
+  highStockReducer: highStockReducer,
+  switchTypeReducer: switchTypeReducer,
 })

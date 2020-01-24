@@ -4,12 +4,10 @@ import {
   GET_HIGH_STOCK_REQUEST_ERROR,
   GET_HIGH_STOCK_REQUEST_SUCCESS
 } from '../../common/constants/highStockConstants';
-import { TOGGLE_CHART, TOGGLE_CHART_TYPE } from "../../common/constants/switchTypeConstants";
 
 const initialState = {
   isLoading: false,
   data: [],
-  type: 'area',
   error: null,
   initialConfig: {
     min: null,
@@ -19,7 +17,7 @@ const initialState = {
   }
 };
 
-export const chartReducer = (state = initialState, action) => {
+export const highStockReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_HIGH_STOCK_REQUEST:
       return {
@@ -66,19 +64,6 @@ export const chartReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         error: action.payload
-      };
-
-    case TOGGLE_CHART_TYPE:
-      return {
-        ...state,
-        isLoading: true,
-      };
-
-    case TOGGLE_CHART:
-      return {
-        ...state,
-        isLoading: false,
-        type: action.payload
       };
 
     default:

@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 
 import '../common/styles/Chart.scss';
 
-import { getHighStockConfigAction } from '../redux/actions/chartActions';
+import { getHighStockConfigAction } from '../redux/actions/highStockActions';
 
 import HighStockChart from "../components/HighStockChart";
 import RangeSlider from '../components/RangeSlider';
@@ -11,7 +11,7 @@ import RangeSlider from '../components/RangeSlider';
 const Chart = (props) => {
 
   const {getHighStockConfigAction} = props;
-  const {data, error, initialConfig} = props.chartProps;
+  const {data, error, initialConfig} = props.highStockReducer;
 
   useEffect(() => {
     getHighStockConfigAction();
@@ -40,7 +40,7 @@ const Chart = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    chartProps: state.chartReducer,
+    highStockReducer: state.highStockReducer,
   }
 };
 

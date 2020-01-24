@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import { Switch } from "antd";
 import React from "react";
 
-import { toggleChartTypeAction } from "../redux/actions/chartActions";
+import { toggleChartTypeAction } from "../redux/actions/switchTypeActions";
 
 const SwitchType = (props) => {
   const {toggleChartTypeAction} = props;
