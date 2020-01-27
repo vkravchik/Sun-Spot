@@ -1,4 +1,4 @@
-import { TOGGLE_CHART } from "../../common/constants/switchTypeConstants";
+import { TOGGLE_CHART } from '../../common/constants/switchTypeConstants';
 
 const initialState = {
   highStockType: 'area',

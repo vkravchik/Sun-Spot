@@ -1,7 +1,7 @@
 import {
   GET_HIGH_STOCK_CONFIG_REQUEST, GET_HIGH_STOCK_CONFIG_REQUEST_ERROR,
   GET_HIGH_STOCK_CONFIG_REQUEST_SUCCESS, SET_HIGH_STOCK_CONFIG_REQUEST
-} from "../../common/constants/highStockConstants";
+} from '../../common/constants/highStockConstants';
 
 const initialState = {
   isLoading: false,

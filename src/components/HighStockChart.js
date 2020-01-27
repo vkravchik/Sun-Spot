@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import ReactHighCharts from "react-highcharts/ReactHighstock";
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import ReactHighCharts from 'react-highcharts/ReactHighstock';
 
-import { getHighStockAction } from "../redux/actions/highStockActions";
-import SwitchType from "./SwitchType";
+import { getHighStockAction } from '../redux/actions/highStockActions';
+import SwitchType from './SwitchType';
 
 const HighStockChart = (props) => {
   const { getHighStockAction } = props;

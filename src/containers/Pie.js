@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import PieChart from "../components/PieChart";
-import RangeSlider from "../components/RangeSlider";
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import PieChart from '../components/PieChart';
+import RangeSlider from '../components/RangeSlider';
 
-import { getSliderConfigAction, setSliderConfigAction } from "../redux/actions/sliderActions";
-import { getPieAction } from "../redux/actions/pieActions";
+import { getSliderConfigAction, setSliderConfigAction } from '../redux/actions/sliderActions';
+import { getPieAction } from '../redux/actions/pieActions';
 
 const Pie = (props) => {
   const {getSliderConfigAction, getPieAction, setSliderConfigAction} = props;

@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import ReactHighcharts from "react-highcharts/";
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import ReactHighcharts from 'react-highcharts/';
 
-import { getPieAction } from "../redux/actions/pieActions";
+import { getPieAction } from '../redux/actions/pieActions';
 
 const PieChart = (props) => {
   const {getPieAction} = props;

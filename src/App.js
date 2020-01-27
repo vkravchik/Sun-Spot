@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'antd/dist/antd.css';
 
 import Chart from './containers/Chart';
-import Pie from "./containers/Pie";
+import Pie from './containers/Pie';
 import { NavMenu } from './components/NavMenu';
 
 import './App.scss';

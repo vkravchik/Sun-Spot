@@ -1,6 +1,6 @@
 import React, { Fragment, Component } from 'react';
-import { Menu, Layout } from "antd";
-import { Link } from "react-router-dom";
+import { Menu, Layout } from 'antd';
+import { Link } from 'react-router-dom';
 
 export class NavMenu extends Component {
 

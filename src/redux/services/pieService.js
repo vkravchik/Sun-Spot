@@ -1,6 +1,6 @@
-import { BASE_URL } from "../../common/constants/dataConstants";
+import { BASE_URL } from '../../common/constants/dataConstants';
 
-import { objectToQueryString } from "../../common/utils/fetchDataUtils";
+import { objectToQueryString } from '../../common/utils/fetchDataUtils';
 
 export const getPieData = async (payload) => {
   const params = objectToQueryString(payload);

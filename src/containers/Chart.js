@@ -4,13 +4,12 @@ import React, { useEffect } from 'react';
 import '../common/styles/Chart.scss';
 
 import { getHighStockAction } from '../redux/actions/highStockActions';
-import { getSliderConfigAction, setSliderConfigAction } from "../redux/actions/sliderActions";
+import { getSliderConfigAction, setSliderConfigAction } from '../redux/actions/sliderActions';
 
-import HighStockChart from "../components/HighStockChart";
+import HighStockChart from '../components/HighStockChart';
 import RangeSlider from '../components/RangeSlider';
 
 const Chart = (props) => {
-
   const {getSliderConfigAction, getHighStockAction, setSliderConfigAction} = props;
   const {data, error} = props.highStockProps;
   const {initialConfig} = props.sliderProps;
