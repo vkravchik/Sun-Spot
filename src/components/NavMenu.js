@@ -9,13 +9,14 @@ export class NavMenu extends Component {
       <Fragment>
         <Layout className="layout">
           <Layout.Header>
-            <img className="logo" src='./sunlogo.png' />
+            <img className="logo"
+                 alt={'logo'}
+                 src={'./sunlogo.png'}/>
             <Menu
               theme="dark"
               mode="horizontal"
               defaultSelectedKeys={['1']}
-              style={{lineHeight: '64px'}}
-            >
+              style={{lineHeight: '64px'}}>
               <Menu.Item key="1">
                 <Link to='/'>
                   Home
@@ -27,7 +28,7 @@ export class NavMenu extends Component {
                 </Link>
               </Menu.Item>
               <Menu.Item key="3">
-                <Link to='/depth' >
+                <Link to='/depth'>
                   Depth Chart
                 </Link>
               </Menu.Item>
