@@ -2,6 +2,7 @@
   "name": "sun-spot",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3001",
   "dependencies": {
     "antd": "^3.26.7",
     "axios": "^0.19.1",
