@@ -6,7 +6,7 @@ import { getPieAction } from "../redux/actions/pieActions";
 
 const PieChart = (props) => {
   const {getPieAction} = props;
-  const {isLoading, data} = props.pieProps;
+  const {isLoading, data, error} = props.pieProps;
   const {initialConfig: {defaultStart, defaultFinish}} = props.sliderProps;
 
 
@@ -54,7 +54,9 @@ const PieChart = (props) => {
 
   return (
     <>
-      <ReactHighcharts config={config}/>
+      {
+        !error && <ReactHighcharts config={config}/>
+      }
     </>
   )
 };
