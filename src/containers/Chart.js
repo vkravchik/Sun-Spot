@@ -1,121 +1,67 @@
-import {Switch} from "antd";
 import { connect } from 'react-redux';
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
+
+import '../common/styles/Chart.scss';
+
+import { getHighStockAction } from '../redux/actions/highStockActions';
+import { getSliderConfigAction, setSliderConfigAction } from "../redux/actions/sliderActions";
+
+import HighStockChart from "../components/HighStockChart";
 import RangeSlider from '../components/RangeSlider';
-import ReactHighCharts from 'react-highcharts/ReactHighstock';
-import { getHighStockAction, toggleChartTypeAction } from '../redux/actions/chartActions';
 
-import '../styles/Chart.scss';
+const Chart = (props) => {
 
-const marks = {
-  1818: {
-    label: <strong>1818</strong>
-  },
-  1999: '1999',
-  2010: '2010',
-  2019: {
-    style: {
-      color: '#ff5500',
-    },
-    label: <strong>2019</strong>,
-  },
+  const {getSliderConfigAction, getHighStockAction, setSliderConfigActions} = props;
+  const {data, error} = props.highStockProps;
+  const {initialConfig} = props.sliderProps;
+
+  useEffect(() => {
+    getSliderConfigAction();
+  }, [getSliderConfigAction]);
+
+  const onAfterChange = (value = []) => {
+    const dateObj = {};
+
+    dateObj['start_date'] = value[0];
+    dateObj['finish_date'] = value[1];
+
+    setSliderConfigActions(dateObj);
+    getHighStockAction(dateObj);
+  };
+
+  const renderChart = () => (
+    <div className='container shadow-sm p-3 mb-5 bg-white rounded chart-container'>
+      <RangeSlider initialConfig={initialConfig} onAfterChange={onAfterChange} />
+      <HighStockChart/>
+    </div>
+  );
+
+  return (
+    <div>
+      {
+        data && !error &&
+        renderChart()
+      }
+      {
+        error &&
+        error.toString()
+      }
+    </div>
+  )
 };
-
-class Chart extends Component {
-
-  componentDidMount() {
-    this.props.getHighStockAction();
-  }
-
-  render() {
-    const { isLoading, data, type, error } = this.props.chartProps;
-
-    const config = {
-      chart: {
-        events: {
-          load: function () {
-            this.showLoading();
-            if (!isLoading) {
-              this.hideLoading();
-            }
-          }
-        }
-      },
-      rangeSelector: {
-        selected: 1,
-        inputEnabled: false
-      },
-      title: {
-        text: 'Sunspot Frequency Chart'
-      },
-      series: [{
-        type: type,
-        name: 'Sunspot amount',
-        fillOpacity: 0.1,
-        data: null,
-        tooltip: {
-          valueDecimals: 2
-        },
-      }]
-    };
-
-    const onChange = (value) => {
-      value ? this.props.toggleChartTypeAction('area') : this.props.toggleChartTypeAction('column')
-    };
-
-    const renderChart = () => {
-      config.series[0].data = data;
-
-      return (
-        <div className='container shadow-sm p-3 mb-5 bg-white rounded chart-container'>
-          <RangeSlider marks={marks} />
-          <ReactHighCharts config={config} />
-          <div className="row">
-            <div className="col-md-6">
-              Switch Chart Type
-              <Switch
-                className='row-switch'
-                checkedChildren="A"
-                unCheckedChildren="C"
-                defaultChecked
-                onChange={onChange} />
-            </div>
-          </div>
-        </div>
-      )
-    };
-
-    return (
-      <div>
-        {
-          isLoading &&
-          <div>
-            Loading...
-          </div>
-        }
-        {
-          data && !error &&
-          renderChart()
-        }
-        {
-          error &&
-          error.toString()
-        }
-      </div>
-    )
-  }
-}
 
 const mapStateToProps = (state) => {
   return {
-    chartProps: state.chartReducer,
+    highStockProps: state.highStockReducer,
+    sliderProps: state.sliderReducer,
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getHighStockAction: () => dispatch(getHighStockAction()),
-    toggleChartTypeAction: (type) => dispatch(toggleChartTypeAction(type)),
+    getSliderConfigAction: () => dispatch(getSliderConfigAction()),
+    setSliderConfigActions: (dateObj) => dispatch(setSliderConfigAction(dateObj)),
+    getHighStockAction: (dateObj) => dispatch(getHighStockAction(dateObj)),
   }
 };
 

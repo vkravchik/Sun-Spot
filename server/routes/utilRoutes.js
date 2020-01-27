@@ -1,3 +1,5 @@
+import { mapPieJson } from "../utils/parseCsvToJson";
+
 const router = require('express').Router();
 const {parseCsvToJson, remapCurrentJson} = require('../utils/parseCsvToJson');
 
@@ -8,8 +10,14 @@ router.get('/parseCsvToJson', (req, res) => {
   res.send(data);
 });
 
-router.get('/remapJson', (req, res) => {
+router.get('/map/highStockJson', (req, res) => {
   const data = remapCurrentJson();
+
+  res.send(data);
+});
+
+router.get('/map/pieJson', (req, res) => {
+  const data = mapPieJson();
 
   res.send(data);
 });

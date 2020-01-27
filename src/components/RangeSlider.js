@@ -1,41 +1,68 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { Slider } from 'antd';
+import { Slider, Button } from 'antd';
 
-const min = 1818,
-  max = 2019,
-  defaultStart = 1999,
-  defaultFinish = 2010;
+const RangeSlider = (props) => {
+  const {initialConfig: {min, max, defaultStart, defaultFinish}, onAfterChange} = props.ownProps;
 
-const onAfterChange = (value) => {
-  // TODO: Request to server with params start_date && finish_date
-  console.log(value);
+  const onApplyFilter = () => {
+  };
+
+  return (
+    <>
+      <div className="row">
+        <div className="col-md-11">
+          <Slider range
+                  marks={prepareSliderMarks(min, max, defaultStart, defaultFinish)}
+                  min={min}
+                  max={max}
+                  onAfterChange={onAfterChange}/>
+        </div>
+        <div className="col-md-1 text-center filter-container">
+          <Button className='align-icon' type="primary" shape="round" icon="filter" size='small'
+                  onClick={onApplyFilter}/>
+        </div>
+      </div>
+    </>
+  )
 };
 
-class RangeSlider extends Component {
+const prepareSliderMarks = (min, max, defaultStart, defaultFinish) => {
+  const marks = {};
 
-  render() {
-    const {marks} = this.props.ownProps;
+  marks[min] = {
+    label: <strong>{min}</strong>
+  };
 
-    return (
-      <Slider range
-              marks={marks}
-              min={min}
-              max={max}
-              defaultValue={[defaultStart, defaultFinish]}
-              onAfterChange={onAfterChange}/>
-    )
+  if (defaultStart && defaultFinish) {
+    marks[defaultStart] = {
+      style: {
+        top: (defaultStart - min < 7 && defaultStart - min > 0) || (defaultFinish - defaultStart < 7) ? '-40px' : null
+      },
+      label: defaultStart
+    };
+    marks[defaultFinish] = {
+      style: {
+        top: (max - defaultFinish < 7 && max - defaultFinish > 0) ? '-40px' : null
+      },
+      label: defaultFinish
+    };
   }
-}
 
-const mapStateToProps = (state, ownProps) => {
-  return {
+  marks[max] = {
+    style: {
+      color: '#ff5500',
+    },
+    label: <strong>{max}</strong>,
+  };
+
+  return marks;
+};
+
+const mapStateToProps = (state, ownProps) => ({
     ownProps: ownProps
-  }
-};
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return {}
-};
+const mapDispatchToProps = (dispatch) => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(RangeSlider)
