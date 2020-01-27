@@ -1,7 +1,5 @@
-import { mapPieJson } from "../utils/parseCsvToJson";
-
 const router = require('express').Router();
-const {parseCsvToJson, remapCurrentJson} = require('../utils/parseCsvToJson');
+const {parseCsvToJson, remapCurrentJson, mapPieJson} = require('../utils/parseCsvToJson');
 
 
 router.get('/parseCsvToJson', (req, res) => {
