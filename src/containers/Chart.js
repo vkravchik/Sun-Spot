@@ -11,7 +11,7 @@ import RangeSlider from '../components/RangeSlider';
 
 const Chart = (props) => {
 
-  const {getSliderConfigAction, getHighStockAction, setSliderConfigActions} = props;
+  const {getSliderConfigAction, getHighStockAction, setSliderConfigAction} = props;
   const {data, error} = props.highStockProps;
   const {initialConfig} = props.sliderProps;
 
@@ -25,7 +25,7 @@ const Chart = (props) => {
     dateObj['start_date'] = value[0];
     dateObj['finish_date'] = value[1];
 
-    setSliderConfigActions(dateObj);
+    setSliderConfigAction(dateObj);
     getHighStockAction(dateObj);
   };
 
@@ -57,12 +57,8 @@ const mapStateToProps = (state) => {
   }
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getSliderConfigAction: () => dispatch(getSliderConfigAction()),
-    setSliderConfigActions: (dateObj) => dispatch(setSliderConfigAction(dateObj)),
-    getHighStockAction: (dateObj) => dispatch(getHighStockAction(dateObj)),
-  }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Chart)
+export default connect(mapStateToProps, {
+  getSliderConfigAction,
+  setSliderConfigAction,
+  getHighStockAction
+})(Chart)

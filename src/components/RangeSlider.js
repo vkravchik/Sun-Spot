@@ -63,6 +63,4 @@ const mapStateToProps = (state, ownProps) => ({
     ownProps: ownProps
 });
 
-const mapDispatchToProps = (dispatch) => ({});
-
-export default connect(mapStateToProps, mapDispatchToProps)(RangeSlider)
+export default connect(mapStateToProps)(RangeSlider)

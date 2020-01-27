@@ -58,8 +58,6 @@ const mapStateToProps = (state) => ({
   highStockType: state.switchTypeReducer.highStockType,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  getHighStockAction: () => dispatch(getHighStockAction()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(HighStockChart)
+export default connect(mapStateToProps, {
+  getHighStockAction
+})(HighStockChart)

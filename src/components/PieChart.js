@@ -66,8 +66,6 @@ const mapStateToProps = (props) => ({
   sliderProps: props.sliderReducer
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  getPieAction: () => dispatch(getPieAction())
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(PieChart)
+export default connect(mapStateToProps, {
+  getPieAction
+})(PieChart)

@@ -38,10 +38,8 @@ const mapStateToProps = (props) => ({
   initialConfig: props.sliderReducer.initialConfig
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  getSliderConfigAction: () => dispatch(getSliderConfigAction()),
-  getPieAction: (dateObj) => dispatch(getPieAction(dateObj)),
-  setSliderConfigAction: (dateObj) => dispatch(setSliderConfigAction(dateObj))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Pie)
+export default connect(mapStateToProps, {
+  getSliderConfigAction,
+  getPieAction,
+  setSliderConfigAction
+})(Pie)

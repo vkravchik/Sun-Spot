@@ -31,8 +31,6 @@ const mapStateToProps = (state, ownProps) => ({
   title: ownProps.title
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  toggleChartTypeAction: (type) => dispatch(toggleChartTypeAction(type)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(SwitchType)
+export default connect(mapStateToProps, {
+  toggleChartTypeAction
+})(SwitchType)
