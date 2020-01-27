@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import ReactHighcharts from 'react-highcharts/';
 
 import { getPieAction } from '../redux/actions/pieActions';
+import { Error } from "./Error";
 
 const PieChart = (props) => {
   const {getPieAction} = props;
@@ -56,6 +57,9 @@ const PieChart = (props) => {
     <>
       {
         !error && <ReactHighcharts config={config}/>
+      }
+      {
+        error && <Error error={error}/>
       }
     </>
   )

@@ -4,7 +4,7 @@ export const Error = ({error}) => {
   return (
     <>
       <h2>
-        {error}
+        {error.toString()}
       </h2>
     </>
   )
