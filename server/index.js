@@ -1,9 +1,10 @@
 import 'dotenv/config';
 
 const express = require('express');
+const fs = require('fs');
+
 const bodyParser = require('body-parser');
 const path = require('path');
-const fs = require('fs');
 const cors = require('cors');
 
 const utilRoutes = require('./routes/utilRoutes');

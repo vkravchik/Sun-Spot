@@ -3,6 +3,7 @@ import { call, put } from 'redux-saga/effects';
 import { getHighStockData } from '../../services/highStockService';
 
 import { getHighStockError, getHighStockSuccess } from "../../actions/highStockActions";
+import { dispatchError } from "../../actions/errorHandlerActions";
 
 export function* highStockWorker(payload) {
   try {
@@ -10,6 +11,6 @@ export function* highStockWorker(payload) {
 
     yield put(getHighStockSuccess(data))
   } catch (e) {
-    yield put(getHighStockError(e))
+    yield put(dispatchError(e))
   }
 }

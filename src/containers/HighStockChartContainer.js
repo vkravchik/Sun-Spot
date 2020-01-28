@@ -8,11 +8,13 @@ import { getSliderConfigData, setSliderConfigData } from '../redux/actions/slide
 
 import HighStockChart from '../components/HighStockChart';
 import RangeSlider from '../components/RangeSlider';
+import { Error } from "../components/Error";
 
 const HighStockChartContainer = (props) => {
   const {
     getSliderConfigData, getHighStockData, setSliderConfigData,
-    highStockProps: { data, error }, sliderProps: { initialConfig }
+    highStockProps: { data }, sliderProps: { initialConfig },
+    errorHandlerProps: { error }
   } = props;
 
   useEffect(() => {
@@ -37,22 +39,14 @@ const HighStockChartContainer = (props) => {
   );
 
   return (
-    <div>
-      {
-        data && !error &&
-        renderChart()
-      }
-      {
-        error &&
-        error.toString()
-      }
-    </div>
+    data && !error ? renderChart() : <Error error={error}/>
   )
 };
 
 const mapStateToProps = (state) => ({
   highStockProps: state.highStockReducer,
-  sliderProps: state.sliderReducer
+  sliderProps: state.sliderReducer,
+  errorHandlerProps: state.errorHandlerReducer,
 });
 
 export default connect(mapStateToProps, {
