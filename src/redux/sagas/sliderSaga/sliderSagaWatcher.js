@@ -2,8 +2,8 @@ import { takeLatest } from 'redux-saga/effects';
 
 import { sliderWorker } from './sliderSagaWorker';
 
-import { GET_HIGH_STOCK_CONFIG_REQUEST } from '../../../common/constants/highStockConstants';
+import { HIGH_STOCK_CONFIG_FETCH } from '../../../common/constants/highStockConstants';
 
 export default function* sliderSagaWatcher() {
-  yield takeLatest(GET_HIGH_STOCK_CONFIG_REQUEST, sliderWorker);
+  yield takeLatest(HIGH_STOCK_CONFIG_FETCH, sliderWorker);
 }

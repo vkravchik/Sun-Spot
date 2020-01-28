@@ -1,5 +1,5 @@
 import { createAction } from 'redux-actions';
 
-import { GET_HIGH_STOCK_REQUEST } from '../../common/constants/highStockConstants';
+import { HIGH_STOCK_DATA_FETCH } from '../../common/constants/highStockConstants';
 
-export const getHighStockAction = createAction(GET_HIGH_STOCK_REQUEST);
+export const getHighStockAction = createAction(HIGH_STOCK_DATA_FETCH);

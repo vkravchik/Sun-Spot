@@ -20,6 +20,7 @@ const HighStockChart = (props) => {
       events: {
         load: function () {
           this.showLoading();
+
           if (!isLoading) {
             this.hideLoading();
           }

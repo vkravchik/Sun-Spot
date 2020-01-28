@@ -1,6 +1,6 @@
 import {
-  GET_HIGH_STOCK_CONFIG_REQUEST, GET_HIGH_STOCK_CONFIG_REQUEST_ERROR,
-  GET_HIGH_STOCK_CONFIG_REQUEST_SUCCESS, SET_HIGH_STOCK_CONFIG_REQUEST
+  HIGH_STOCK_CONFIG_FETCH, HIGH_STOCK_CONFIG_FETCH_ERROR,
+  HIGH_STOCK_CONFIG_FETCH_SUCCESS, HIGH_STOCK_CONFIG_SET
 } from '../../common/constants/highStockConstants';
 
 const initialState = {
@@ -17,13 +17,13 @@ const initialState = {
 export const sliderReducer = (state = initialState, action) => {
   switch (action.type) {
 
-    case GET_HIGH_STOCK_CONFIG_REQUEST:
+    case HIGH_STOCK_CONFIG_FETCH:
       return {
         ...state,
         isLoading: true
       };
 
-    case SET_HIGH_STOCK_CONFIG_REQUEST:
+    case HIGH_STOCK_CONFIG_SET:
       return {
         ...state,
         initialConfig: {
@@ -33,7 +33,7 @@ export const sliderReducer = (state = initialState, action) => {
         }
       };
 
-    case GET_HIGH_STOCK_CONFIG_REQUEST_SUCCESS:
+    case HIGH_STOCK_CONFIG_FETCH_SUCCESS:
       return {
         ...state,
         isLoading: false,
@@ -41,7 +41,7 @@ export const sliderReducer = (state = initialState, action) => {
         error: null
       };
 
-    case GET_HIGH_STOCK_CONFIG_REQUEST_ERROR:
+    case HIGH_STOCK_CONFIG_FETCH_ERROR:
       return {
         ...state,
         isLoading: false,

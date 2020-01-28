@@ -1,4 +1,4 @@
-import { GET_PIE_REQUEST, GET_PIE_REQUEST_ERROR, GET_PIE_REQUEST_SUCCESS } from '../../common/constants/pieConstants';
+import { GET_PIE_DATA_FETCH, GET_PIE_DATA_FETCH_ERROR, GET_PIE_DATA_FETCH_SUCCESS } from '../../common/constants/pieConstants';
 
 const initialState = {
   isLoading: false,
@@ -8,14 +8,14 @@ const initialState = {
 
 export const pieReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_PIE_REQUEST: {
+    case GET_PIE_DATA_FETCH: {
       return {
         ...state,
         isLoading: true
       }
     }
 
-    case GET_PIE_REQUEST_SUCCESS: {
+    case GET_PIE_DATA_FETCH_SUCCESS: {
       return {
         ...state,
         isLoading: false,
@@ -24,7 +24,7 @@ export const pieReducer = (state = initialState, action) => {
       }
     }
 
-    case GET_PIE_REQUEST_ERROR: {
+    case GET_PIE_DATA_FETCH_ERROR: {
       return {
         ...state,
         isLoading: false,

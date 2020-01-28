@@ -1,7 +1,7 @@
 import {
-  GET_HIGH_STOCK_REQUEST,
-  GET_HIGH_STOCK_REQUEST_ERROR,
-  GET_HIGH_STOCK_REQUEST_SUCCESS
+  HIGH_STOCK_DATA_FETCH,
+  HIGH_STOCK_DATA_FETCH_ERROR,
+  HIGH_STOCK_DATA_FETCH_SUCCESS
 } from '../../common/constants/highStockConstants';
 
 const initialState = {
@@ -12,7 +12,7 @@ const initialState = {
 
 export const highStockReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_HIGH_STOCK_REQUEST:
+    case HIGH_STOCK_DATA_FETCH:
       return {
         ...state,
         isLoading: true,
@@ -23,7 +23,7 @@ export const highStockReducer = (state = initialState, action) => {
         }
       };
 
-    case GET_HIGH_STOCK_REQUEST_SUCCESS:
+    case HIGH_STOCK_DATA_FETCH_SUCCESS:
       return {
         ...state,
         isLoading: false,
@@ -31,7 +31,7 @@ export const highStockReducer = (state = initialState, action) => {
         error: null
       };
 
-    case GET_HIGH_STOCK_REQUEST_ERROR:
+    case HIGH_STOCK_DATA_FETCH_ERROR:
       return {
         ...state,
         isLoading: false,

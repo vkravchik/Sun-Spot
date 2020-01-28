@@ -1,5 +1,5 @@
 import { createAction } from 'redux-actions';
 
-import { GET_PIE_REQUEST } from '../../common/constants/pieConstants';
+import { GET_PIE_DATA_FETCH } from '../../common/constants/pieConstants';
 
-export const getPieAction = createAction(GET_PIE_REQUEST);
+export const getPieAction = createAction(GET_PIE_DATA_FETCH);
