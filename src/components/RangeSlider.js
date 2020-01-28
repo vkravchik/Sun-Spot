@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Slider, Button } from 'antd';
 
 const RangeSlider = (props) => {
-  const {initialConfig: {min, max, defaultStart, defaultFinish}, onAfterChange} = props.ownProps;
+  const { initialConfig: { min, max, defaultStart, defaultFinish }, onAfterChange } = props.ownProps;
 
   const onApplyFilter = () => {
   };

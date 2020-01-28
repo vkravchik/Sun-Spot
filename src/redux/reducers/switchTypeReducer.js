@@ -1,7 +1,7 @@
 import { TOGGLE_CHART } from '../../common/constants/switchTypeConstants';
 
 const initialState = {
-  highStockType: 'area',
+  highStockType: 'area'
 };
 
 export const switchTypeReducer = (state = initialState, action) => {
@@ -11,6 +11,7 @@ export const switchTypeReducer = (state = initialState, action) => {
       highStockType: action.payload
     };
   }
+
   return {
     ...state
   }

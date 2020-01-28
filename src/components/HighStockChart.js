@@ -7,8 +7,7 @@ import SwitchType from './SwitchType';
 
 const HighStockChart = (props) => {
   const { getHighStockAction } = props;
-  const { highStockType, highStockProps } = props;
-  const { isLoading, data } = highStockProps;
+  const { highStockType, highStockProps: { isLoading, data } } = props;
 
   const title = 'Switch Chart Type';
 

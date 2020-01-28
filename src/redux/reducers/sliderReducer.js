@@ -11,7 +11,7 @@ const initialState = {
     defaultStart: null,
     defaultFinish: null
   },
-  error: null,
+  error: null
 };
 
 export const sliderReducer = (state = initialState, action) => {
@@ -29,7 +29,7 @@ export const sliderReducer = (state = initialState, action) => {
         initialConfig: {
           ...state.initialConfig,
           defaultStart: action.payload?.start_date || null,
-          defaultFinish: action.payload?.finish_date || null,
+          defaultFinish: action.payload?.finish_date || null
         }
       };
 
@@ -47,6 +47,7 @@ export const sliderReducer = (state = initialState, action) => {
         isLoading: false,
         error: action.payload
       };
+
     default: {
       return {
         ...state

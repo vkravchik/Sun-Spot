@@ -9,5 +9,5 @@ export default combineReducers({
   highStockReducer: highStockReducer,
   pieReducer: pieReducer,
   switchTypeReducer: switchTypeReducer,
-  sliderReducer: sliderReducer,
+  sliderReducer: sliderReducer
 })

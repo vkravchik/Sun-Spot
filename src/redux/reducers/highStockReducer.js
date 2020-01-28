@@ -7,7 +7,7 @@ import {
 const initialState = {
   isLoading: false,
   data: [],
-  error: null,
+  error: null
 };
 
 export const highStockReducer = (state = initialState, action) => {
@@ -19,7 +19,7 @@ export const highStockReducer = (state = initialState, action) => {
         initialConfig: {
           ...state.initialConfig,
           defaultStart: action.payload?.start_date || null,
-          defaultFinish: action.payload?.finish_date || null,
+          defaultFinish: action.payload?.finish_date || null
         }
       };
 

@@ -3,7 +3,7 @@ import { GET_PIE_REQUEST, GET_PIE_REQUEST_ERROR, GET_PIE_REQUEST_SUCCESS } from 
 const initialState = {
   isLoading: false,
   data: [],
-  error: null,
+  error: null
 };
 
 export const pieReducer = (state = initialState, action) => {
@@ -11,7 +11,7 @@ export const pieReducer = (state = initialState, action) => {
     case GET_PIE_REQUEST: {
       return {
         ...state,
-        isLoading: true,
+        isLoading: true
       }
     }
 

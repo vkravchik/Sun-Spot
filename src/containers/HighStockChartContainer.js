@@ -9,23 +9,24 @@ import { getSliderConfigAction, setSliderConfigAction } from '../redux/actions/s
 import HighStockChart from '../components/HighStockChart';
 import RangeSlider from '../components/RangeSlider';
 
-const Chart = (props) => {
-  const {getSliderConfigAction, getHighStockAction, setSliderConfigAction} = props;
-  const {data, error} = props.highStockProps;
-  const {initialConfig} = props.sliderProps;
+const HighStockChartContainer = (props) => {
+  const {
+    getSliderConfigAction, getHighStockAction, setSliderConfigAction,
+    highStockProps: { data, error }, sliderProps: { initialConfig }
+  } = props;
 
   useEffect(() => {
     getSliderConfigAction();
   }, [getSliderConfigAction]);
 
   const onAfterChange = (value = []) => {
-    const dateObj = {};
+    const dateMap = {};
 
-    dateObj['start_date'] = value[0];
-    dateObj['finish_date'] = value[1];
+    dateMap['start_date'] = value[0];
+    dateMap['finish_date'] = value[1];
 
-    setSliderConfigAction(dateObj);
-    getHighStockAction(dateObj);
+    setSliderConfigAction(dateMap);
+    getHighStockAction(dateMap);
   };
 
   const renderChart = () => (
@@ -49,15 +50,13 @@ const Chart = (props) => {
   )
 };
 
-const mapStateToProps = (state) => {
-  return {
-    highStockProps: state.highStockReducer,
-    sliderProps: state.sliderReducer,
-  }
-};
+const mapStateToProps = (state) => ({
+  highStockProps: state.highStockReducer,
+  sliderProps: state.sliderReducer
+});
 
 export default connect(mapStateToProps, {
   getSliderConfigAction,
   setSliderConfigAction,
   getHighStockAction
-})(Chart)
+})(HighStockChartContainer)

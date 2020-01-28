@@ -6,31 +6,28 @@ import RangeSlider from '../components/RangeSlider';
 import { getSliderConfigAction, setSliderConfigAction } from '../redux/actions/sliderActions';
 import { getPieAction } from '../redux/actions/pieActions';
 
-const Pie = (props) => {
-  const {getSliderConfigAction, getPieAction, setSliderConfigAction} = props;
-  const {initialConfig} = props;
+const PieChartContainer = (props) => {
+  const { getSliderConfigAction, getPieAction, setSliderConfigAction, initialConfig } = props;
 
   useEffect(() => {
     getSliderConfigAction();
   },[getSliderConfigAction]);
 
   const onAfterChange = (value = []) => {
-    const dateObj = {};
+    const dateMap = {};
 
-    dateObj['start_date'] = value[0];
-    dateObj['finish_date'] = value[1];
+    dateMap['start_date'] = value[0];
+    dateMap['finish_date'] = value[1];
 
-    setSliderConfigAction(dateObj);
-    getPieAction(dateObj);
+    setSliderConfigAction(dateMap);
+    getPieAction(dateMap);
   };
 
   return (
-    <>
-      <div className='container shadow-sm p-3 mb-5 bg-white rounded chart-container'>
-        <RangeSlider initialConfig={initialConfig} onAfterChange={onAfterChange} />
-        <PieChart />
-      </div>
-      </>
+    <div className='container shadow-sm p-3 mb-5 bg-white rounded chart-container'>
+      <RangeSlider initialConfig={initialConfig} onAfterChange={onAfterChange} />
+      <PieChart />
+    </div>
   );
 };
 
@@ -42,4 +39,4 @@ export default connect(mapStateToProps, {
   getSliderConfigAction,
   getPieAction,
   setSliderConfigAction
-})(Pie)
+})(PieChartContainer)
