@@ -11,11 +11,11 @@ router.get('/', (req, res) => {
 
   const data = [];
 
-  _.forEach(json, (el, year) => {
+  _.forEach(json, (element, year) => {
     if (year >= start_date && year <= finish_date) {
       data.push({
         name: year,
-        y: _.reduce(el, (a, b) => a + b)
+        y: _.reduce(element, (a, b) => a + b)
       })
     }
   });

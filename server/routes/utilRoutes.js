@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const {parseCsvToJson, remapCurrentJson, mapPieJson} = require('../utils/parseCsvToJson');
 
+const { parseCsvToJson, remapCurrentJson, mapPieJson } = require('../utils/parseCsvToJson');
 
 router.get('/parseCsvToJson', (req, res) => {
   const data = parseCsvToJson();
