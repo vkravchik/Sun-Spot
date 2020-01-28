@@ -2,18 +2,18 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import ReactHighCharts from 'react-highcharts/ReactHighstock';
 
-import { getHighStockAction } from '../redux/actions/highStockActions';
+import { getHighStockData } from '../redux/actions/highStockActions';
 import SwitchType from './SwitchType';
 
 const HighStockChart = (props) => {
-  const { getHighStockAction } = props;
+  const { getHighStockData } = props;
   const { highStockType, highStockProps: { isLoading, data } } = props;
 
   const title = 'Switch Chart Type';
 
   useEffect(() => {
-    getHighStockAction();
-  }, [getHighStockAction]);
+    getHighStockData();
+  }, [getHighStockData]);
 
   const config = {
     chart: {
@@ -59,5 +59,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, {
-  getHighStockAction
+  getHighStockData
 })(HighStockChart)

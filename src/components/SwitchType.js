@@ -2,14 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Switch } from 'antd';
 
-import { toggleChartTypeAction } from '../redux/actions/switchTypeActions';
+import { toggleChartTypeStart } from '../redux/actions/switchTypeActions';
 
 const SwitchType = (props) => {
-  const { toggleChartTypeAction } = props;
+  const { toggleChartTypeStart } = props;
   const { title } = props;
 
   const onChange = (value) => {
-    value ? toggleChartTypeAction('area') : toggleChartTypeAction('column')
+    value ? toggleChartTypeStart('area') : toggleChartTypeStart('column')
   };
 
   return (
@@ -32,5 +32,5 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 export default connect(mapStateToProps, {
-  toggleChartTypeAction
+  toggleChartTypeStart
 })(SwitchType)

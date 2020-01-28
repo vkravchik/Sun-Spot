@@ -2,17 +2,14 @@ import { call, put } from 'redux-saga/effects';
 
 import { getHighStockConfig } from '../../services/highStockService';
 
-import {
-  HIGH_STOCK_CONFIG_FETCH_ERROR,
-  HIGH_STOCK_CONFIG_FETCH_SUCCESS
-} from '../../../common/constants/highStockConstants';
+import { getSliderConfigDataError, getSliderConfigDataSuccess } from "../../actions/sliderActions";
 
 export function* sliderWorker({payload}) {
   try {
     const data = yield call(getHighStockConfig, payload);
 
-    yield put({type: HIGH_STOCK_CONFIG_FETCH_SUCCESS, payload: data})
+    yield put(getSliderConfigDataSuccess(data))
   } catch (e) {
-    yield put({type: HIGH_STOCK_CONFIG_FETCH_ERROR, payload: e})
+    yield put(getSliderConfigDataError(e))
   }
 }

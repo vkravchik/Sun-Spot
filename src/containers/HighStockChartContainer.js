@@ -3,21 +3,21 @@ import React, { useEffect } from 'react';
 
 import '../common/styles/Chart.scss';
 
-import { getHighStockAction } from '../redux/actions/highStockActions';
-import { getSliderConfigAction, setSliderConfigAction } from '../redux/actions/sliderActions';
+import { getHighStockData } from '../redux/actions/highStockActions';
+import { getSliderConfigData, setSliderConfigData } from '../redux/actions/sliderActions';
 
 import HighStockChart from '../components/HighStockChart';
 import RangeSlider from '../components/RangeSlider';
 
 const HighStockChartContainer = (props) => {
   const {
-    getSliderConfigAction, getHighStockAction, setSliderConfigAction,
+    getSliderConfigData, getHighStockData, setSliderConfigData,
     highStockProps: { data, error }, sliderProps: { initialConfig }
   } = props;
 
   useEffect(() => {
-    getSliderConfigAction();
-  }, [getSliderConfigAction]);
+    getSliderConfigData();
+  }, [getSliderConfigData]);
 
   const onAfterChange = (value = []) => {
     const dateMap = {};
@@ -25,8 +25,8 @@ const HighStockChartContainer = (props) => {
     dateMap['start_date'] = value[0];
     dateMap['finish_date'] = value[1];
 
-    setSliderConfigAction(dateMap);
-    getHighStockAction(dateMap);
+    setSliderConfigData(dateMap);
+    getHighStockData(dateMap);
   };
 
   const renderChart = () => (
@@ -56,7 +56,7 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, {
-  getSliderConfigAction,
-  setSliderConfigAction,
-  getHighStockAction
+  getSliderConfigData,
+  setSliderConfigData,
+  getHighStockData
 })(HighStockChartContainer)

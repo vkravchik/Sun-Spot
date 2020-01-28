@@ -3,15 +3,15 @@ import { connect } from 'react-redux';
 import PieChart from '../components/PieChart';
 import RangeSlider from '../components/RangeSlider';
 
-import { getSliderConfigAction, setSliderConfigAction } from '../redux/actions/sliderActions';
-import { getPieAction } from '../redux/actions/pieActions';
+import { getSliderConfigData, setSliderConfigData } from '../redux/actions/sliderActions';
+import { getPieData } from '../redux/actions/pieActions';
 
 const PieChartContainer = (props) => {
-  const { getSliderConfigAction, getPieAction, setSliderConfigAction, initialConfig } = props;
+  const { getSliderConfigData, getPieData, setSliderConfigData, initialConfig } = props;
 
   useEffect(() => {
-    getSliderConfigAction();
-  },[getSliderConfigAction]);
+    getSliderConfigData();
+  },[getSliderConfigData]);
 
   const onAfterChange = (value = []) => {
     const dateMap = {};
@@ -19,8 +19,8 @@ const PieChartContainer = (props) => {
     dateMap['start_date'] = value[0];
     dateMap['finish_date'] = value[1];
 
-    setSliderConfigAction(dateMap);
-    getPieAction(dateMap);
+    setSliderConfigData(dateMap);
+    getPieData(dateMap);
   };
 
   return (
@@ -36,7 +36,7 @@ const mapStateToProps = (props) => ({
 });
 
 export default connect(mapStateToProps, {
-  getSliderConfigAction,
-  getPieAction,
-  setSliderConfigAction
+  getSliderConfigData,
+  getPieData,
+  setSliderConfigData
 })(PieChartContainer)

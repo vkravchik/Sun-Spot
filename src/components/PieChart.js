@@ -2,11 +2,11 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import ReactHighcharts from 'react-highcharts/';
 
-import { getPieAction } from '../redux/actions/pieActions';
+import { getPieData } from '../redux/actions/pieActions';
 import { Error } from './Error';
 
 const PieChart = (props) => {
-  const { getPieAction } = props;
+  const { getPieData } = props;
   const {
     pieProps: { isLoading, data, error },
     sliderProps: {
@@ -15,8 +15,8 @@ const PieChart = (props) => {
   } = props;
 
   useEffect(() => {
-    getPieAction();
-  }, [getPieAction]);
+    getPieData();
+  }, [getPieData]);
 
   const config = {
     chart: {
@@ -67,5 +67,5 @@ const mapStateToProps = (props) => ({
 });
 
 export default connect(mapStateToProps, {
-  getPieAction
+  getPieData
 })(PieChart)
