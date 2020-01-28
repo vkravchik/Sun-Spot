@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const { parseCsvToJson, remapCurrentJson, mapPieJson } = require('../utils/parseCsvToJson');
+const { parseCsvToJson, remapCurrentJson, mapPieJson, mapDataForTwoPieCharts } = require('../utils/parseCsvToJson');
 
 router.get('/parseCsvToJson', (req, res) => {
   const data = parseCsvToJson();
@@ -16,6 +16,12 @@ router.get('/map/highStockJson', (req, res) => {
 
 router.get('/map/pieJson', (req, res) => {
   const data = mapPieJson();
+
+  res.send(data);
+});
+
+router.get('/map/pieTwoJson', (req, res) => {
+  const data = mapDataForTwoPieCharts();
 
   res.send(data);
 });

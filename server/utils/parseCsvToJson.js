@@ -51,6 +51,31 @@ module.exports = {
     });
 
     return newJson
-  }
+  },
+
+  mapDataForTwoPieCharts: () => {
+    const inputJson = require('../dataset/csvjson');
+    let fileOutput = path.join(__dirname, '../dataset', 'mapped_two_pie_data.json');
+
+    const newJson = {};
+
+    _.forEach(inputJson, el => {
+      if (!_.has(newJson, el.year)) {
+        newJson[el.year] = {};
+      }
+      if (el.observations > 0) {
+        if (!_.has(newJson[el.year], el.month)) {
+          newJson[el.year][el.month] = [];
+        }
+        newJson[el.year][el.month].push({observations: el.observations})
+      }
+    });
+
+    fs.writeFile(fileOutput, JSON.stringify(newJson), (err, data) => {
+      if (!err) return fileOutput;
+    });
+
+    return newJson
+  },
 };
 
