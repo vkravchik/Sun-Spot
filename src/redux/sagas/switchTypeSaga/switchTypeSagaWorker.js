@@ -1,6 +1,7 @@
-import { put } from "redux-saga//effects";
-import { TOGGLE_CHART } from "../../../common/constants/switchTypeConstants";
+import { put } from 'redux-saga/effects';
+
+import { toggleChartTypeFinish } from "../../actions/switchTypeActions";
 
 export function* toggleChartTypeWorker({payload}) {
-  yield put({type: TOGGLE_CHART, payload})
+  yield put(toggleChartTypeFinish(payload))
 }

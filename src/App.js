@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'antd/dist/antd.css';
 
-import Chart from './containers/Chart';
 import { NavMenu } from './components/NavMenu';
+import Chart from './containers/HighStockChartContainer';
+import Pie from './containers/PieChartContainer';
 
 import './App.scss';
 
@@ -18,11 +19,11 @@ function App() {
           <Chart />
         </Route>
 
-        <Route exact path='/second'>
-          Second
+        <Route exact path='/pie'>
+          <Pie />
         </Route>
 
-        <Route exact path='/third'>
+        <Route exact path='/depth'>
           Third
         </Route>
       </Router>

@@ -1,26 +1,26 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import ReactHighCharts from "react-highcharts/ReactHighstock";
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import ReactHighCharts from 'react-highcharts/ReactHighstock';
 
-import { getHighStockAction } from "../redux/actions/highStockActions";
-import SwitchType from "./SwitchType";
+import { getHighStockData } from '../redux/actions/highStockActions';
+import SwitchType from './SwitchType';
 
 const HighStockChart = (props) => {
-  const { getHighStockAction } = props;
-  const { highStockType, highStockProps } = props;
-  const { isLoading, data } = highStockProps;
+  const { getHighStockData } = props;
+  const { highStockType, highStockProps: { isLoading, data } } = props;
 
   const title = 'Switch Chart Type';
 
   useEffect(() => {
-    getHighStockAction();
-  }, [getHighStockAction]);
+    getHighStockData();
+  }, [getHighStockData]);
 
   const config = {
     chart: {
       events: {
         load: function () {
           this.showLoading();
+
           if (!isLoading) {
             this.hideLoading();
           }
@@ -58,8 +58,6 @@ const mapStateToProps = (state) => ({
   highStockType: state.switchTypeReducer.highStockType,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  getHighStockAction: () => dispatch(getHighStockAction()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(HighStockChart)
+export default connect(mapStateToProps, {
+  getHighStockData
+})(HighStockChart)
