@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ReactHighCharts from 'react-highcharts/ReactHighstock';
 
@@ -53,6 +54,20 @@ const HighStockChart = (props) => {
       <SwitchType title={title}/>
     </>
   );
+};
+
+HighStockChart.propTypes = {
+  getHighStockData: PropTypes.func.isRequired,
+  highStockType: PropTypes.string,
+
+  highStockProps: PropTypes.shape({
+    isLoading: PropTypes.bool,
+    data: PropTypes.arrayOf(PropTypes.array)
+  }).isRequired
+};
+
+HighStockChart.defaultProps = {
+  highStockType: 'area'
 };
 
 const mapStateToProps = (state) => ({

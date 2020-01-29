@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Switch } from 'antd';
 
@@ -25,6 +26,11 @@ const SwitchType = (props) => {
       </div>
     </div>
   );
+};
+
+SwitchType.propTypes = {
+  toggleChartTypeStart: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => ({

@@ -1,6 +1,39 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Slider, Button } from 'antd';
+
+const prepareSliderMarks = (min, max, defaultStart, defaultFinish) => {
+  const marks = {};
+
+  marks[min] = {
+    label: <strong>{min}</strong>
+  };
+
+  if (defaultStart && defaultFinish) {
+    marks[defaultStart] = {
+      style: {
+        top: (defaultStart - min < 7 && defaultStart - min > 0) || (defaultFinish - defaultStart < 7) ? '-40px' : null
+      },
+      label: defaultStart
+    };
+    marks[defaultFinish] = {
+      style: {
+        top: (max - defaultFinish < 7 && max - defaultFinish > 0) ? '-40px' : null
+      },
+      label: defaultFinish
+    };
+  }
+
+  marks[max] = {
+    style: {
+      color: '#ff5500'
+    },
+    label: <strong>{max}</strong>
+  };
+
+  return marks;
+};
 
 const RangeSlider = (props) => {
   const {
@@ -38,36 +71,17 @@ const RangeSlider = (props) => {
   );
 };
 
-const prepareSliderMarks = (min, max, defaultStart, defaultFinish) => {
-  const marks = {};
+RangeSlider.propTypes = {
+  onAfterChange: PropTypes.func.isRequired,
 
-  marks[min] = {
-    label: <strong>{min}</strong>
-  };
-
-  if (defaultStart && defaultFinish) {
-    marks[defaultStart] = {
-      style: {
-        top: (defaultStart - min < 7 && defaultStart - min > 0) || (defaultFinish - defaultStart < 7) ? '-40px' : null
-      },
-      label: defaultStart
-    };
-    marks[defaultFinish] = {
-      style: {
-        top: (max - defaultFinish < 7 && max - defaultFinish > 0) ? '-40px' : null
-      },
-      label: defaultFinish
-    };
-  }
-
-  marks[max] = {
-    style: {
-      color: '#ff5500'
-    },
-    label: <strong>{max}</strong>
-  };
-
-  return marks;
+  ownProps: PropTypes.shape({
+    initialConfig: PropTypes.shape({
+      min: PropTypes.number,
+      max: PropTypes.number,
+      defaultStart: PropTypes.number,
+      defaultFinish: PropTypes.number
+    })
+  }).isRequired
 };
 
 const mapStateToProps = (state, ownProps) => ({

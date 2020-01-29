@@ -9,6 +9,7 @@
   "rules": {
     "no-shadow": "off",
     "camelcase": [2, {"properties": "never"}],
+    "no-unused-expressions": [2, { "allowShortCircuit": true, "allowTernary": true }],
     "import/prefer-default-export": "off",
     "react/prefer-stateless-function": [2, { "ignorePureComponents": true }],
     "comma-dangle": ["error", "never"],
