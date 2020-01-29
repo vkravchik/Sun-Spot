@@ -1,11 +1,11 @@
-import { GET_HIGH_STOCK_CONFIG_REQUEST, GET_HIGH_STOCK_REQUEST } from '../../common/constants/highStockConstants';
+import { createAction } from 'redux-actions';
 
-export const getHighStockAction = (payload) => ({
-  type: GET_HIGH_STOCK_REQUEST,
-  payload
-});
+import {
+  HIGH_STOCK_DATA_FETCH,
+  HIGH_STOCK_DATA_FETCH_ERROR,
+  HIGH_STOCK_DATA_FETCH_SUCCESS
+} from '../../common/constants/highStockConstants';
 
-export const getHighStockConfigAction = (payload) => ({
-  type: GET_HIGH_STOCK_CONFIG_REQUEST,
-  payload
-});
+export const getHighStockData = createAction(HIGH_STOCK_DATA_FETCH);
+export const getHighStockSuccess = createAction(HIGH_STOCK_DATA_FETCH_SUCCESS);
+export const getHighStockError = createAction(HIGH_STOCK_DATA_FETCH_ERROR);
