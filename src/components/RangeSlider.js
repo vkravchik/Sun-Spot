@@ -3,7 +3,14 @@ import { connect } from 'react-redux';
 import { Slider, Button } from 'antd';
 
 const RangeSlider = (props) => {
-  const { onAfterChange, initialConfig: { min, max, defaultStart, defaultFinish } } = props.ownProps;
+  const {
+    onAfterChange,
+    ownProps: {
+      initialConfig: {
+        min, max, defaultStart, defaultFinish
+      }
+    }
+  } = props;
 
   const onApplyFilter = () => {
   };
@@ -13,22 +20,22 @@ const RangeSlider = (props) => {
       <div className="row">
         <div className="col-md-11">
           <Slider range
-                  marks={prepareSliderMarks(min, max, defaultStart, defaultFinish)}
+                  marks={ prepareSliderMarks(min, max, defaultStart, defaultFinish) }
                   min={min}
                   max={max}
                   onAfterChange={onAfterChange} />
         </div>
         <div className="col-md-1 text-center filter-container">
-          <Button className='align-icon'
+          <Button className="align-icon"
                   type="primary"
                   shape="round"
                   icon="filter"
-                  size='small'
+                  size="small"
                   onClick={onApplyFilter} />
         </div>
       </div>
     </>
-  )
+  );
 };
 
 const prepareSliderMarks = (min, max, defaultStart, defaultFinish) => {
@@ -55,16 +62,16 @@ const prepareSliderMarks = (min, max, defaultStart, defaultFinish) => {
 
   marks[max] = {
     style: {
-      color: '#ff5500',
+      color: '#ff5500'
     },
-    label: <strong>{max}</strong>,
+    label: <strong>{max}</strong>
   };
 
   return marks;
 };
 
 const mapStateToProps = (state, ownProps) => ({
-    ownProps: ownProps
+  ownProps
 });
 
-export default connect(mapStateToProps)(RangeSlider)
+export default connect(mapStateToProps)(RangeSlider);

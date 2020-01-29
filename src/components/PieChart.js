@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import ReactHighcharts from 'react-highcharts/';
 
 import { getPieData } from '../redux/actions/pieActions';
-import { Error } from './Error';
+import Error from './Error';
 
 const PieChart = (props) => {
   const { getPieData } = props;
@@ -22,8 +22,11 @@ const PieChart = (props) => {
     chart: {
       events: {
         load: function () {
+          // eslint-disable-next-line react/no-this-in-sfc
           this.showLoading();
+
           if (!isLoading) {
+            // eslint-disable-next-line react/no-this-in-sfc
             this.hideLoading();
           }
         }
@@ -37,7 +40,7 @@ const PieChart = (props) => {
       text: `Observations since ${defaultStart} to ${defaultFinish}`
     },
     tooltip: {
-      pointFormat: `{series.name}:<b>{point.percentage:.1f}%</b>`
+      pointFormat: '{series.name}:<b>{point.percentage:.1f}%</b>'
     },
     plotOptions: {
       pie: {
@@ -52,13 +55,13 @@ const PieChart = (props) => {
     series: [{
       name: 'Observations',
       colorByPoint: true,
-      data: data,
+      data
     }]
   };
 
   return (
     error ? <Error error={error} /> : <ReactHighcharts config={config} />
-  )
+  );
 };
 
 const mapStateToProps = (props) => ({
@@ -68,4 +71,4 @@ const mapStateToProps = (props) => ({
 
 export default connect(mapStateToProps, {
   getPieData
-})(PieChart)
+})(PieChart);

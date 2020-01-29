@@ -8,6 +8,7 @@
   ],
   "rules": {
     "no-shadow": "off",
+    "comma-dangle": ["error", "never"],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react/prop-types": "off",
@@ -16,7 +17,7 @@
       "prefer-double"
     ],
     "semi": 1,
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
   },
   "plugins": [
     "prettier",

@@ -9,7 +9,7 @@ const SwitchType = (props) => {
   const { title } = props;
 
   const onChange = (value) => {
-    value ? toggleChartTypeStart('area') : toggleChartTypeStart('column')
+    value ? toggleChartTypeStart('area') : toggleChartTypeStart('column');
   };
 
   return (
@@ -17,14 +17,14 @@ const SwitchType = (props) => {
       <div className="col-md-6">
         {title}
         <Switch
-          className='row-switch'
+          className="row-switch"
           checkedChildren="A"
           unCheckedChildren="C"
           defaultChecked
-          onChange={onChange}/>
+          onChange={onChange} />
       </div>
     </div>
-  )
+  );
 };
 
 const mapStateToProps = (state, ownProps) => ({
@@ -33,4 +33,4 @@ const mapStateToProps = (state, ownProps) => ({
 
 export default connect(mapStateToProps, {
   toggleChartTypeStart
-})(SwitchType)
+})(SwitchType);
