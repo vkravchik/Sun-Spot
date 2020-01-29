@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Slider, Button } from 'antd';
 
 const RangeSlider = (props) => {
-  const { initialConfig: { min, max, defaultStart, defaultFinish }, onAfterChange } = props.ownProps;
+  const { onAfterChange, initialConfig: { min, max, defaultStart, defaultFinish } } = props.ownProps;
 
   const onApplyFilter = () => {
   };
@@ -16,11 +16,15 @@ const RangeSlider = (props) => {
                   marks={prepareSliderMarks(min, max, defaultStart, defaultFinish)}
                   min={min}
                   max={max}
-                  onAfterChange={onAfterChange}/>
+                  onAfterChange={onAfterChange} />
         </div>
         <div className="col-md-1 text-center filter-container">
-          <Button className='align-icon' type="primary" shape="round" icon="filter" size='small'
-                  onClick={onApplyFilter}/>
+          <Button className='align-icon'
+                  type="primary"
+                  shape="round"
+                  icon="filter"
+                  size='small'
+                  onClick={onApplyFilter} />
         </div>
       </div>
     </>

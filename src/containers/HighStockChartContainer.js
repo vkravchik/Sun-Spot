@@ -11,8 +11,11 @@ import RangeSlider from '../components/RangeSlider';
 
 const HighStockChartContainer = (props) => {
   const {
-    getSliderConfigData, getHighStockData, setSliderConfigData,
-    highStockProps: { data, error }, sliderProps: { initialConfig }
+    getSliderConfigData,
+    getHighStockData,
+    setSliderConfigData,
+    sliderProps: { initialConfig },
+    highStockProps: { data, error }
   } = props;
 
   useEffect(() => {

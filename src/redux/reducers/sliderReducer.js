@@ -4,6 +4,7 @@ import {
 } from '../../common/constants/highStockConstants';
 
 const initialState = {
+  error: null,
   isLoading: false,
   initialConfig: {
     min: null,
@@ -11,7 +12,6 @@ const initialState = {
     defaultStart: null,
     defaultFinish: null
   },
-  error: null
 };
 
 export const sliderReducer = (state = initialState, action) => {
