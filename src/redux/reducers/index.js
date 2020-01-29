@@ -6,8 +6,8 @@ import { switchTypeReducer } from './switchTypeReducer';
 import { sliderReducer } from './sliderReducer';
 
 export default combineReducers({
-  highStockReducer: highStockReducer,
-  pieReducer: pieReducer,
-  switchTypeReducer: switchTypeReducer,
-  sliderReducer: sliderReducer
-})
+  highStockReducer,
+  pieReducer,
+  switchTypeReducer,
+  sliderReducer
+});

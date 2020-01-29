@@ -41,6 +41,6 @@ export const highStockReducer = (state = initialState, action) => {
     default:
       return {
         ...state
-      }
+      };
   }
 };

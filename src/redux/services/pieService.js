@@ -9,5 +9,3 @@ export const getPieData = async (payload) => {
 
   return await data.json();
 };
-
-

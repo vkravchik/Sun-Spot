@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import ReactHighcharts from 'react-highcharts/';
+import ReactHighcharts from 'react-highcharts';
 
 import { getPieData } from '../redux/actions/pieActions';
 import Error from './Error';
@@ -21,7 +21,7 @@ const PieChart = (props) => {
   const config = {
     chart: {
       events: {
-        load: function () {
+        load() {
           // eslint-disable-next-line react/no-this-in-sfc
           this.showLoading();
 

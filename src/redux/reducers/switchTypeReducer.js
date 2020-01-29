@@ -14,5 +14,5 @@ export const switchTypeReducer = (state = initialState, action) => {
 
   return {
     ...state
-  }
+  };
 };

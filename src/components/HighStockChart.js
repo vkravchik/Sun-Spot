@@ -18,7 +18,7 @@ const HighStockChart = (props) => {
   const config = {
     chart: {
       events: {
-        load: function () {
+        load() {
           // eslint-disable-next-line react/no-this-in-sfc
           this.showLoading();
 

@@ -11,7 +11,7 @@ const initialState = {
     max: null,
     defaultStart: null,
     defaultFinish: null
-  },
+  }
 };
 
 export const sliderReducer = (state = initialState, action) => {
@@ -51,7 +51,7 @@ export const sliderReducer = (state = initialState, action) => {
     default: {
       return {
         ...state
-      }
+      };
     }
   }
 };

@@ -12,7 +12,7 @@ export const pieReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: true
-      }
+      };
     }
 
     case GET_PIE_DATA_FETCH_SUCCESS: {
@@ -21,7 +21,7 @@ export const pieReducer = (state = initialState, action) => {
         isLoading: false,
         data: action.payload,
         error: null
-      }
+      };
     }
 
     case GET_PIE_DATA_FETCH_ERROR: {
@@ -29,13 +29,13 @@ export const pieReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         error: action.payload
-      }
+      };
     }
 
     default: {
       return {
         ...state
-      }
+      };
     }
   }
 };
