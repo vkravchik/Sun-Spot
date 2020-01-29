@@ -1,9 +1,9 @@
 import React from 'react';
 
-export const Error = ({error}) => {
-  return (
-    <h2>
-      {error.toString()}
-    </h2>
-  )
-};
+const Error = ({ error }) => (
+  <h2>
+    {error.toString()}
+  </h2>
+);
+
+export default Error;
