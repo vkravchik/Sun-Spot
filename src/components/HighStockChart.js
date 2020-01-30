@@ -18,10 +18,12 @@ const HighStockChart = (props) => {
   const config = {
     chart: {
       events: {
-        load: function () {
+        load() {
+          // eslint-disable-next-line react/no-this-in-sfc
           this.showLoading();
 
           if (!isLoading) {
+            // eslint-disable-next-line react/no-this-in-sfc
             this.hideLoading();
           }
         }
@@ -38,10 +40,10 @@ const HighStockChart = (props) => {
       type: highStockType,
       name: 'Sunspot amount',
       fillOpacity: 0.1,
-      data: data,
+      data,
       tooltip: {
         valueDecimals: 2
-      },
+      }
     }]
   };
 
@@ -50,14 +52,14 @@ const HighStockChart = (props) => {
       <ReactHighCharts config={config}/>
       <SwitchType title={title}/>
     </>
-  )
+  );
 };
 
 const mapStateToProps = (state) => ({
   highStockProps: state.highStockReducer,
-  highStockType: state.switchTypeReducer.highStockType,
+  highStockType: state.switchTypeReducer.highStockType
 });
 
 export default connect(mapStateToProps, {
   getHighStockData
-})(HighStockChart)
+})(HighStockChart);

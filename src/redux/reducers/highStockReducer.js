@@ -6,7 +6,7 @@ import {
 
 const initialState = {
   isLoading: false,
-  data: [],
+  data: []
 };
 
 export const highStockReducer = (state = initialState, action) => {
@@ -32,7 +32,7 @@ export const highStockReducer = (state = initialState, action) => {
 
     default:
       return {
-        ...state,
-      }
+        ...state
+      };
   }
 };

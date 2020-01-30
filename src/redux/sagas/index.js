@@ -13,5 +13,5 @@ export default function* rootSaga() {
     fork(switchTypeSagaWatcher),
     fork(sliderSagaWatcher),
     fork(errorHandlerWatcher),
-  ])
+  ]);
 }

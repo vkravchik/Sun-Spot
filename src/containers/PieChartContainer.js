@@ -24,7 +24,7 @@ const PieChartContainer = (props) => {
   };
 
   return (
-    <div className='container shadow-sm p-3 mb-5 bg-white rounded chart-container'>
+    <div className="container shadow-sm p-3 mb-5 bg-white rounded chart-container">
       <RangeSlider initialConfig={initialConfig} onAfterChange={onAfterChange} />
       <PieChart />
     </div>
@@ -32,11 +32,11 @@ const PieChartContainer = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  initialConfig: state.sliderReducer.initialConfig,
+  initialConfig: state.sliderReducer.initialConfig
 });
 
 export default connect(mapStateToProps, {
   getSliderConfigData,
   getPieData,
   setSliderConfigData
-})(PieChartContainer)
+})(PieChartContainer);

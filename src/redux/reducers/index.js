@@ -7,9 +7,9 @@ import { sliderReducer } from './sliderReducer';
 import { errorHandlerReducer } from "./errorHandlerReducer";
 
 export default combineReducers({
-  highStockReducer: highStockReducer,
-  pieReducer: pieReducer,
-  switchTypeReducer: switchTypeReducer,
-  sliderReducer: sliderReducer,
-  errorHandlerReducer: errorHandlerReducer,
-})
+  highStockReducer,
+  pieReducer,
+  switchTypeReducer,
+  sliderReducer,
+  errorHandlerReducer
+});

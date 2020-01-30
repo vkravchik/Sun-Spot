@@ -4,13 +4,14 @@ import {
 } from '../../common/constants/highStockConstants';
 
 const initialState = {
+  error: null,
   isLoading: false,
   initialConfig: {
     min: null,
     max: null,
     defaultStart: null,
     defaultFinish: null
-  },
+  }
 };
 
 export const sliderReducer = (state = initialState, action) => {
@@ -40,10 +41,17 @@ export const sliderReducer = (state = initialState, action) => {
         error: null
       };
 
+    case HIGH_STOCK_CONFIG_FETCH_ERROR:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload
+      };
+
     default: {
       return {
         ...state
-      }
+      };
     }
   }
 };

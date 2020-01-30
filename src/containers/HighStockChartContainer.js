@@ -11,8 +11,10 @@ import RangeSlider from '../components/RangeSlider';
 
 const HighStockChartContainer = (props) => {
   const {
-    getSliderConfigData, getHighStockData, setSliderConfigData,
-    sliderProps: { initialConfig },
+    getSliderConfigData,
+    getHighStockData,
+    setSliderConfigData,
+    sliderProps: { initialConfig }
   } = props;
 
   useEffect(() => {
@@ -30,7 +32,7 @@ const HighStockChartContainer = (props) => {
   };
 
   const renderChart = () => (
-    <div className='container shadow-sm p-3 mb-5 bg-white rounded chart-container'>
+    <div className="container shadow-sm p-3 mb-5 bg-white rounded chart-container">
       <RangeSlider initialConfig={initialConfig} onAfterChange={onAfterChange} />
       <HighStockChart/>
     </div>
@@ -49,4 +51,4 @@ export default connect(mapStateToProps, {
   getSliderConfigData,
   setSliderConfigData,
   getHighStockData
-})(HighStockChartContainer)
+})(HighStockChartContainer);

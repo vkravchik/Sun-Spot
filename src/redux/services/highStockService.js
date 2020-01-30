@@ -10,14 +10,10 @@ export function getHighStockData(payload) {
       start_date,
       finish_date
     }
-  }).then(res => {
-    return res.data;
-  });
+  }).then((res) => res.data);
 }
 
 export function getHighStockConfig() {
   return axios.get(`${BASE_URL}/api/charts/highStock/config`)
-    .then(res => {
-      return res.data;
-    });
+    .then((res) => res.data);
 }
