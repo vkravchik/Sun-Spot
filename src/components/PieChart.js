@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ReactHighcharts from 'react-highcharts';
 
@@ -62,6 +63,23 @@ const PieChart = (props) => {
   return (
     error ? <Error error={error} /> : <ReactHighcharts config={config} />
   );
+};
+
+PieChart.propTypes = {
+  getPieData: PropTypes.func.isRequired,
+
+  pieProps: PropTypes.shape({
+    isLoading: PropTypes.bool,
+    data: PropTypes.arrayOf(PropTypes.object),
+    error: PropTypes.object
+  }).isRequired,
+
+  sliderProps: PropTypes.shape({
+    initialConfig: PropTypes.shape({
+      defaultStart: PropTypes.number,
+      defaultFinish: PropTypes.number
+    })
+  }).isRequired
 };
 
 const mapStateToProps = (props) => ({
