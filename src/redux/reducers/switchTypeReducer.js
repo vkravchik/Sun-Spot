@@ -1,7 +1,7 @@
-import { TOGGLE_CHART_TYPE_FINISH } from '../../common/constants/switchTypeConstants';
+import { CHART_TYPE_AREA, TOGGLE_CHART_TYPE_FINISH } from '../../common/constants/switchTypeConstants';
 
 const initialState = {
-  highStockChartType: 'area'
+  highStockChartType: CHART_TYPE_AREA
 };
 
 export const switchTypeReducer = (state = initialState, action) => {

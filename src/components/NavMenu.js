@@ -2,11 +2,13 @@ import React from 'react';
 import { Menu, Layout } from 'antd';
 import { Link } from 'react-router-dom';
 
+import { DEFAULT_SELECTED_KEYS } from '../common/constants/dataConstants';
+
 const NavMenu = () => {
-  const defaultSelectedKeys = sessionStorage.getItem('defaultSelectedKeys') || '1';
+  const defaultSelectedKeys = sessionStorage.getItem(DEFAULT_SELECTED_KEYS) || '1';
 
   const onClick = (el) => {
-    sessionStorage.setItem('defaultSelectedKeys', el.key);
+    sessionStorage.setItem(DEFAULT_SELECTED_KEYS, el.key);
   };
 
   return (

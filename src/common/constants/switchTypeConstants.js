@@ -1,2 +1,5 @@
 export const TOGGLE_CHART_TYPE_START = 'TOGGLE_CHART_TYPE_START';
 export const TOGGLE_CHART_TYPE_FINISH = 'TOGGLE_CHART_TYPE_FINISH';
+
+export const CHART_TYPE_AREA = 'area';
+export const CHART_TYPE_COLUMN = 'column';
