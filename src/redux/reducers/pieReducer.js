@@ -3,7 +3,6 @@ import { GET_PIE_DATA_FETCH, GET_PIE_DATA_FETCH_ERROR, GET_PIE_DATA_FETCH_SUCCES
 const initialState = {
   isLoading: false,
   data: [],
-  error: null
 };
 
 export const pieReducer = (state = initialState, action) => {
@@ -21,14 +20,6 @@ export const pieReducer = (state = initialState, action) => {
         isLoading: false,
         data: action.payload,
         error: null
-      }
-    }
-
-    case GET_PIE_DATA_FETCH_ERROR: {
-      return {
-        ...state,
-        isLoading: false,
-        error: action.payload
       }
     }
 

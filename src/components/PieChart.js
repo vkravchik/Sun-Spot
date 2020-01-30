@@ -3,12 +3,11 @@ import { connect } from 'react-redux';
 import ReactHighcharts from 'react-highcharts/';
 
 import { getPieData } from '../redux/actions/pieActions';
-import { Error } from './Error';
 
 const PieChart = (props) => {
   const { getPieData } = props;
   const {
-    pieProps: { isLoading, data, error },
+    pieProps: { isLoading, data },
     sliderProps: {
       initialConfig: { defaultStart, defaultFinish }
     }
@@ -57,13 +56,13 @@ const PieChart = (props) => {
   };
 
   return (
-    error ? <Error error={error} /> : <ReactHighcharts config={config} />
+    <ReactHighcharts config={config} />
   )
 };
 
 const mapStateToProps = (props) => ({
   pieProps: props.pieReducer,
-  sliderProps: props.sliderReducer
+  sliderProps: props.sliderReducer,
 });
 
 export default connect(mapStateToProps, {

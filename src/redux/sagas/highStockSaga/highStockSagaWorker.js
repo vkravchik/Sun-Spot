@@ -2,7 +2,7 @@ import { call, put } from 'redux-saga/effects';
 
 import { getHighStockData } from '../../services/highStockService';
 
-import { getHighStockError, getHighStockSuccess } from "../../actions/highStockActions";
+import { getHighStockSuccess } from "../../actions/highStockActions";
 import { dispatchError } from "../../actions/errorHandlerActions";
 
 export function* highStockWorker(payload) {

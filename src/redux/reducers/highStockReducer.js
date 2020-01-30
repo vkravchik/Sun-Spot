@@ -7,7 +7,6 @@ import {
 const initialState = {
   isLoading: false,
   data: [],
-  error: null
 };
 
 export const highStockReducer = (state = initialState, action) => {
@@ -31,16 +30,9 @@ export const highStockReducer = (state = initialState, action) => {
         error: null
       };
 
-    case HIGH_STOCK_DATA_FETCH_ERROR:
-      return {
-        ...state,
-        isLoading: false,
-        error: action.payload
-      };
-
     default:
       return {
-        ...state
+        ...state,
       }
   }
 };

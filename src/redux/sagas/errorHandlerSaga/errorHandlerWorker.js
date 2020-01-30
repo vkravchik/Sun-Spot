@@ -6,6 +6,6 @@ export function* setErrorWorker({payload}) {
   yield put(setError(payload));
 }
 
-export function* removeErrorWorker({payload}) {
+export function* removeErrorWorker() {
   yield put(removeError())
 }

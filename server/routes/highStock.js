@@ -49,4 +49,11 @@ router.get('/config', (req, res) => {
   res.send(data)
 });
 
+router.get('/error', (req, res) => {
+  res.status(500).send('Chart Error')
+});
+router.get('/config/error', (req, res) => {
+  res.status(500).send('Config Error')
+});
+
 module.exports = router;

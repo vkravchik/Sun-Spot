@@ -11,7 +11,6 @@ const initialState = {
     defaultStart: null,
     defaultFinish: null
   },
-  error: null
 };
 
 export const sliderReducer = (state = initialState, action) => {
@@ -39,13 +38,6 @@ export const sliderReducer = (state = initialState, action) => {
         isLoading: false,
         initialConfig: action.payload,
         error: null
-      };
-
-    case HIGH_STOCK_CONFIG_FETCH_ERROR:
-      return {
-        ...state,
-        isLoading: false,
-        error: action.payload
       };
 
     default: {

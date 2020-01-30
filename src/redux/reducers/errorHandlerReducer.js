@@ -1,7 +1,7 @@
 import { ADD_ERROR, REMOVE_ERROR } from "../../common/constants/dataConstants";
 
 const initialState = {
-  error: null
+  error: []
 };
 
 export const errorHandlerReducer = (state = initialState, action) => {
@@ -9,14 +9,14 @@ export const errorHandlerReducer = (state = initialState, action) => {
     case ADD_ERROR: {
       return {
         ...state,
-        error: action.payload
+        error: state.error.concat(action.payload)
       }
     }
 
     case REMOVE_ERROR: {
+      state.error.pop();
       return {
         ...state,
-        error: []
       }
     }
 

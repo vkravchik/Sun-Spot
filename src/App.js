@@ -2,14 +2,18 @@ import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'antd/dist/antd.css';
+import { connect } from "react-redux";
 
 import { NavMenu } from './components/NavMenu';
 import Chart from './containers/HighStockChartContainer';
 import Pie from './containers/PieChartContainer';
+import Error from "./components/Error";
 
 import './App.scss';
 
-function App() {
+const App = (props) => {
+  const {errorHandlerProps: {error}} = props;
+
   return (
     <Fragment>
       <Router>
@@ -27,8 +31,20 @@ function App() {
           Third
         </Route>
       </Router>
+
+      <div className="error-container">
+        {
+          error.length && error.map(
+            el => <Error error={el} />
+          )
+        }
+      </div>
     </Fragment>
   );
-}
+};
 
-export default App;
+const mapStateToProps = (state) => ({
+  errorHandlerProps: state.errorHandlerReducer,
+});
+
+export default connect(mapStateToProps)(App);

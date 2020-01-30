@@ -31,8 +31,8 @@ const PieChartContainer = (props) => {
   );
 };
 
-const mapStateToProps = (props) => ({
-  initialConfig: props.sliderReducer.initialConfig
+const mapStateToProps = (state) => ({
+  initialConfig: state.sliderReducer.initialConfig,
 });
 
 export default connect(mapStateToProps, {
