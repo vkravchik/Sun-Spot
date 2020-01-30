@@ -1,6 +1,5 @@
 import {
-  HIGH_STOCK_CONFIG_FETCH, HIGH_STOCK_CONFIG_FETCH_ERROR,
-  HIGH_STOCK_CONFIG_FETCH_SUCCESS, HIGH_STOCK_CONFIG_SET
+  HIGH_STOCK_CONFIG_FETCH, HIGH_STOCK_CONFIG_FETCH_SUCCESS, HIGH_STOCK_CONFIG_SET
 } from '../../common/constants/highStockConstants';
 
 const initialState = {
@@ -39,13 +38,6 @@ export const sliderReducer = (state = initialState, action) => {
         isLoading: false,
         initialConfig: action.payload,
         error: null
-      };
-
-    case HIGH_STOCK_CONFIG_FETCH_ERROR:
-      return {
-        ...state,
-        isLoading: false,
-        error: action.payload
       };
 
     default: {

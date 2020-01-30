@@ -2,9 +2,8 @@ import { call, put } from 'redux-saga/effects';
 
 import { getPieData } from '../../services/pieService';
 
-import { getPieDataError, getPieDataSuccess } from '../../actions/pieActions';
-import { getPieDataSuccess } from "../../actions/pieActions";
-import { dispatchError } from "../../actions/errorHandlerActions";
+import { getPieDataSuccess } from '../../actions/pieActions';
+import { dispatchError } from '../../actions/errorHandlerActions';
 
 export function* pieWorker(payload) {
   try {

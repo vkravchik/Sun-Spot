@@ -7,7 +7,7 @@ import SwitchType from './SwitchType';
 
 const HighStockChart = (props) => {
   const { getHighStockData } = props;
-  const { highStockType, highStockProps: { isLoading, data } } = props;
+  const { highStockChartType, highStockProps: { isLoading, data } } = props;
 
   const title = 'Switch Chart Type';
 
@@ -37,7 +37,7 @@ const HighStockChart = (props) => {
       text: 'Sunspot Frequency Chart'
     },
     series: [{
-      type: highStockType,
+      type: highStockChartType,
       name: 'Sunspot amount',
       fillOpacity: 0.1,
       data,
@@ -57,7 +57,7 @@ const HighStockChart = (props) => {
 
 const mapStateToProps = (state) => ({
   highStockProps: state.highStockReducer,
-  highStockType: state.switchTypeReducer.highStockType
+  highStockChartType: state.switchTypeReducer.highStockChartType
 });
 
 export default connect(mapStateToProps, {

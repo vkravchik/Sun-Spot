@@ -3,9 +3,6 @@ import { connect } from 'react-redux';
 import ReactHighcharts from 'react-highcharts';
 
 import { getPieData } from '../redux/actions/pieActions';
-import ReactHighcharts from 'react-highcharts/';
-
-import { getPieData } from '../redux/actions/pieActions';
 
 const PieChart = (props) => {
   const { getPieData } = props;

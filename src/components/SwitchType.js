@@ -14,10 +14,9 @@ const SwitchType = (props) => {
 
   return (
     <div className="row">
-      <div className="col-md-6">
+      <div className="col-md-6 row-switch">
         {title}
         <Switch
-          className="row-switch"
           checkedChildren="A"
           unCheckedChildren="C"
           defaultChecked

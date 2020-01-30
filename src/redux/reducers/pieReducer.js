@@ -1,4 +1,4 @@
-import { GET_PIE_DATA_FETCH, GET_PIE_DATA_FETCH_ERROR, GET_PIE_DATA_FETCH_SUCCESS } from '../../common/constants/pieConstants';
+import { GET_PIE_DATA_FETCH, GET_PIE_DATA_FETCH_SUCCESS } from '../../common/constants/pieConstants';
 
 const initialState = {
   isLoading: false,

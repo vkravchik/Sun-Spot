@@ -1,6 +1,5 @@
 import {
   HIGH_STOCK_DATA_FETCH,
-  HIGH_STOCK_DATA_FETCH_ERROR,
   HIGH_STOCK_DATA_FETCH_SUCCESS
 } from '../../common/constants/highStockConstants';
 
