@@ -35,7 +35,7 @@ const App = (props) => {
       <div className="error-container">
         {
           error.length !== 0 && error.map(
-            (el) => <Error error={el} />
+            (el, k) => <Error key={k} error={el} />
           )
         }
       </div>

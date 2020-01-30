@@ -15,7 +15,6 @@ const initialState = {
 
 export const sliderReducer = (state = initialState, action) => {
   switch (action.type) {
-
     case HIGH_STOCK_CONFIG_FETCH:
       return {
         ...state,
@@ -36,8 +35,7 @@ export const sliderReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        initialConfig: action.payload,
-        error: null
+        initialConfig: action.payload
       };
 
     default: {
