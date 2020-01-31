@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { notification } from 'antd';
 import { removeError } from '../redux/actions/errorHandlerActions';
@@ -20,6 +20,8 @@ const Error = ({ error, removeError }) => {
   useEffect(() => {
     openNotificationWithIcon('error', 'bottomRight', 3);
   });
+
+  return null;
 };
 
 export default connect(null, {
