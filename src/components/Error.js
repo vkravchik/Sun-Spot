@@ -21,7 +21,10 @@ const Error = ({ error, removeError }) => {
     openNotificationWithIcon('error', 'bottomRight', 3);
   });
 
-  return null;
+  return (
+    <>
+    </>
+  );
 };
 
 export default connect(null, {

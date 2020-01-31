@@ -2,13 +2,13 @@ import React from 'react';
 import { Menu, Layout } from 'antd';
 import { Link } from 'react-router-dom';
 
-import { DEFAULT_SELECTED_KEYS } from '../common/constants/dataConstants';
+import StorageService from '../redux/services/storageService';
 
 const NavMenu = () => {
-  const defaultSelectedKeys = sessionStorage.getItem(DEFAULT_SELECTED_KEYS) || '1';
+  const defaultSelectedKeys = StorageService.getSelectedNav();
 
   const onClick = (el) => {
-    sessionStorage.setItem(DEFAULT_SELECTED_KEYS, el.key);
+    StorageService.setSelectedNav(el.key);
   };
 
   return (

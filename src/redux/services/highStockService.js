@@ -1,4 +1,7 @@
 import axios from 'axios';
+
+import StorageService from './storageService';
+
 import { BASE_URL } from '../../common/constants/dataConstants';
 
 export function getHighStockData(payload) {
@@ -14,6 +17,14 @@ export function getHighStockData(payload) {
 }
 
 export function getHighStockConfig() {
+  if (StorageService.getSliderConfig()) {
+    return StorageService.getSliderConfig();
+  }
+
   return axios.get(`${BASE_URL}/api/charts/highStock/config`)
-    .then((res) => res.data);
+    .then((res) => {
+      StorageService.setSliderConfig(JSON.stringify(res.data));
+
+      return res.data;
+    });
 }
