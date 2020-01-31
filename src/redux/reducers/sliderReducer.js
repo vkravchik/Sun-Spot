@@ -26,8 +26,8 @@ export const sliderReducer = (state = initialState, action) => {
         ...state,
         initialConfig: {
           ...state.initialConfig,
-          defaultStart: action.payload?.start_date || null,
-          defaultFinish: action.payload?.finish_date || null
+          defaultStart: action.payload?.startDate || null,
+          defaultFinish: action.payload?.finishDate || null
         }
       };
 

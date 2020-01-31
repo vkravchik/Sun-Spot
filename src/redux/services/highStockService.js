@@ -2,13 +2,13 @@ import axios from 'axios';
 import { BASE_URL } from '../../common/constants/dataConstants';
 
 export function getHighStockData(payload) {
-  const start_date = payload?.start_date || null;
-  const finish_date = payload?.finish_date || null;
+  const startDate = payload?.startDate || null;
+  const finishDate = payload?.finishDate || null;
 
   return axios.get(`${BASE_URL}/api/charts/highStock`, {
     params: {
-      start_date,
-      finish_date
+      startDate,
+      finishDate
     }
   }).then((res) => res.data);
 }

@@ -24,8 +24,7 @@ const HighStockChartContainer = (props) => {
   const onAfterChange = (value = []) => {
     const dateMap = {};
 
-    dateMap['start_date'] = value[0];
-    dateMap['finish_date'] = value[1];
+    [dateMap.startDate, dateMap.finishDate] = value;
 
     setSliderConfigData(dateMap);
     getHighStockData(dateMap);
@@ -40,11 +39,11 @@ const HighStockChartContainer = (props) => {
 
   return (
     renderChart()
-  )
+  );
 };
 
 const mapStateToProps = (state) => ({
-  sliderProps: state.sliderReducer,
+  sliderProps: state.sliderReducer
 });
 
 export default connect(mapStateToProps, {

@@ -7,17 +7,21 @@ import { getSliderConfigData, setSliderConfigData } from '../redux/actions/slide
 import { getPieData } from '../redux/actions/pieActions';
 
 const PieChartContainer = (props) => {
-  const { getSliderConfigData, getPieData, setSliderConfigData, initialConfig } = props;
+  const {
+    getSliderConfigData,
+    getPieData,
+    setSliderConfigData,
+    initialConfig
+  } = props;
 
   useEffect(() => {
     getSliderConfigData();
-  },[getSliderConfigData]);
+  }, [getSliderConfigData]);
 
   const onAfterChange = (value = []) => {
     const dateMap = {};
 
-    dateMap['start_date'] = value[0];
-    dateMap['finish_date'] = value[1];
+    [dateMap.startDate, dateMap.finishDate] = value;
 
     setSliderConfigData(dateMap);
     getPieData(dateMap);
