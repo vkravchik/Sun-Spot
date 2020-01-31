@@ -1,7 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 
-const csvToJson = require('convert-csv-to-json');
 const _ = require('lodash');
 
 module.exports = {

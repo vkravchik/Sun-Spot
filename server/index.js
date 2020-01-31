@@ -28,7 +28,6 @@ app.get('/api/data', (req, res) => {
     res.send(js);
 });
 
-
 app.get('/api/ping', (req, res) => {
   res.send('Pong');
 });
