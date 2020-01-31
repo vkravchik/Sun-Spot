@@ -20,10 +20,6 @@ app.use('/api/utils', utilRoutes);
 app.use('/api/charts/highStock', highStockRoutes);
 app.use('/api/charts/pie', pieRoutes);
 
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, '../build', 'index.html'));
-});
-
 app.get('/api/data', (req, res) => {
     let fileInput = path.join(__dirname, 'dataset', 'sunspot_data.json');
     let data = fs.readFileSync(fileInput);
@@ -38,6 +34,10 @@ app.get('/api/ping', (req, res) => {
 });
 
 const port = process.env.SERVER_PORT || 3001;
+
+app.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname, '../build', 'index.html'));
+});
 
 app.listen(port, () => {
   console.log('Express server is running on localhost:' + port)
