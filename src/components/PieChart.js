@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import ReactHighcharts from 'react-highcharts';
 
+import Loading from './Loading';
 import { getPieData } from '../redux/actions/pieActions';
 
 const PieChart = (props) => {
@@ -59,7 +60,7 @@ const PieChart = (props) => {
   };
 
   return (
-    <ReactHighcharts config={config} />
+    isLoading ? <Loading/> : <ReactHighcharts config={config} />
   );
 };
 
