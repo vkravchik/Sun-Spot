@@ -9,7 +9,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint .",
     "client": "react-scripts start",
-    "server": "nodemon --exec babel-node server/index --ignore 'server/dataset/**'",
+    "server": "nodemon server/index --ignore 'server/dataset/**'",
     "dev": "run-p server client",
     "heroku-postbuild": "npm install && npm run build"
   },
@@ -37,9 +37,6 @@
     "typeface-roboto": "0.0.75"
   },
   "devDependencies": {
-    "@babel/core": "^7.8.3",
-    "@babel/node": "^7.8.3",
-    "@babel/preset-env": "^7.8.3",
     "cors": "^2.8.5",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.10.0",
