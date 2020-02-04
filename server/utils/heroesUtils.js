@@ -1,8 +1,9 @@
+const HeroesConstants = require("../common/constants/heroesConstants");
+
 const _ = require('lodash');
 
 const HeroesUtils = {
   calculateHeroesByAttackType: (data) => {
-
     // If true - this is melee heroes if false - this is ranged heroes
     const countedHeroes = _.countBy(data, (el) => el.attack_type === 'Melee');
 
@@ -13,9 +14,12 @@ const HeroesUtils = {
   },
 
   calculateHeroesByPrimaryAttr: (data) => {
-    const countedHeroes = _.countBy(data, (el) => el.primary_attr);
+    return _.countBy(data, (el) => el.primary_attr);
+  },
 
-    return countedHeroes;
+  filterByRoles: (data, roles) => {
+    roles = [HeroesConstants.CARRY];
+    return _.filter(data, (el) => el.roles.some(e => roles.some(r => r === e)));
   }
 };
 

@@ -16,4 +16,8 @@ router.get('/primary_attr', (req, res) => {
   res.send(HeroesUtils.calculateHeroesByPrimaryAttr(heroesList));
 });
 
+router.get('/filter_by_roles', (req, res) => {
+  res.send(HeroesUtils.filterByRoles(heroesList, null));
+});
+
 module.exports = router;
