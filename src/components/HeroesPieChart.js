@@ -15,7 +15,7 @@ const HeroesPieChart = (props) => {
       text: title
     },
     tooltip: {
-      pointFormat: '{series.name}:<b>{point.percentage:.1f}%</b>'
+      pointFormat: '{series.name}:<b>{point.y}({point.percentage:.1f}%)</b>'
     },
     plotOptions: {
       pie: {
@@ -28,7 +28,7 @@ const HeroesPieChart = (props) => {
       }
     },
     series: [{
-      name: 'Observations',
+      name: title,
       colorByPoint: true,
       data
     }]
