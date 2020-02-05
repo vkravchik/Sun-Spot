@@ -3,14 +3,12 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import NavMenu from './components/NavMenu';
-import Chart from './containers/HighStockChartContainer';
-import Pie from './containers/PieChartContainer';
 import Error from './components/Error';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'antd/dist/antd.css';
 import './App.scss';
-import HeroesContainer from "./containers/HeroesContainer";
+import PieChartContainer from "./containers/PieChartContainer";
 
 const App = (props) => {
   const { errorHandlerProps: { error } } = props;
@@ -21,15 +19,15 @@ const App = (props) => {
         <NavMenu />
 
         <Route exact path="/">
-          <Chart />
+          In progress
         </Route>
 
         <Route exact path="/pie">
-          <Pie />
+          <PieChartContainer />
         </Route>
 
         <Route exact path="/depth">
-          <HeroesContainer />
+          In progress
         </Route>
       </Router>
 

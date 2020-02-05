@@ -1,46 +1,21 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import ReactHighcharts from 'react-highcharts';
 
-import Loading from './Loading';
-import { getPieData } from '../redux/actions/pieActions';
-
 const PieChart = (props) => {
-  const { getPieData } = props;
-  const {
-    pieProps: { isLoading, data },
-    sliderProps: {
-      initialConfig: { defaultStart, defaultFinish }
-    }
-  } = props;
-
-  useEffect(() => {
-    getPieData();
-  }, [getPieData]);
+  const { data, title } = props;
 
   const config = {
     chart: {
-      events: {
-        load() {
-          // eslint-disable-next-line react/no-this-in-sfc
-          this.showLoading();
-
-          if (!isLoading) {
-            // eslint-disable-next-line react/no-this-in-sfc
-            this.hideLoading();
-          }
-        }
-      },
       plotBackgroundColor: null,
       plotBorderWidth: null,
       plotShadow: false,
       type: 'pie'
     },
     title: {
-      text: `Observations since ${defaultStart} to ${defaultFinish}`
+      text: title
     },
     tooltip: {
-      pointFormat: '{series.name}:<b>{point.percentage:.1f}%</b>'
+      pointFormat: '{series.name}:<b>{point.y}({point.percentage:.1f}%)</b>'
     },
     plotOptions: {
       pie: {
@@ -53,22 +28,15 @@ const PieChart = (props) => {
       }
     },
     series: [{
-      name: 'Observations',
+      name: title,
       colorByPoint: true,
       data
     }]
   };
 
   return (
-    isLoading ? <Loading/> : <ReactHighcharts config={config} />
+    <ReactHighcharts config={config} />
   );
 };
 
-const mapStateToProps = (props) => ({
-  pieProps: props.pieReducer,
-  sliderProps: props.sliderReducer
-});
-
-export default connect(mapStateToProps, {
-  getPieData
-})(PieChart);
+export default PieChart;

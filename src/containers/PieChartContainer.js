@@ -1,46 +1,53 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import PieChart from '../components/PieChart';
-import RangeSlider from '../components/RangeSlider';
 
-import { getSliderConfigData, setSliderConfigData } from '../redux/actions/sliderActions';
-import { getPieData } from '../redux/actions/pieActions';
+import Loading from '../components/Loading';
+import PieChart from '../components/PieChart';
+import { getHeroesAttackType, getHeroesPrimaryAttr } from '../redux/actions/heroesActions';
 
 const PieChartContainer = (props) => {
   const {
-    getSliderConfigData,
-    getPieData,
-    setSliderConfigData,
-    initialConfig
+    getHeroesAttackType,
+    getHeroesPrimaryAttr,
+    heroesProps: { isLoading, dataAttackType, dataPrimaryAttr }
   } = props;
+  const titleAttackType = 'Attack Type';
+  const titlePrimaryAttr = 'Primary Attr';
 
   useEffect(() => {
-    getSliderConfigData();
-  }, [getSliderConfigData]);
+    getHeroesAttackType();
+  }, [getHeroesAttackType]);
 
-  const onAfterChange = (value = []) => {
-    const dateMap = {};
+  useEffect(() => {
+    getHeroesPrimaryAttr();
+  }, [getHeroesPrimaryAttr]);
 
-    [dateMap.startDate, dateMap.finishDate] = value;
-
-    setSliderConfigData(dateMap);
-    getPieData(dateMap);
-  };
+  const contentRender = () => (
+    <div className="row">
+      <div className="col-md-6">
+        <PieChart data={dataAttackType} title={titleAttackType}/>
+      </div>
+      <div className="col-md-6">
+        <PieChart data={dataPrimaryAttr} title={titlePrimaryAttr}/>
+      </div>
+    </div>
+  );
 
   return (
-    <div className="container shadow-sm p-3 mb-5 bg-white rounded chart-container">
-      <RangeSlider initialConfig={initialConfig} onAfterChange={onAfterChange} />
-      <PieChart />
-    </div>
+    <>
+      <div className="container shadow-sm p-3 mb-5 bg-white rounded chart-container">
+        { isLoading && <Loading/> }
+        { !isLoading && contentRender()}
+      </div>
+    </>
   );
 };
 
 const mapStateToProps = (state) => ({
-  initialConfig: state.sliderReducer.initialConfig
+  heroesProps: state.heroesReducer
 });
 
 export default connect(mapStateToProps, {
-  getSliderConfigData,
-  getPieData,
-  setSliderConfigData
+  getHeroesAttackType,
+  getHeroesPrimaryAttr
 })(PieChartContainer);
