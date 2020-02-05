@@ -10,6 +10,7 @@ import Error from './components/Error';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'antd/dist/antd.css';
 import './App.scss';
+import HeroesContainer from "./containers/HeroesContainer";
 
 const App = (props) => {
   const { errorHandlerProps: { error } } = props;
@@ -28,7 +29,7 @@ const App = (props) => {
         </Route>
 
         <Route exact path="/depth">
-          Third
+          <HeroesContainer />
         </Route>
       </Router>
 

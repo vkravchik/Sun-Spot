@@ -9,15 +9,23 @@ router.get('/', (req, res) => {
 });
 
 router.get('/attack_type', (req, res) => {
-  res.send(HeroesUtils.calculateHeroesByAttackType(heroesList));
+  res.send(
+    HeroesUtils.modifyDataForPieChartFormat(
+      HeroesUtils.calculateHeroesByAttackType(heroesList)
+    )
+  )
 });
 
 router.get('/primary_attr', (req, res) => {
-  res.send(HeroesUtils.calculateHeroesByPrimaryAttr(heroesList));
+  res.send(
+    HeroesUtils.modifyDataForPieChartFormat(
+      HeroesUtils.calculateHeroesByPrimaryAttr(heroesList)
+    )
+  )
 });
 
 router.get('/filter_by_roles', (req, res) => {
-  res.send(HeroesUtils.filterByRoles(heroesList, null));
+  res.send(HeroesUtils.filteringByRoles(heroesList, null));
 });
 
 module.exports = router;

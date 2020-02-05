@@ -17,9 +17,16 @@ const HeroesUtils = {
     return _.countBy(data, (el) => el.primary_attr);
   },
 
-  filterByRoles: (data, roles) => {
+  filteringByRoles: (data, roles) => {
     roles = [HeroesConstants.CARRY];
-    return _.filter(data, (el) => el.roles.some(e => roles.some(r => r === e)));
+    return _.filter(data, (hero) => hero.roles.some(heroRole => roles.every(role => role === heroRole)));
+  },
+
+  modifyDataForPieChartFormat: (data) => {
+    return _.map(data, (el, key) => ({
+      name: key,
+      y: el
+    }))
   }
 };
 

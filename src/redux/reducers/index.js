@@ -5,11 +5,13 @@ import { highStockReducer } from './highStockReducer';
 import { switchTypeReducer } from './switchTypeReducer';
 import { sliderReducer } from './sliderReducer';
 import { errorHandlerReducer } from './errorHandlerReducer';
+import { heroesReducer } from './heroesReducer';
 
 export default combineReducers({
   highStockReducer,
   pieReducer,
   switchTypeReducer,
   sliderReducer,
-  errorHandlerReducer
+  errorHandlerReducer,
+  heroesReducer
 });
