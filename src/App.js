@@ -8,7 +8,8 @@ import Error from './components/Error';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'antd/dist/antd.css';
 import './App.scss';
-import PieChartContainer from "./containers/PieChartContainer";
+import PieChartContainer from './containers/PieChartContainer';
+import ScatterPlotContainer from './containers/ScatterPlotContainer';
 
 const App = (props) => {
   const { errorHandlerProps: { error } } = props;
@@ -27,7 +28,7 @@ const App = (props) => {
         </Route>
 
         <Route exact path="/depth">
-          In progress
+          <ScatterPlotContainer />
         </Route>
       </Router>
 

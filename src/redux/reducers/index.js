@@ -6,6 +6,7 @@ import { switchTypeReducer } from './switchTypeReducer';
 import { sliderReducer } from './sliderReducer';
 import { errorHandlerReducer } from './errorHandlerReducer';
 import { heroesReducer } from './heroesReducer';
+import { matchesReducer } from './matchesReducer';
 
 export default combineReducers({
   highStockReducer,
@@ -13,5 +14,6 @@ export default combineReducers({
   switchTypeReducer,
   sliderReducer,
   errorHandlerReducer,
-  heroesReducer
+  heroesReducer,
+  matchesReducer
 });

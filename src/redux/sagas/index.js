@@ -6,6 +6,7 @@ import switchTypeSagaWatcher from './switchTypeSaga/switchTypeSagaWatcher';
 import sliderSagaWatcher from './sliderSaga/sliderSagaWatcher';
 import errorHandlerWatcher from './errorHandlerSaga/errorHandlerWatcher';
 import heroesSagaWatcher from './heroesSaga/heroesSagaWatcher';
+import matchesSagaWatcher from './matchesSaga/matchesSagaWatcher';
 
 export default function* rootSaga() {
   yield all([
@@ -14,6 +15,7 @@ export default function* rootSaga() {
     fork(switchTypeSagaWatcher),
     fork(sliderSagaWatcher),
     fork(errorHandlerWatcher),
-    fork(heroesSagaWatcher)
+    fork(heroesSagaWatcher),
+    fork(matchesSagaWatcher)
   ]);
 }

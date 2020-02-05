@@ -21,13 +21,6 @@ const HeroesUtils = {
     roles = [HeroesConstants.CARRY];
     return _.filter(data, (hero) => hero.roles.some(heroRole => roles.every(role => role === heroRole)));
   },
-
-  modifyDataForPieChartFormat: (data) => {
-    return _.map(data, (el, key) => ({
-      name: key,
-      y: el
-    }))
-  }
 };
 
 module.exports = HeroesUtils;

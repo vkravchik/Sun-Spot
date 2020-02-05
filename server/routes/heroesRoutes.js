@@ -1,7 +1,8 @@
-const HeroesUtils = require("../utils/heroesUtils");
-
 const router = require('express').Router();
 const _ = require('lodash');
+
+const HeroesUtils = require("../utils/heroesUtils");
+const HelpfulUtils = require("../utils/helpfulUtils");
 const heroesList = require('../dataset/heroes');
 
 router.get('/', (req, res) => {
@@ -10,7 +11,7 @@ router.get('/', (req, res) => {
 
 router.get('/attack_type', (req, res) => {
   res.send(
-    HeroesUtils.modifyDataForPieChartFormat(
+    HelpfulUtils.modifyDataForPieChartFormat(
       HeroesUtils.calculateHeroesByAttackType(heroesList)
     )
   )
@@ -18,7 +19,7 @@ router.get('/attack_type', (req, res) => {
 
 router.get('/primary_attr', (req, res) => {
   res.send(
-    HeroesUtils.modifyDataForPieChartFormat(
+    HelpfulUtils.modifyDataForPieChartFormat(
       HeroesUtils.calculateHeroesByPrimaryAttr(heroesList)
     )
   )
