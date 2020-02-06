@@ -10,6 +10,7 @@ import 'antd/dist/antd.css';
 import './App.scss';
 import PieChartContainer from './containers/PieChartContainer';
 import ScatterPlotContainer from './containers/ScatterPlotContainer';
+import DataTableContainer from './containers/DataTableContainer';
 
 const App = (props) => {
   const { errorHandlerProps: { error } } = props;
@@ -20,7 +21,7 @@ const App = (props) => {
         <NavMenu />
 
         <Route exact path="/">
-          In progress
+          <DataTableContainer />
         </Route>
 
         <Route exact path="/pie">

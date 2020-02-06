@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 
 import { getFbToTime } from '../redux/actions/matchesActions';
 import ScatterPlot from '../components/ScatterPlot';
-import PieChart from "../components/PieChart";
-import Loading from "../components/Loading";
+import Loading from '../components/Loading';
 
 const ScatterPlotContainer = (props) => {
   const {

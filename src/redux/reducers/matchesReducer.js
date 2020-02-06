@@ -1,9 +1,17 @@
-import { MATCHES_FB_TO_TIME_FETCH, MATCHES_FB_TO_TIME_FETCH_SUCCESS } from '../../common/constants/matchesConstants';
+import {
+  MATCHES_DATA_FETCH,
+  MATCHES_DATA_FETCH_SUCCESS,
+  MATCHES_EXPANDED_DATA_FETCH,
+  MATCHES_EXPANDED_DATA_FETCH_SUCCESS,
+  MATCHES_FB_TO_TIME_FETCH,
+  MATCHES_FB_TO_TIME_FETCH_SUCCESS
+} from '../../common/constants/matchesConstants';
 
 const initialState = {
   isLoading: false,
   data: [],
-  ratioFbTimeToGameTime: []
+  ratioFbTimeToGameTime: [],
+  expandedData: []
 };
 
 export const matchesReducer = (state = initialState, action) => {
@@ -19,6 +27,32 @@ export const matchesReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         ratioFbTimeToGameTime: action.payload
+      };
+
+    case MATCHES_DATA_FETCH:
+      return {
+        ...state,
+        isLoading: true
+      };
+
+    case MATCHES_DATA_FETCH_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        data: action.payload
+      };
+
+    case MATCHES_EXPANDED_DATA_FETCH:
+      return {
+        ...state,
+        isLoading: true
+      };
+
+    case MATCHES_EXPANDED_DATA_FETCH_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        expandedData: action.payload
       };
 
     default:
