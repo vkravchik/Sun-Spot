@@ -22,7 +22,7 @@ router.get('/nested', (req, res) => {
     data = HelpfulUtils.createNestedObjectForTable(data, matchId)
   }
 
-  res.send(data);
+  res.send(...data);
 });
 
 router.get('/fb_to_time', (req, res) => {

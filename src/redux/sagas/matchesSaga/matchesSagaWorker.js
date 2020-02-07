@@ -27,7 +27,7 @@ export function* getDataWorker() {
 export function* getExpandedDataWorker({ payload }) {
   console.log(payload);
   try {
-    const data = yield call(getMatchesExpandedData);
+    const data = yield call(getMatchesExpandedData, payload);
 
     yield put(getExpandedMatchesListSuccess(data));
   } catch (e) {

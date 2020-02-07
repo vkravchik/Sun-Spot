@@ -14,7 +14,7 @@ const HelpfulUtils = {
     const newData = [];
     const columns = [];
 
-    Object.keys(data[0]).forEach((el) => {
+      Object.keys(data[0]).forEach((el) => {
       columns.push({
         title: el,
         dataIndex: el,
@@ -25,8 +25,17 @@ const HelpfulUtils = {
     data.forEach((el) => {
       const obj = [];
       columns.map((ele) => ele.key).forEach((key) => {
+
+        if (key === 'duration' || key === 'first_blood_time') {
+          el[key] = Number((el[key] / 60).toFixed(1))
+        }
+
+        if (key === 'radiant_win') {
+          el[key] = el[key].toString()
+        }
+
         obj.push({
-          [key]: key === 'radiant_win' ? el[key].toString() : el[key]
+          [key]: el[key]
         });
       });
 
