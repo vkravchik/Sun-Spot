@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import DataTable from '../components/DataTable';
 import { getExpandedMatchesList, getMatchesList } from '../redux/actions/matchesActions';
+import { titleCase } from "../common/utils/stringUtils";
 
 const DataTableContainer = (props) => {
   const {
@@ -21,7 +22,7 @@ const DataTableContainer = (props) => {
     if (data.length) {
       Object.keys(data[0]).forEach((el) => {
         columns.push({
-          title: el,
+          title: titleCase(el),
           dataIndex: el,
           key: el
         });
