@@ -15,7 +15,6 @@ const DataTableContainer = (props) => {
   } = props;
 
   const columns = [];
-  const newData = [];
 
   const createColumnsAndData = (data) => {
     if (data.length) {
@@ -26,17 +25,6 @@ const DataTableContainer = (props) => {
           key: el
         });
       });
-
-      data.forEach((el) => {
-        const obj = [];
-        columns.map((ele) => ele.key).forEach((key) => {
-          obj.push({
-            [key]: el[key]
-          });
-        });
-
-        newData.push(Object.assign({ key: el.match_id }, ...obj));
-      });
     }
   };
 
@@ -46,10 +34,11 @@ const DataTableContainer = (props) => {
 
   createColumnsAndData(data);
 
-
   return (
     <>
-        <DataTable />
+      <div className="container shadow-sm p-3 mb-5 bg-white rounded chart-container">
+        <DataTable columns={columns} data={data}/>
+      </div>
     </>
   );
 };
