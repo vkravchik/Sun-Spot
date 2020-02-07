@@ -14,7 +14,7 @@ const HelpfulUtils = {
     const newData = [];
     const columns = [];
 
-      Object.keys(data[0]).forEach((el) => {
+    Object.keys(data[0]).forEach((el) => {
       columns.push({
         title: el,
         dataIndex: el,

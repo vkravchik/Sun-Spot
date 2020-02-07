@@ -10,6 +10,7 @@ const DataTableContainer = (props) => {
     matchesProps: {
       isLoading,
       data,
+      nestedData,
       expandedData
     }
   } = props;
@@ -28,6 +29,10 @@ const DataTableContainer = (props) => {
     }
   };
 
+  const expandedRowRender = (row) => {
+
+  };
+
   useEffect(() => {
     getMatchesList();
   }, [getMatchesList]);
@@ -37,7 +42,10 @@ const DataTableContainer = (props) => {
   return (
     <>
       <div className="container shadow-sm p-3 mb-5 bg-white rounded chart-container">
-        <DataTable columns={columns} data={data}/>
+        <DataTable
+          columns={columns}
+          data={data}
+          expandedRowRender={expandedRowRender} />
       </div>
     </>
   );

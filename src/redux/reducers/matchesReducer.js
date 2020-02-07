@@ -11,6 +11,7 @@ const initialState = {
   isLoading: false,
   data: [],
   ratioFbTimeToGameTime: [],
+  nestedData: [],
   expandedData: []
 };
 
@@ -52,7 +53,7 @@ export const matchesReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        expandedData: action.payload
+        nestedData: action.payload
       };
 
     default:
