@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import DataTable from '../components/DataTable';
 import { getExpandedMatchesList, getMatchesList } from '../redux/actions/matchesActions';
-import { titleCase } from "../common/utils/stringUtils";
+import { titleCase } from '../common/utils/stringUtils';
 
 const DataTableContainer = (props) => {
   const {
@@ -16,29 +16,47 @@ const DataTableContainer = (props) => {
     }
   } = props;
 
-  const columns = [];
+  const createColumns = (data) => {
+    const tempColumns = [];
 
-  const createColumnsAndData = (data) => {
     if (data.length) {
       Object.keys(data[0]).forEach((el) => {
-        columns.push({
+        tempColumns.push({
           title: titleCase(el),
           dataIndex: el,
           key: el
         });
       });
     }
+
+    return tempColumns;
   };
 
   const expandedRowRender = (row) => {
+    if (!expandedData.length) {
+      //  Dispatch push method. Something like that ->
+      // expandedData.push(row.key);
+    }
 
+    if (expandedData.some((el) => el === row.key)) {
+      //  Dispatch remove method. Something like that ->
+      // expandedData.splice(expandedData.indexOf(row.key), 1);
+
+    } else {
+      //  Dispatch push method. Something like that ->
+      // expandedData.push(row.key);
+    }
+
+    // TODO: Check is exist object with this key in nestedData and remove or add
+
+    console.log(expandedData);
   };
 
   useEffect(() => {
     getMatchesList();
   }, [getMatchesList]);
 
-  createColumnsAndData(data);
+  const columns = createColumns(data);
 
   return (
     <>

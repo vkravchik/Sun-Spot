@@ -11,7 +11,7 @@ const initialState = {
   isLoading: false,
   data: [],
   ratioFbTimeToGameTime: [],
-  nestedData: [],
+  nestedData: {},
   expandedData: []
 };
 
