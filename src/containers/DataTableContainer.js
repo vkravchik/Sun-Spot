@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+
+import Loading from '../components/Loading';
 import DataTable from '../components/DataTable';
-import { getExpandedMatchesList, getMatchesList } from '../redux/actions/matchesActions';
 import { titleCase } from '../common/utils/stringUtils';
+import { getExpandedMatchesList, getMatchesList } from '../redux/actions/matchesActions';
 
 const DataTableContainer = (props) => {
   const {
@@ -47,7 +49,7 @@ const DataTableContainer = (props) => {
       // expandedData.push(row.key);
     }
 
-    // TODO: Check is exist object with this key in nestedData and remove or add
+    // TODO: Check is exist object with this key in nestedData and add this
 
     console.log(expandedData);
   };
@@ -61,10 +63,11 @@ const DataTableContainer = (props) => {
   return (
     <>
       <div className="container shadow-sm p-3 mb-5 bg-white rounded chart-container">
-        <DataTable
+        { isLoading && <Loading/> }
+        { !isLoading && <DataTable
           columns={columns}
           data={data}
-          expandedRowRender={expandedRowRender} />
+          expandedRowRender={expandedRowRender} /> }
       </div>
     </>
   );
