@@ -53,16 +53,18 @@ const HelpfulUtils = {
 
     const heroes = _.map(require('../dataset/heroes'), (el) => _.omit(el, 'legs'));
 
-    players = _.map(_.flatten(players), (el, key) => ({
-      key: el.player_slot,
-      hero_id: el.hero_id,
-      kills: el.kills,
-      deaths: el.deaths,
-      assists: el.assists,
-      gold_per_min: el.gold_per_min,
-      xp_per_min: el.xp_per_min,
-      isRadiant: el.isRadiant.toString()
-    }));
+    players = _.map(_.flatten(players), (player) => {
+      return ({
+        key: player.player_slot,
+        hero_id: _.find(heroes, (hero) => hero.id === player.hero_id).localized_name,
+        kills: player.kills,
+        deaths: player.deaths,
+        assists: player.assists,
+        gold_per_min: player.gold_per_min,
+        xp_per_min: player.xp_per_min,
+        isRadiant: player.isRadiant.toString()
+      })
+    });
 
     return _.flatten(players)
 
