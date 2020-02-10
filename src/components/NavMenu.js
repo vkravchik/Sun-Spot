@@ -17,7 +17,7 @@ const NavMenu = () => {
         <Layout.Header>
           <img className="logo"
                alt="logo"
-               src="./sunlogo.png"/>
+               src="./d2logo.png"/>
           <Menu
             theme="dark"
             mode="horizontal"
