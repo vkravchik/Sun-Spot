@@ -6,8 +6,9 @@ import NavMenu from './components/NavMenu';
 import Error from './components/Error';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'antd/dist/antd.css';
+import 'antd/dist/antd.less';
 import './App.scss';
+
 import PieChartContainer from './containers/PieChartContainer';
 import ScatterPlotContainer from './containers/ScatterPlotContainer';
 import DataTableContainer from './containers/DataTableContainer';

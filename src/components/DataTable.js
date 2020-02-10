@@ -10,7 +10,6 @@ const DataTable = (props) => {
   return (
     <>
         <Table
-            className="components-table-demo-nested"
             pagination={pagination}
             columns={columns}
             expandedRowRender={expandedRowRender}

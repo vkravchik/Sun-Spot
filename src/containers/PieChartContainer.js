@@ -35,7 +35,7 @@ const PieChartContainer = (props) => {
 
   return (
     <>
-      <div className="container shadow-sm p-3 mb-5 bg-white rounded chart-container">
+      <div className="container shadow-sm p-3 mb-5 bg-transparent rounded chart-container">
         { isLoading && <Loading/> }
         { !isLoading && contentRender()}
       </div>
