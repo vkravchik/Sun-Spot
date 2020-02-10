@@ -35,7 +35,7 @@ const NavMenu = () => {
               </Link>
             </Menu.Item>
             <Menu.Item key="3">
-              <Link to="/depth">
+              <Link to="/scatter">
                 Scatter Plot
               </Link>
             </Menu.Item>
