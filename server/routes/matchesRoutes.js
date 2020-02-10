@@ -19,10 +19,11 @@ router.get('/nested', (req, res) => {
   if (!_.isEmpty(req.query)) {
     const { matchId } = req.query;
 
-    data = HelpfulUtils.createNestedObjectForTable(data, matchId)
-  }
+    data = HelpfulUtils.createNestedObjectForTable(data, matchId);
 
-  res.send(...data);
+    res.send({[matchId]: data});
+  }
+  res.status(405).send();
 });
 
 router.get('/fb_to_time', (req, res) => {

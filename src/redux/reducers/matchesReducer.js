@@ -1,7 +1,7 @@
 import {
+  FINISH_SET_NESTED_OBJECT,
   MATCHES_DATA_FETCH,
   MATCHES_DATA_FETCH_SUCCESS,
-  MATCHES_EXPANDED_DATA_FETCH,
   MATCHES_EXPANDED_DATA_FETCH_SUCCESS,
   MATCHES_FB_TO_TIME_FETCH,
   MATCHES_FB_TO_TIME_FETCH_SUCCESS
@@ -43,17 +43,16 @@ export const matchesReducer = (state = initialState, action) => {
         data: action.payload
       };
 
-    case MATCHES_EXPANDED_DATA_FETCH:
-      return {
-        ...state,
-        isLoading: true
-      };
-
     case MATCHES_EXPANDED_DATA_FETCH_SUCCESS:
       return {
         ...state,
-        isLoading: false,
-        nestedData: action.payload
+        nestedData: Object.assign(state.nestedData, action.payload)
+      };
+
+    case FINISH_SET_NESTED_OBJECT:
+      return {
+        ...state,
+        expandedData: [...state.expandedData, action.payload]
       };
 
     default:

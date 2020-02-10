@@ -1,15 +1,17 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
+import { Table } from 'antd';
 import Loading from '../components/Loading';
 import DataTable from '../components/DataTable';
-import { titleCase } from '../common/utils/stringUtils';
-import { getExpandedMatchesList, getMatchesList } from '../redux/actions/matchesActions';
+import { startShowExpandedRow, getExpandedMatchesList, getMatchesList } from '../redux/actions/matchesActions';
+import { COLUMNS, NESTED_COLUMNS } from '../common/constants/tableConstants';
 
 const DataTableContainer = (props) => {
   const {
     getMatchesList,
     getExpandedMatchesList,
+    startShowExpandedRow,
     matchesProps: {
       isLoading,
       data,
@@ -18,47 +20,24 @@ const DataTableContainer = (props) => {
     }
   } = props;
 
-  const createColumns = (data) => {
-    const tempColumns = [];
-
-    if (data.length) {
-      Object.keys(data[0]).forEach((el) => {
-        tempColumns.push({
-          title: titleCase(el),
-          dataIndex: el,
-          key: el
-        });
-      });
-    }
-
-    return tempColumns;
-  };
+  const columns = COLUMNS;
+  const nestedColumns = NESTED_COLUMNS;
 
   const expandedRowRender = (row) => {
-    if (!expandedData.length) {
-      //  Dispatch push method. Something like that ->
-      // expandedData.push(row.key);
-    }
-
+    // eslint-disable-next-line no-empty
     if (expandedData.some((el) => el === row.key)) {
-      //  Dispatch remove method. Something like that ->
-      // expandedData.splice(expandedData.indexOf(row.key), 1);
-
     } else {
-      //  Dispatch push method. Something like that ->
-      // expandedData.push(row.key);
+      startShowExpandedRow(row.key);
+      getExpandedMatchesList(row.key);
     }
 
-    // TODO: Check is exist object with this key in nestedData and add this
-
-    console.log(expandedData);
+    return <Table columns={nestedColumns} dataSource={nestedData[row.key]} pagination={false} />;
   };
 
   useEffect(() => {
     getMatchesList();
   }, [getMatchesList]);
 
-  const columns = createColumns(data);
 
   return (
     <>
@@ -79,5 +58,6 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, {
   getMatchesList,
-  getExpandedMatchesList
+  getExpandedMatchesList,
+  startShowExpandedRow
 })(DataTableContainer);

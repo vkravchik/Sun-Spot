@@ -15,7 +15,7 @@ const ScatterPlotContainer = () => {
 
   useEffect(() => {
     dispatch(getFbToTime());
-  }, [getFbToTime]);
+  }, []);
 
   const contentRender = () => (
     <ScatterPlot data={ratioFbTimeToGameTime} title={fbTitle}/>

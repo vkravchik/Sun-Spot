@@ -2,7 +2,12 @@ import { call, put } from 'redux-saga/effects';
 
 import { dispatchError } from '../../actions/errorHandlerActions';
 import { getFbToTime, getMatchesData, getMatchesExpandedData } from '../../services/matchesService';
-import { getExpandedMatchesListSuccess, getFbToTimeSuccess, getMatchesListSuccess } from '../../actions/matchesActions';
+import {
+  stopShowExpandedRow,
+  getExpandedMatchesListSuccess,
+  getFbToTimeSuccess,
+  getMatchesListSuccess
+} from '../../actions/matchesActions';
 
 export function* fbToTimeWorker() {
   try {
@@ -32,4 +37,8 @@ export function* getExpandedDataWorker({ payload }) {
   } catch (e) {
     yield put(dispatchError(e));
   }
+}
+
+export function* setNestedObjectWorker({ payload }) {
+  yield put(stopShowExpandedRow(payload));
 }

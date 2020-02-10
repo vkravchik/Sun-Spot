@@ -53,9 +53,18 @@ const HelpfulUtils = {
 
     const heroes = _.map(require('../dataset/heroes'), (el) => _.omit(el, 'legs'));
 
-    // create related object by hero_id
+    players = _.map(_.flatten(players), (el, key) => ({
+      key: el.player_slot,
+      hero_id: el.hero_id,
+      kills: el.kills,
+      deaths: el.deaths,
+      assists: el.assists,
+      gold_per_min: el.gold_per_min,
+      xp_per_min: el.xp_per_min,
+      isRadiant: el.isRadiant.toString()
+    }));
 
-    return players
+    return _.flatten(players)
 
   }
 };
