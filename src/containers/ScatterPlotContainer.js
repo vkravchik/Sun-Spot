@@ -1,22 +1,20 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { getFbToTime } from '../redux/actions/matchesActions';
 import ScatterPlot from '../components/ScatterPlot';
 import Loading from '../components/Loading';
 
-const ScatterPlotContainer = (props) => {
-  const {
-    getFbToTime,
-    matchesProps: {
-      isLoading,
-      ratioFbTimeToGameTime
-    }
-  } = props;
+const ScatterPlotContainer = () => {
+  const dispatch = useDispatch();
+
+  const isLoading = useSelector((state) => state.matchesReducer.isLoading);
+  const ratioFbTimeToGameTime = useSelector((state) => state.matchesReducer.ratioFbTimeToGameTime);
+
   const fbTitle = 'First Blood';
 
   useEffect(() => {
-    getFbToTime();
+    dispatch(getFbToTime());
   }, [getFbToTime]);
 
   const contentRender = () => (
@@ -33,10 +31,4 @@ const ScatterPlotContainer = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  matchesProps: state.matchesReducer
-});
-
-export default connect(mapStateToProps, {
-  getFbToTime
-})(ScatterPlotContainer);
+export default ScatterPlotContainer;
