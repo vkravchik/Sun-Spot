@@ -28,7 +28,7 @@ const App = (props) => {
           <PieChartContainer />
         </Route>
 
-        <Route exact path="/depth">
+        <Route exact path="/scatter">
           <ScatterPlotContainer />
         </Route>
       </Router>
