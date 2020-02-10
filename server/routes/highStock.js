@@ -5,8 +5,8 @@ const _ = require('lodash');
 router.get('/', (req, res) => {
   let json = require('../dataset/custom_sunspot_data_min');
 
-  const start_date = req.query.start_date || 1999;
-  const finish_date = req.query.finish_date || 2010;
+  const start_date = req.query.startDate || 1999;
+  const finish_date = req.query.finishDate || 2010;
 
   const data = [];
 
@@ -47,6 +47,13 @@ router.get('/config', (req, res) => {
   };
 
   res.send(data)
+});
+
+router.get('/error', (req, res) => {
+  res.status(500).send('Chart Error')
+});
+router.get('/config/error', (req, res) => {
+  res.status(500).send('Config Error')
 });
 
 module.exports = router;

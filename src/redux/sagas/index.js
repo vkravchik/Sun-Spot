@@ -4,12 +4,14 @@ import pieSagaWatcher from './pieSaga/pieSagaWatcher';
 import highStockSagaWatcher from './highStockSaga/highStockSagaWatcher';
 import switchTypeSagaWatcher from './switchTypeSaga/switchTypeSagaWatcher';
 import sliderSagaWatcher from './sliderSaga/sliderSagaWatcher';
+import errorHandlerWatcher from './errorHandlerSaga/errorHandlerWatcher';
 
 export default function* rootSaga() {
   yield all([
     fork(highStockSagaWatcher),
     fork(pieSagaWatcher),
     fork(switchTypeSagaWatcher),
-    fork(sliderSagaWatcher)
+    fork(sliderSagaWatcher),
+    fork(errorHandlerWatcher),
   ]);
 }

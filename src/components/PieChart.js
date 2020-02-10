@@ -2,13 +2,13 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import ReactHighcharts from 'react-highcharts';
 
+import Loading from './Loading';
 import { getPieData } from '../redux/actions/pieActions';
-import Error from './Error';
 
 const PieChart = (props) => {
   const { getPieData } = props;
   const {
-    pieProps: { isLoading, data, error },
+    pieProps: { isLoading, data },
     sliderProps: {
       initialConfig: { defaultStart, defaultFinish }
     }
@@ -60,7 +60,7 @@ const PieChart = (props) => {
   };
 
   return (
-    error ? <Error error={error} /> : <ReactHighcharts config={config} />
+    isLoading ? <Loading/> : <ReactHighcharts config={config} />
   );
 };
 

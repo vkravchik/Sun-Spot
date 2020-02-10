@@ -1,13 +1,11 @@
 import {
   HIGH_STOCK_DATA_FETCH,
-  HIGH_STOCK_DATA_FETCH_ERROR,
   HIGH_STOCK_DATA_FETCH_SUCCESS
 } from '../../common/constants/highStockConstants';
 
 const initialState = {
   isLoading: false,
-  data: [],
-  error: null
+  data: []
 };
 
 export const highStockReducer = (state = initialState, action) => {
@@ -29,13 +27,6 @@ export const highStockReducer = (state = initialState, action) => {
         isLoading: false,
         data: action.payload,
         error: null
-      };
-
-    case HIGH_STOCK_DATA_FETCH_ERROR:
-      return {
-        ...state,
-        isLoading: false,
-        error: action.payload
       };
 
     default:

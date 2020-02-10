@@ -4,8 +4,8 @@ const _ = require('lodash');
 router.get('/', (req, res) => {
   let json = require('../dataset/mapped_pie_data');
 
-  const start_date = req.query.start_date || 1999;
-  const finish_date = req.query.finish_date || 2010;
+  const start_date = req.query.startDate || 1999;
+  const finish_date = req.query.finishDate || 2010;
 
   // TODO: Condition for range < 10 years
 

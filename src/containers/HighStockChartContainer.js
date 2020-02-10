@@ -14,8 +14,7 @@ const HighStockChartContainer = (props) => {
     getSliderConfigData,
     getHighStockData,
     setSliderConfigData,
-    sliderProps: { initialConfig },
-    highStockProps: { data, error }
+    sliderProps: { initialConfig }
   } = props;
 
   useEffect(() => {
@@ -25,8 +24,7 @@ const HighStockChartContainer = (props) => {
   const onAfterChange = (value = []) => {
     const dateMap = {};
 
-    dateMap['start_date'] = value[0];
-    dateMap['finish_date'] = value[1];
+    [dateMap.startDate, dateMap.finishDate] = value;
 
     setSliderConfigData(dateMap);
     getHighStockData(dateMap);
@@ -40,19 +38,11 @@ const HighStockChartContainer = (props) => {
   );
 
   return (
-    <div>
-      {
-        data && !error && renderChart()
-      }
-      {
-        error && error.toString()
-      }
-    </div>
+    renderChart()
   );
 };
 
 const mapStateToProps = (state) => ({
-  highStockProps: state.highStockReducer,
   sliderProps: state.sliderReducer
 });
 

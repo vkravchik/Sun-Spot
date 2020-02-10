@@ -3,21 +3,21 @@ import { connect } from 'react-redux';
 import { Switch } from 'antd';
 
 import { toggleChartTypeStart } from '../redux/actions/switchTypeActions';
+import { CHART_TYPE_AREA, CHART_TYPE_COLUMN } from '../common/constants/switchTypeConstants';
 
 const SwitchType = (props) => {
   const { toggleChartTypeStart } = props;
   const { title } = props;
 
   const onChange = (value) => {
-    value ? toggleChartTypeStart('area') : toggleChartTypeStart('column');
+    value ? toggleChartTypeStart(CHART_TYPE_AREA) : toggleChartTypeStart(CHART_TYPE_COLUMN);
   };
 
   return (
     <div className="row">
-      <div className="col-md-6">
+      <div className="col-md-6 row-switch">
         {title}
         <Switch
-          className="row-switch"
           checkedChildren="A"
           unCheckedChildren="C"
           defaultChecked
