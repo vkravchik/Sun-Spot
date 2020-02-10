@@ -1,6 +1,9 @@
-import { GET_PIE_REQUEST } from "../../common/constants/pieConstants";
+import { createAction } from 'redux-actions';
 
-export const getPieAction = (payload) => ({
-  type: GET_PIE_REQUEST,
-  payload
-});
+import {
+  GET_PIE_DATA_FETCH,
+  GET_PIE_DATA_FETCH_SUCCESS
+} from '../../common/constants/pieConstants';
+
+export const getPieData = createAction(GET_PIE_DATA_FETCH);
+export const getPieDataSuccess = createAction(GET_PIE_DATA_FETCH_SUCCESS);

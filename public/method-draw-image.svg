@@ -14,9 +14,17 @@
   <ellipse ry="108" rx="108" id="svg_3" cy="199.953125" cx="200" stroke-opacity="null" stroke-width="0.1" stroke="#000" fill="#67717f"/>
   <ellipse ry="98" rx="98" id="svg_4" cy="200" cx="200" stroke-opacity="null" stroke-width="0.1" stroke="#000" fill="#da803a"/>
   <ellipse ry="78" rx="78" id="svg_5" cy="200" cx="200" stroke-opacity="null" stroke-width="0.1" stroke="#000" fill="#f4b21c"/>
-  <ellipse opacity="0.85" ry="15" rx="15" id="svg_6" cy="110" cx="80" stroke-opacity="null" stroke-width="0.1" stroke="#000" fill="#f4b21c"/>
-  <ellipse opacity="0.85" ry="15" rx="15" id="svg_7" cy="80" cx="280" stroke-opacity="null" stroke-width="0.1" stroke="#000" fill="#1c923c"/>
-  <ellipse opacity="0.85" ry="15" rx="15" id="svg_8" cy="310" cx="295" stroke-opacity="null" stroke-width="0.1" stroke="#000" fill="#e6257b"/>
-  <ellipse opacity="0.85" ry="15" rx="15" id="svg_9" cy="280" cx="75" stroke-opacity="null" stroke-width="0.1" stroke="#000" fill="#49aae6"/>
+  <ellipse opacity="0.85" ry="15" rx="15" id="yellow" cy="110" cx="80" stroke-opacity="null" stroke-width="0.1" stroke="#000" fill="#f4b21c">
+   <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 200 200" to="360 200 200" dur="3s" repeatCount="indefinite"/>
+  </ellipse>
+  <ellipse opacity="0.85" ry="15" rx="15" id="svg_7" cy="80" cx="280" stroke-opacity="null" stroke-width="0.1" stroke="#000" fill="#1c923c">
+   <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 200 200" to="360 200 200" dur="3s" repeatCount="indefinite"/>
+  </ellipse>
+  <ellipse opacity="0.85" ry="15" rx="15" id="svg_8" cy="310" cx="295" stroke-opacity="null" stroke-width="0.1" stroke="#000" fill="#e6257b">
+   <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 200 200" to="360 200 200" dur="3s" repeatCount="indefinite"/>
+  </ellipse>
+  <ellipse opacity="0.85" ry="15" rx="15" id="svg_9" cy="280" cx="75" stroke-opacity="null" stroke-width="0.1" stroke="#000" fill="#49aae6">
+   <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 200 200" to="360 200 200" dur="3s" repeatCount="indefinite"/>
+  </ellipse>
  </g>
 </svg>

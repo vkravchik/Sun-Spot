@@ -1,39 +1,21 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import ReactHighcharts from "react-highcharts/";
-
-import { getPieAction } from "../redux/actions/pieActions";
+import React from 'react';
+import ReactHighcharts from 'react-highcharts';
 
 const PieChart = (props) => {
-  const {getPieAction} = props;
-  const {isLoading, data} = props.pieProps;
-  const {initialConfig: {defaultStart, defaultFinish}} = props.sliderProps;
-
-
-  useEffect(() => {
-    getPieAction();
-  }, [getPieAction]);
+  const { data, title } = props;
 
   const config = {
     chart: {
-      events: {
-        load: function () {
-          this.showLoading();
-          if (!isLoading) {
-            this.hideLoading();
-          }
-        }
-      },
       plotBackgroundColor: null,
       plotBorderWidth: null,
       plotShadow: false,
       type: 'pie'
     },
     title: {
-      text: `Observations since ${defaultStart} to ${defaultFinish}`
+      text: title
     },
     tooltip: {
-      pointFormat: `{series.name}:<b>{point.percentage:.1f}%</b>`
+      pointFormat: '{series.name}:<b>{point.y}({point.percentage:.1f}%)</b>'
     },
     plotOptions: {
       pie: {
@@ -46,26 +28,15 @@ const PieChart = (props) => {
       }
     },
     series: [{
-      name: 'Observations',
+      name: title,
       colorByPoint: true,
-      data: data,
+      data
     }]
   };
 
   return (
-    <>
-      <ReactHighcharts config={config}/>
-    </>
-  )
+    <ReactHighcharts config={config} />
+  );
 };
 
-const mapStateToProps = (props) => ({
-  pieProps: props.pieReducer,
-  sliderProps: props.sliderReducer
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  getPieAction: () => dispatch(getPieAction())
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(PieChart)
+export default PieChart;

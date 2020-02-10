@@ -1,16 +1,12 @@
+import { createAction } from 'redux-actions';
+
 import {
-  GET_HIGH_STOCK_CONFIG_REQUEST,
-  SET_HIGH_STOCK_CONFIG_REQUEST
-} from "../../common/constants/highStockConstants";
+  HIGH_STOCK_CONFIG_FETCH,
+  HIGH_STOCK_CONFIG_FETCH_SUCCESS,
+  HIGH_STOCK_CONFIG_SET
+} from '../../common/constants/highStockConstants';
 
-export const getSliderConfigAction = (payload) => ({
-  type: GET_HIGH_STOCK_CONFIG_REQUEST,
-  payload
-});
+export const getSliderConfigData = createAction(HIGH_STOCK_CONFIG_FETCH);
+export const getSliderConfigDataSuccess = createAction(HIGH_STOCK_CONFIG_FETCH_SUCCESS);
 
-export const setSliderConfigAction = (payload) => {
-  return {
-    type: SET_HIGH_STOCK_CONFIG_REQUEST,
-    payload
-  }
-};
+export const setSliderConfigData = createAction(HIGH_STOCK_CONFIG_SET);

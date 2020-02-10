@@ -1,13 +1,19 @@
 import { combineReducers } from 'redux';
 
-import { pieReducer } from "./pieReducer";
+import { pieReducer } from './pieReducer';
 import { highStockReducer } from './highStockReducer';
-import { switchTypeReducer } from "./switchTypeReducer";
-import { sliderReducer } from "./sliderReducer";
+import { switchTypeReducer } from './switchTypeReducer';
+import { sliderReducer } from './sliderReducer';
+import { errorHandlerReducer } from './errorHandlerReducer';
+import { heroesReducer } from './heroesReducer';
+import { matchesReducer } from './matchesReducer';
 
 export default combineReducers({
-  highStockReducer: highStockReducer,
-  pieReducer: pieReducer,
-  switchTypeReducer: switchTypeReducer,
-  sliderReducer: sliderReducer,
-})
+  highStockReducer,
+  pieReducer,
+  switchTypeReducer,
+  sliderReducer,
+  errorHandlerReducer,
+  heroesReducer,
+  matchesReducer
+});

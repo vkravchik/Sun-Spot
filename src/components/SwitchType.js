@@ -1,38 +1,36 @@
-import { connect } from "react-redux";
-import { Switch } from "antd";
-import React from "react";
+import React from 'react';
+import { connect } from 'react-redux';
+import { Switch } from 'antd';
 
-import { toggleChartTypeAction } from "../redux/actions/switchTypeActions";
+import { toggleChartTypeStart } from '../redux/actions/switchTypeActions';
+import { CHART_TYPE_AREA, CHART_TYPE_COLUMN } from '../common/constants/switchTypeConstants';
 
 const SwitchType = (props) => {
-  const {toggleChartTypeAction} = props;
-  const {title} = props;
+  const { toggleChartTypeStart } = props;
+  const { title } = props;
 
   const onChange = (value) => {
-    value ? toggleChartTypeAction('area') : toggleChartTypeAction('column')
+    value ? toggleChartTypeStart(CHART_TYPE_AREA) : toggleChartTypeStart(CHART_TYPE_COLUMN);
   };
 
   return (
     <div className="row">
-      <div className="col-md-6">
+      <div className="col-md-6 row-switch">
         {title}
         <Switch
-          className='row-switch'
           checkedChildren="A"
           unCheckedChildren="C"
           defaultChecked
-          onChange={onChange}/>
+          onChange={onChange} />
       </div>
     </div>
-  )
+  );
 };
 
 const mapStateToProps = (state, ownProps) => ({
   title: ownProps.title
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  toggleChartTypeAction: (type) => dispatch(toggleChartTypeAction(type)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(SwitchType)
+export default connect(mapStateToProps, {
+  toggleChartTypeStart
+})(SwitchType);

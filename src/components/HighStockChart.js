@@ -1,27 +1,29 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import ReactHighCharts from "react-highcharts/ReactHighstock";
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import ReactHighCharts from 'react-highcharts/ReactHighstock';
 
-import { getHighStockAction } from "../redux/actions/highStockActions";
-import SwitchType from "./SwitchType";
+import { getHighStockData } from '../redux/actions/highStockActions';
+import SwitchType from './SwitchType';
 
 const HighStockChart = (props) => {
-  const { getHighStockAction } = props;
-  const { highStockType, highStockProps } = props;
-  const { isLoading, data } = highStockProps;
+  const { getHighStockData } = props;
+  const { highStockChartType, highStockProps: { isLoading, data } } = props;
 
   const title = 'Switch Chart Type';
 
   useEffect(() => {
-    getHighStockAction();
-  }, [getHighStockAction]);
+    getHighStockData();
+  }, [getHighStockData]);
 
   const config = {
     chart: {
       events: {
-        load: function () {
+        load() {
+          // eslint-disable-next-line react/no-this-in-sfc
           this.showLoading();
+
           if (!isLoading) {
+            // eslint-disable-next-line react/no-this-in-sfc
             this.hideLoading();
           }
         }
@@ -35,13 +37,13 @@ const HighStockChart = (props) => {
       text: 'Sunspot Frequency Chart'
     },
     series: [{
-      type: highStockType,
+      type: highStockChartType,
       name: 'Sunspot amount',
       fillOpacity: 0.1,
-      data: data,
+      data,
       tooltip: {
         valueDecimals: 2
-      },
+      }
     }]
   };
 
@@ -50,16 +52,14 @@ const HighStockChart = (props) => {
       <ReactHighCharts config={config}/>
       <SwitchType title={title}/>
     </>
-  )
+  );
 };
 
 const mapStateToProps = (state) => ({
   highStockProps: state.highStockReducer,
-  highStockType: state.switchTypeReducer.highStockType,
+  highStockChartType: state.switchTypeReducer.highStockChartType
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  getHighStockAction: () => dispatch(getHighStockAction()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(HighStockChart)
+export default connect(mapStateToProps, {
+  getHighStockData
+})(HighStockChart);

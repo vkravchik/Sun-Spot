@@ -1,56 +1,47 @@
 import {
-  GET_HIGH_STOCK_CONFIG_REQUEST, GET_HIGH_STOCK_CONFIG_REQUEST_ERROR,
-  GET_HIGH_STOCK_CONFIG_REQUEST_SUCCESS, SET_HIGH_STOCK_CONFIG_REQUEST
-} from "../../common/constants/highStockConstants";
+  HIGH_STOCK_CONFIG_FETCH, HIGH_STOCK_CONFIG_FETCH_SUCCESS, HIGH_STOCK_CONFIG_SET
+} from '../../common/constants/highStockConstants';
 
 const initialState = {
+  error: null,
   isLoading: false,
   initialConfig: {
     min: null,
     max: null,
     defaultStart: null,
     defaultFinish: null
-  },
-  error: null,
+  }
 };
 
 export const sliderReducer = (state = initialState, action) => {
   switch (action.type) {
-
-    case GET_HIGH_STOCK_CONFIG_REQUEST:
+    case HIGH_STOCK_CONFIG_FETCH:
       return {
         ...state,
         isLoading: true
       };
 
-    case SET_HIGH_STOCK_CONFIG_REQUEST:
+    case HIGH_STOCK_CONFIG_SET:
       return {
         ...state,
         initialConfig: {
           ...state.initialConfig,
-          defaultStart: action.payload?.start_date || null,
-          defaultFinish: action.payload?.finish_date || null,
+          defaultStart: action.payload?.startDate || null,
+          defaultFinish: action.payload?.finishDate || null
         }
       };
 
-    case GET_HIGH_STOCK_CONFIG_REQUEST_SUCCESS:
+    case HIGH_STOCK_CONFIG_FETCH_SUCCESS:
       return {
         ...state,
         isLoading: false,
-        initialConfig: action.payload,
-        error: null
+        initialConfig: action.payload
       };
 
-    case GET_HIGH_STOCK_CONFIG_REQUEST_ERROR:
-      return {
-        ...state,
-        isLoading: false,
-        error: action.payload
-      };
     default: {
       return {
         ...state
-      }
+      };
     }
   }
 };
