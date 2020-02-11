@@ -9,8 +9,10 @@ const MyChartContainer = () => {
 
   return (
     <>
-      <SearchForm/>
-      <Mychart data={data}/>
+      <div className="container shadow-sm p-3 mb-5 bg-white rounded chart-container">
+        <SearchForm/>
+        <Mychart data={data}/>
+      </div>
     </>
   );
 };

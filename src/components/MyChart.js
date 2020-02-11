@@ -11,11 +11,7 @@ const Mychart = (props) => {
     },
 
     title: {
-      text: 'Highcharts responsive chart'
-    },
-
-    subtitle: {
-      text: 'Resize the frame or click buttons to change appearance'
+      text: ''
     },
 
     legend: {
