@@ -39,6 +39,11 @@ const NavMenu = () => {
                 Scatter Plot
               </Link>
             </Menu.Item>
+            <Menu.Item key="4">
+              <Link to="/custom-chart">
+                Create Chart
+              </Link>
+            </Menu.Item>
           </Menu>
         </Layout.Header>
       </Layout>
