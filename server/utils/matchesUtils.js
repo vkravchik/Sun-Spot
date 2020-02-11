@@ -13,6 +13,12 @@ const MatchesUtils = {
     )
   },
 
+
+  GPM: (data) => {
+    return _.map(data['players'], (el) => {
+
+    })
+  }
 };
 
 module.exports = MatchesUtils;

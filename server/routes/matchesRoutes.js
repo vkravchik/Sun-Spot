@@ -30,4 +30,19 @@ router.get('/fb_to_time', (req, res) => {
   res.send(MatchesUtils.ratioOfGameTimeToFirstBloodTime(matchList));
 });
 
+router.get('/custom', (req, res) => {
+  let data = matchList;
+
+  if (!_.isEmpty(req.query)) {
+    const { matchId } = req.query;
+
+    console.log(matchId);
+
+    data = _.filter(data, (el) => el.match_id.toString() === matchId.toString());
+
+    res.send(...data);
+  }
+  res.status(405).send();
+});
+
 module.exports = router;

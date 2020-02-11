@@ -7,6 +7,7 @@ import { sliderReducer } from './sliderReducer';
 import { errorHandlerReducer } from './errorHandlerReducer';
 import { heroesReducer } from './heroesReducer';
 import { matchesReducer } from './matchesReducer';
+import { customChartReducer } from './customChartReducer';
 
 export default combineReducers({
   highStockReducer,
@@ -15,5 +16,6 @@ export default combineReducers({
   sliderReducer,
   errorHandlerReducer,
   heroesReducer,
-  matchesReducer
+  matchesReducer,
+  customChartReducer
 });
