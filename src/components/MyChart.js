@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactHighcharts from 'react-highcharts';
 
-const Mychart = (props) => {
+const MyChart = (props) => {
   const { data } = props;
 
   const config = {
@@ -42,4 +42,4 @@ const Mychart = (props) => {
   );
 };
 
-export default Mychart;
+export default MyChart;
