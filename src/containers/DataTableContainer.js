@@ -38,7 +38,6 @@ const DataTableContainer = (props) => {
     getMatchesList();
   }, [getMatchesList]);
 
-
   return (
     <>
       <div className="container shadow-sm p-3 mb-5 bg-white rounded chart-container scroll">

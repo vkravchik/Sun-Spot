@@ -11,6 +11,7 @@ import './App.scss';
 import PieChartContainer from './containers/PieChartContainer';
 import ScatterPlotContainer from './containers/ScatterPlotContainer';
 import DataTableContainer from './containers/DataTableContainer';
+import MyChartContainer from './containers/MyChartContainer';
 
 const App = (props) => {
   const { errorHandlerProps: { error } } = props;
@@ -30,6 +31,10 @@ const App = (props) => {
 
         <Route exact path="/depth">
           <ScatterPlotContainer />
+        </Route>
+
+        <Route exact path="/custom-chart">
+          <MyChartContainer />
         </Route>
       </Router>
 
