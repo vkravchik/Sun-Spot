@@ -6,50 +6,39 @@ const Mychart = (props) => {
 
   const config = {
 
+    chart: {
+      type: 'column'
+    },
+
     title: {
-      text: 'Solar Employment Growth by Sector, 2010-2016'
+      text: 'Highcharts responsive chart'
     },
 
     subtitle: {
-      text: 'Source: thesolarfoundation.com'
+      text: 'Resize the frame or click buttons to change appearance'
+    },
+
+    legend: {
+      align: 'right',
+      verticalAlign: 'middle',
+      layout: 'vertical'
+    },
+
+    xAxis: {
+      categories: ['GPM', 'XPM'],
+      labels: {
+        x: -10
+      }
     },
 
     yAxis: {
+      allowDecimals: false,
       title: {
-        text: 'Number of Employees'
-      }
-    },
-    legend: {
-      layout: 'vertical',
-      align: 'right',
-      verticalAlign: 'middle'
-    },
-
-    plotOptions: {
-      series: {
-        label: {
-          connectorAllowed: false
-        },
-        pointStart: 2010
+        text: 'Amount'
       }
     },
 
-    series: data,
-
-    responsive: {
-      rules: [{
-        condition: {
-          maxWidth: 500
-        },
-        chartOptions: {
-          legend: {
-            layout: 'horizontal',
-            align: 'center',
-            verticalAlign: 'bottom'
-          }
-        }
-      }]
-    }
+    series: data
   };
 
   return (

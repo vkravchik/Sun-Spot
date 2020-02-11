@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { Button, Form, Input } from 'antd';
+import { Form, Input } from 'antd';
 
 import { startCreateCustomChart } from '../redux/actions/customChartActions';
 
@@ -8,8 +8,7 @@ const SearchForm = (props) => {
   const { form: { getFieldDecorator } } = props;
   const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     props.form.validateFields((err, values) => {
       if (!err) {
         dispatch(startCreateCustomChart(values.matchId));
@@ -19,18 +18,13 @@ const SearchForm = (props) => {
 
   return (
     <>
-      <Form onSubmit={handleSubmit}>
+      <Form>
         <Form.Item>
           {getFieldDecorator('matchId', {
             rules: [{ required: true, message: 'Please input match ID' }]
           })(
-            <Input placeholder="Match ID" />
+            <Input.Search placeholder="Enter match ID" onSearch={handleSubmit} enterButton="Create Chart" />
           )}
-        </Form.Item>
-        <Form.Item>
-          <Button type="primary" htmlType="submit" className="login-form-button">
-            Create Chart
-          </Button>
         </Form.Item>
       </Form>
     </>

@@ -36,11 +36,9 @@ router.get('/custom', (req, res) => {
   if (!_.isEmpty(req.query)) {
     const { matchId } = req.query;
 
-    console.log(matchId);
+    data = MatchesUtils.customChart(data, matchId);
 
-    data = _.filter(data, (el) => el.match_id.toString() === matchId.toString());
-
-    res.send(...data);
+    res.send(data);
   }
   res.status(405).send();
 });
