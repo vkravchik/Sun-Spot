@@ -15,7 +15,11 @@ const SearchForm = (props) => {
   };
 
   return (
-    <form ref={formRef} onSubmit={handleSubmit}>
+    <form
+      className="searchForm"
+      ref={formRef}
+      onSubmit={handleSubmit}
+    >
       <Field
         name="matchId"
         component={renderInput}
