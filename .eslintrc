@@ -12,6 +12,7 @@
     "import/prefer-default-export": "off",
     "react/prefer-stateless-function": [2, { "ignorePureComponents": true }],
     "comma-dangle": ["error", "never"],
+    "operator-linebreak": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react/prop-types": "off",

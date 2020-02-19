@@ -1,8 +1,9 @@
 import React, { createRef } from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { Button } from 'antd';
+import { Button, Form } from 'antd';
 
 import { renderInput } from './Fields/renderInput';
+import { requiredField } from './Fields/validate';
 
 
 const SearchForm = (props) => {
@@ -15,22 +16,26 @@ const SearchForm = (props) => {
   };
 
   return (
-    <form
+    <Form
       className="searchForm"
       ref={formRef}
       onSubmit={handleSubmit}
     >
-      <Field
-        name="matchId"
-        component={renderInput}
-        type="text"
-        placeholder="Enter match ID"
-      />
+      <Form.Item>
+        <Field
+          name="matchId"
+          component={renderInput}
+          validate={[requiredField]}
+          type="text"
+          placeholder="Enter match ID"
+        />
+      </Form.Item>
       <Button type="primary" onClick={formSubmitClick}>Create</Button>
-    </form>
+    </Form>
   );
 };
 
 export default reduxForm({
-  form: 'searchForm'
+  form: 'searchForm',
+  requiredField
 })(SearchForm);
