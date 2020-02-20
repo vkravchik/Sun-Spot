@@ -1,12 +1,16 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 
 import SearchForm from '../components/SearchForm';
+import Loading from '../components/Loading';
 import MyChart from '../components/MyChart';
 import { startCreateCustomChart } from '../redux/actions/customChartActions';
 
 const MyChartContainer = () => {
-  const data = useSelector((state) => state.customChartReducer.data);
+  const { data, isLoading } = useSelector((state) => ({
+    data: state.customChartReducer.data,
+    isLoading: state.customChartReducer.isLoading
+  }), shallowEqual);
   const dispatch = useDispatch();
 
   const handleSubmit = (values) => {
@@ -17,7 +21,8 @@ const MyChartContainer = () => {
     <>
       <div className="container shadow-sm p-3 mb-5 bg-white rounded chart-container">
         <SearchForm onSubmit={handleSubmit}/>
-        <MyChart data={data}/>
+        { isLoading && <Loading/> }
+        { !isLoading && <MyChart data={data} /> }
       </div>
     </>
   );

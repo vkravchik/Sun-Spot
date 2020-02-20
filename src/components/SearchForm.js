@@ -2,7 +2,7 @@ import React, { createRef } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { Button, Form } from 'antd';
 
-import { renderInput } from './Fields/renderInput';
+import { renderAutoComplete } from './Fields/renderAutoComplete';
 import { requiredField } from './Fields/validate';
 
 
@@ -24,7 +24,7 @@ const SearchForm = (props) => {
       <Form.Item>
         <Field
           name="matchId"
-          component={renderInput}
+          component={renderAutoComplete}
           validate={[requiredField]}
           type="text"
           placeholder="Enter match ID"
