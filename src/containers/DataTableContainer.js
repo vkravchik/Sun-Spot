@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { Table } from 'antd';
-import Loading from '../components/Loading';
 import DataTable from '../components/DataTable';
 import { startShowExpandedRow, getExpandedMatchesList, getMatchesList } from '../redux/actions/matchesActions';
 import { COLUMNS, NESTED_COLUMNS } from '../common/constants/tableConstants';
