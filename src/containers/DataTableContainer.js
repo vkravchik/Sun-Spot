@@ -46,11 +46,11 @@ const DataTableContainer = (props) => {
   return (
     <>
       <div className="container shadow-sm p-3 mb-5 bg-white rounded chart-container scroll">
-        { isLoading && <Loading/> }
-        { !isLoading && <DataTable
+        <DataTable
           columns={columns}
           data={data}
-          expandedRowRender={expandedRowRender} /> }
+          loading={isLoading}
+          expandedRowRender={expandedRowRender} />
       </div>
     </>
   );
