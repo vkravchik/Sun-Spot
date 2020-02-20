@@ -9,10 +9,10 @@ export const renderInput = (props) => {
   return (
     <>
       {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-      <Input {...input} type={type} placeholder={placeholder} />
+      <Input className={meta.error && meta.touched && 'error-input'} {...input} type={type} placeholder={placeholder} />
       {
         meta.error && meta.touched &&
-        <div>
+        <div className="error">
           {meta.error}
         </div>
       }
