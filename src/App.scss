@@ -18,3 +18,21 @@
 .chart-container {
   margin-top: 12px;
 }
+
+.searchForm {
+  margin-bottom: 2em;
+
+  Button {
+    float: right;
+  }
+
+  .error {
+    color: #f5222d;
+    min-height: 22px;
+    margin-top: -8px;
+  }
+
+  .error-input {
+    border-color: #f5222d;
+  }
+}

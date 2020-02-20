@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 
+import { reducer as formReducer } from 'redux-form';
 import { pieReducer } from './pieReducer';
 import { highStockReducer } from './highStockReducer';
 import { switchTypeReducer } from './switchTypeReducer';
@@ -17,5 +18,6 @@ export default combineReducers({
   errorHandlerReducer,
   heroesReducer,
   matchesReducer,
-  customChartReducer
+  customChartReducer,
+  form: formReducer
 });
