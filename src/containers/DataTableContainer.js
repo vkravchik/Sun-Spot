@@ -14,6 +14,7 @@ const DataTableContainer = (props) => {
     startShowExpandedRow,
     matchesProps: {
       isLoading,
+      isLoadingNested,
       data,
       nestedData,
       expandedData
@@ -31,7 +32,11 @@ const DataTableContainer = (props) => {
       getExpandedMatchesList(row.key);
     }
 
-    return <Table columns={nestedColumns} dataSource={nestedData[row.key]} pagination={false} />;
+    return <Table
+      columns={nestedColumns}
+      dataSource={nestedData[row.key]}
+      pagination={false}
+      loading={isLoadingNested} />;
   };
 
   useEffect(() => {
