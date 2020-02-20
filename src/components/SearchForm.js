@@ -1,34 +1,41 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { Form, Input } from 'antd';
+import React, { createRef } from 'react';
+import { Field, reduxForm } from 'redux-form';
+import { Button, Form } from 'antd';
 
-import { startCreateCustomChart } from '../redux/actions/customChartActions';
+import { renderInput } from './Fields/renderInput';
+import { requiredField } from './Fields/validate';
+
 
 const SearchForm = (props) => {
-  const { form: { getFieldDecorator } } = props;
-  const dispatch = useDispatch();
+  const { handleSubmit } = props;
 
-  const handleSubmit = () => {
-    props.form.validateFields((err, values) => {
-      if (!err) {
-        dispatch(startCreateCustomChart(values.matchId));
-      }
-    });
+  const formRef = createRef();
+
+  const formSubmitClick = () => {
+    handleSubmit();
   };
 
   return (
-    <>
-      <Form>
-        <Form.Item>
-          {getFieldDecorator('matchId', {
-            rules: [{ required: true, message: 'Please input match ID' }]
-          })(
-            <Input.Search placeholder="Enter match ID" onSearch={handleSubmit} enterButton="Create Chart" />
-          )}
-        </Form.Item>
-      </Form>
-    </>
+    <Form
+      className="searchForm"
+      ref={formRef}
+      onSubmit={handleSubmit}
+    >
+      <Form.Item>
+        <Field
+          name="matchId"
+          component={renderInput}
+          validate={[requiredField]}
+          type="text"
+          placeholder="Enter match ID"
+        />
+      </Form.Item>
+      <Button type="primary" onClick={formSubmitClick}>Create</Button>
+    </Form>
   );
 };
 
-export default Form.create({ name: 'searchForm' })(SearchForm);
+export default reduxForm({
+  form: 'searchForm',
+  requiredField
+})(SearchForm);

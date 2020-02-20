@@ -1,7 +1,7 @@
 import {
   FINISH_SET_NESTED_OBJECT,
   MATCHES_DATA_FETCH,
-  MATCHES_DATA_FETCH_SUCCESS,
+  MATCHES_DATA_FETCH_SUCCESS, MATCHES_EXPANDED_DATA_FETCH,
   MATCHES_EXPANDED_DATA_FETCH_SUCCESS,
   MATCHES_FB_TO_TIME_FETCH,
   MATCHES_FB_TO_TIME_FETCH_SUCCESS
@@ -9,6 +9,7 @@ import {
 
 const initialState = {
   isLoading: false,
+  isLoadingNested: false,
   data: [],
   ratioFbTimeToGameTime: [],
   nestedData: {},
@@ -43,9 +44,16 @@ export const matchesReducer = (state = initialState, action) => {
         data: action.payload
       };
 
+    case MATCHES_EXPANDED_DATA_FETCH:
+      return {
+        ...state,
+        isLoadingNested: true
+      };
+
     case MATCHES_EXPANDED_DATA_FETCH_SUCCESS:
       return {
         ...state,
+        isLoadingNested: false,
         nestedData: Object.assign(state.nestedData, action.payload)
       };
 
