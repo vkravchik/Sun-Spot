@@ -9,7 +9,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint .",
     "client": "react-scripts start",
-    "server": "nodemon server/index --ignore 'server/dataset/**'",
+    "server": "nodemon functions/index --ignore 'functions/dataset/**'",
     "dev": "run-p server client",
     "heroku-postbuild": "npm install && npm run build"
   },

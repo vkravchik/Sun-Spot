@@ -1,4 +1,5 @@
-export const BASE_URL = process.env.baseURL || 'http://localhost:3001';
+export const BASE_URL = process.env.baseURL || process.env.NODE_ENV === 'production' ?
+  'https://us-central1-d2-a-a1dbb.cloudfunctions.net/app' : 'http://localhost:3001';
 
 export const DEFAULT_SELECTED_KEYS = 'SunSpot.defaultSelectedKeys';
 export const SLIDER_CONFIG = 'SunSpot.sliderConfig';

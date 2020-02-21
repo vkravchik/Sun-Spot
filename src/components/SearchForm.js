@@ -5,7 +5,6 @@ import { Button, Form } from 'antd';
 import { renderAutoComplete } from './Fields/renderAutoComplete';
 import { requiredField } from './Fields/validate';
 
-
 const SearchForm = (props) => {
   const { handleSubmit } = props;
 

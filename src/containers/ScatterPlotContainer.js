@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getFbToTime } from '../redux/actions/matchesActions';
 import ScatterPlot from '../components/ScatterPlot';
 import Loading from '../components/Loading';
-import SearchForm from '../components/SearchForm';
 
 const ScatterPlotContainer = () => {
   const dispatch = useDispatch();
@@ -16,7 +15,7 @@ const ScatterPlotContainer = () => {
 
   useEffect(() => {
     dispatch(getFbToTime());
-  }, []);
+  }, [dispatch]);
 
   const contentRender = () => (
     <ScatterPlot data={ratioFbTimeToGameTime} title={fbTitle}/>
